@@ -1,0 +1,14 @@
+{
+   "jcr:primaryType":"nt:unstructured",
+   "sling:resourceType":"servicemix/dashboard",
+   
+   "exchanges":{
+      "jcr:primaryType":"nt:unstructured",
+      "sling:resourceType":"servicemix/exchanges"
+   },
+   
+   "navigation":{
+      "jcr:primaryType":"nt:unstructured",
+      "sling:resourceType":"servicemix/navigation"
+   }
+}

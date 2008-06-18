@@ -1,0 +1,47 @@
+<html>
+<head>
+<title><%= currentNode.getName() %></title>
+<link rel="stylesheet" type="text/css" href="/theme/master.css"/>
+</head>
+<body>
+<div id="page">
+<h1>ServiceMix :: Message Exchange details</h1>
+<div id="content">
+<table>
+<tr>
+<td>Status</td>
+<td><%= currentNode['ExchangeStatus'] %></td>
+</tr>
+<tr>
+<td>MEP</td>
+<td><%= currentNode['Pattern'] %></td>
+</tr>
+<% for (property in currentNode.getProperties()) { 
+  if (property.match("org.apache.servicemix") || property.match("javax.jbi")) { %>
+<tr>
+<td><%= property %></td>
+<td><%= currentNode[property] %></td>
+</tr>
+<% } } %>
+</table>
+
+<% if (currentNode.In) { %>
+<h2>In message</h2>
+<% sling.include(currentNode.In + ".div"); %>
+<%}%>
+<% if (currentNode.Out) { %>
+<h2>Out message</h2>
+<% sling.include(currentNode.Out + ".div"); %>
+<%}%>
+<% if (currentNode.Fault) { %>
+<h2>Fault message</h2>
+<% sling.include(currentNode.Fault + ".div"); %>
+<%}%>
+
+<ul>
+</div>
+<% sling.include("/servicemix/navigation.div"); %>
+</div>
+</body>
+</html>
+

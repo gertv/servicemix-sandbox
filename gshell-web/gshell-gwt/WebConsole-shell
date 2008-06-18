@@ -1,0 +1,3 @@
+#!/bin/sh
+APPDIR=`dirname $0`;
+java -XstartOnFirstThread -Xmx256M -cp "$APPDIR/src:$APPDIR/bin:$APPDIR/target/classes:/Users/gnodet/work/apps/gwt-mac-1.5.0/gwt-user.jar:/Users/gnodet/work/apps/gwt-mac-1.5.0/gwt-dev-mac.jar" com.google.gwt.dev.GWTShell -out "$APPDIR/www" "$@" org.apache.servicemix.gshellweb.WebConsole/WebConsole.html;

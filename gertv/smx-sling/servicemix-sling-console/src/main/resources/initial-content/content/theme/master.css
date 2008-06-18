@@ -1,0 +1,41 @@
+body {
+  font-family: sans-serif;
+}
+
+div#page {
+  margin: 0px auto;
+  width: 1024px;
+  border-left: solid thin blue;
+}
+
+div#content {
+  padding-left: 30px;
+  font-size: 10pt;
+}
+
+div#sidebar {
+  background-color: lightgrey;
+  width: 15%;
+  float: right;
+}
+
+div#portlet {
+  border: solid thin grey;
+  width: 75%;
+  float: left;
+}
+
+h1 {
+  border-bottom: solid thin blue;
+  width: 100%;
+  padding-left: 20px;
+  font-size: 14pt;
+}
+
+h2 {
+  border-bottom: solid thin grey;
+  width: 90%;
+  padding-left: 10px;
+  font-size: 12pt;
+}
+

@@ -1,0 +1,7 @@
+<tr>
+  <td><a href="<%=currentNode%>.html">&rarr;</a></td>
+  <td><%=currentNode['org.apache.servicemix.datestamp'] %></td>
+  <td><%=currentNode.Service == undefined ? "n/a" : currentNode.Service%></td>
+  <td><%=currentNode.Endpoint == undefined ? "n/a" : currentNode.Endpoint%></td>
+  <td><%=currentNode.ExchangeStatus%></td>
+</tr>

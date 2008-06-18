@@ -1,0 +1,5 @@
+<div>
+<pre>
+<%= currentNode.Content.replace(/</g, "&lt;").replace(/>/g, "&gt;") %>
+<pre>
+</div>

@@ -1,0 +1,34 @@
+<html>
+<head>
+<title>ServiceMix :: Dashboard</title>
+<link rel="stylesheet" type="text/css" href="theme/master.css"/>
+</head>
+<body>
+<div id="page">
+<h1>Servicemix :: Dashboard</h1>
+
+<div id="content">
+ <div id="portlet">
+   <h2>Recent exchange archives</h2>
+   <ul>
+   <%
+        var iter = request.resourceResolver.findResources("content/servicemix/exchanges/* order by @Created descending",
+                            Packages.javax.jcr.query.Query.XPATH);
+        var i = 0;
+        while (iter.hasNext() && ++i <= 10) {
+           var resource = iter.next();
+           var name = resource.getPath().substr(resource.getPath().lastIndexOf("/")+1)
+           %>
+	   <li><a href="<%= resource.getPath() + ".html" %>"><%=name%></a></li>
+<%
+        }
+        %>
+   </ul>
+ </div>
+</div>
+
+<% sling.include("/servicemix/navigation.div"); %>
+
+</div>
+</body>
+</html>

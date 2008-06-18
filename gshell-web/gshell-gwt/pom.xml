@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+	  <groupId>org.apache.servicemix.gshell-web</groupId>
+	  <artifactId>parent</artifactId>
+	  <version>1.0-SNAPSHOT</version>
+  </parent>
+  
+  <artifactId>gshell-gwt</artifactId>
+  <packaging>war</packaging>
+
+  <name>ServiceMix GWT :: console</name>
+  <description>Gwt Shell Console</description>
+
+  <dependencies>
+    <dependency>
+      <groupId>commons-logging</groupId>
+      <artifactId>commons-logging-api</artifactId>
+      <version>1.0.4</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-user</artifactId>
+      <version>1.5-RC1</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-servlet</artifactId>
+      <version>1.5-RC1</version>
+    </dependency>
+
+    <!-- testing -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+
+<!--
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring</artifactId>
+      <scope>test</scope>
+      <version>2.0.6</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.xbean</groupId>
+      <artifactId>xbean-spring</artifactId>
+      <version>3.1.0.2-fuse</version>
+      <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>qdox</groupId>
+          <artifactId>qdox</artifactId>
+        </exclusion>
+      </exclusions>
+
+    </dependency>
+-->
+
+  </dependencies>
+
+
+  <build>
+    <sourceDirectory>src</sourceDirectory>
+    <testSourceDirectory>test</testSourceDirectory>
+    <testResources>
+      <testResource>
+        <directory>test</directory>
+        <includes>
+            <include>*.xml</include>
+			<include>*.log</include>
+        </includes>
+        
+      </testResource>
+    </testResources>    
+    <!--
+        <resources>
+          <resource>
+            <directory>src/webapp</directory>
+          </resource>
+        </resources>
+    -->
+
+    <plugins>
+<!-- We might have to manually install the gwt plugins into maven
+       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-install-plugin</artifactId>
+        <version>2.2</version>
+        <executions>
+          <execution>
+            <id>gwt-servlet</id>
+            <goals>
+              <goal>install-file</goal>
+            </goals>
+            <phase>validate</phase>
+            <configuration>
+              <groupId>com.google.gwt</groupId>
+              <artifactId>gwt-servlet</artifactId>
+              <version>1.5-snapshot</version>
+              <packaging>jar</packaging>
+              <pomFile>gwt-servlet-1.5-snapshot.pom</pomFile>
+              <file>dependencies/gwt-servlet-1.5-snapshot.jar</file>
+            </configuration>
+          </execution>
+          <execution>
+            <id>gwt-user</id>
+            <goals>
+              <goal>install-file</goal>
+            </goals>
+            <phase>validate</phase>
+            <configuration>
+              <groupId>com.google.gwt</groupId>
+              <artifactId>gwt-user</artifactId>
+              <version>1.5-snapshot</version>
+              <packaging>jar</packaging>
+              <pomFile>gwt-user-1.5-snapshot.pom</pomFile>
+              <file>dependencies/gwt-user-1.5-snapshot.jar</file>
+            </configuration>
+          </execution>          
+        </executions>
+      </plugin>
+-->
+    
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.0</version>
+        <configuration>
+          <source>1.5</source>
+          <target>1.5</target>
+        </configuration>
+      </plugin>
+
+      <plugin>  
+        <groupId>gwtforge.gwtplugin</groupId>  
+        <artifactId>gwtforge.gwtplugin</artifactId>  
+        <!-- <version>1.4.61</version> -->
+        <version>1.5-dev-27-01-2008</version>
+
+        <!--Associate the plugin to the maven compile phase-->  
+        <executions>  
+          <execution>  
+            <phase>compile</phase>  
+            <goals>  
+              <goal>compile</goal>  
+            </goals>  
+          </execution>  
+        </executions>  
+  
+        <configuration>
+          <!-- The plugin will discover the modules by itself -->  
+          <!-- Define here the target compilation directory -->  
+          <out>.</out>
+          <!--  Define here the log level of the gwt compiler -->  
+          <!--  Could be : INFO , ERROR , WARN , SPAM -->  
+          <loglevel>ALL</loglevel>
+
+          <!-- OPTIONAL JVM OPTIONS -->  
+          <!-- See http://java.sun.com/docs/hotspot/gc5.0/gc_tuning_5.html#0.0.0.0./Heap/Size/7Coutline -->  
+          <!--  Define the java heap size -->  
+          <initialheapsize>500m</initialheapsize>  
+          <!--  Define the maximum java heap size  -->  
+          <maximumheapsize>500m</maximumheapsize>  
+          <!-- Define the heap size for young generation -->  
+          <younggenerationheapsize>250m</younggenerationheapsize>
+        </configuration>
+      </plugin>  
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.0</version>
+        <configuration>
+          <webXml>webapp/WEB-INF/web.xml</webXml>
+          <warSourceDirectory>webapp</warSourceDirectory>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.mortbay.jetty</groupId>
+        <artifactId>maven-jetty-plugin</artifactId>
+        <configuration>
+          <webAppSourceDirectory>${basedir}/target/${pom.artifactId}-${pom.version}</webAppSourceDirectory>
+          <webXml>${basedir}/target/${pom.artifactId}-${pom.version}/WEB-INF/web.xml</webXml>
+        </configuration>
+      </plugin>
+      
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>selenium-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>start-server</goal>
+                        </goals>
+                        <configuration>
+                            <background>true</background>
+                            <logOutput>true</logOutput>
+                        </configuration>
+                    </execution>
+                 
+                </executions>
+            </plugin>      
+    </plugins>
+  </build>
+
+</project>

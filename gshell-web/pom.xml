@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+  
+  http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+      <groupId>org.apache.servicemix.features</groupId>
+      <artifactId>features</artifactId>
+      <version>4.0-m2-SNAPSHOT</version>
+  </parent>
+
+  <groupId>org.apache.servicemix.gshell-web</groupId>
+  <artifactId>parent</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <name>ServiceMix 4 Web Console</name>
+
+  <prerequisites>
+    <maven>2.0.6</maven>
+  </prerequisites>
+
+  <repositories>
+         <!-- Default repository -->
+       <repository>
+           <id>central</id>
+           <name>Default maven repo</name>
+           <url>http://repo1.maven.org/maven2</url>
+       </repository>
+       <!-- ServiceMix repo -->
+       <repository>
+           <id>servicemix</id>
+           <name>ServiceMix Repository</name>
+           <url>http://svn.apache.org/repos/asf/servicemix/m2-repo</url>
+       </repository>
+       <!-- Spring Milestone repo -->
+       <repository>
+           <id>spring-milestone</id>
+           <name>Spring Milestone Repository</name>
+           <url>http://s3.amazonaws.com/maven.springframework.org/milestone</url>
+       </repository>
+  
+    <repository>
+      <id>gwt-maven</id>
+      <url>http://gwt-maven.googlecode.com/svn/trunk/mavenrepo/</url>
+    </repository>
+    <repository>  
+        <id>gwtforge</id>  
+        <url>http://gwtforge.com/maven-repository/trunk/</url>  
+    </repository>
+
+        <repository>
+            <id>openqa.org</id>
+            <name>Openqa Release Repository</name>
+            <url>http://archiva.openqa.org/repository/releases</url>
+            <layout>default</layout>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+        <repository>
+            <id>openqa.org</id>
+            <name>Openqa Snapshot Repository</name>
+            <url>http://archiva.openqa.org/repository/snapshots</url>
+            <layout>default</layout>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>ignore</checksumPolicy>
+            </snapshots>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>    
+  </repositories>
+  
+ <pluginRepositories>
+    <pluginRepository>  
+      <id>gwtforge</id>  
+      <url>http://gwtforge.com/maven-repository/trunk/</url>  
+    </pluginRepository>  
+    <pluginRepository>
+      <id>gwt-maven</id>
+      <url>http://gwt-maven.googlecode.com/svn/trunk/mavenrepo/</url>
+    </pluginRepository>
+  </pluginRepositories>
+
+  <modules>
+    <module>gshell-gwt</module>
+  </modules>
+
+</project>
