@@ -206,9 +206,7 @@
     </scm>
 
     <properties>
-        <servicemix-common-version>4.0-SNAPSHOT</servicemix-common-version>
         <servicemix-shared-version>4.0-SNAPSHOT</servicemix-shared-version>
-        
         <xfire-jsr181-api-version>1.0-M1</xfire-jsr181-api-version>
         <xfire-version>1.2.5</xfire-version>
         <mavenAssemblyPluginVersion>2.1</mavenAssemblyPluginVersion>
@@ -253,6 +251,7 @@
             <modules>
                 <module>parent</module>
                 <module>core</module>
+                <module>deployables</module>
                 <module>common</module>
                 <module>servicemix-itests</module>
                 <module>samples</module>
@@ -706,7 +705,7 @@
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-common</artifactId>
-                <version>${servicemix-common-version}</version>
+                <version>${servicemix-shared-version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
@@ -751,12 +750,12 @@
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-soap</artifactId>
-                <version>${servicemix-common-version}</version>
+                <version>${servicemix-shared-version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-soap2</artifactId>
-                <version>${servicemix-common-version}</version>
+                <version>${servicemix-shared-version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
