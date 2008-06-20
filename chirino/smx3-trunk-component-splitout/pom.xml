@@ -22,187 +22,30 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>org.apache</groupId>
-        <artifactId>apache</artifactId>
-        <version>1</version>
+        <groupId>org.apache.servicemix</groupId>
+        <artifactId>servicemix-pom</artifactId>
+        <version>1.0</version>
     </parent>
 
     <groupId>org.apache.servicemix</groupId>
     <artifactId>servicemix</artifactId>
-    <packaging>pom</packaging>
-    <name>ServiceMix</name>
     <version>3.3-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>ServiceMix</name>
     <description>
     ServiceMix is an open source ESB based on the Java Business
     Integration framework - JSR-208 
     </description>
-    <url>http://servicemix.apache.org/</url>
+    
     <prerequisites>
         <maven>2.0.6</maven>
     </prerequisites>
-    <inceptionYear>2005</inceptionYear>
-
-    <issueManagement>
-        <system>jira</system>
-        <url>http://issues.apache.org/activemq/browse/SM</url>
-    </issueManagement>
-
-    <ciManagement>
-        <system>continuum</system>
-        <notifiers>
-            <!--notifier>
-                <type>mail</type>
-                <configuration>
-                    <address>servicemix-commits@geronimo.apache.org</address>
-                </configuration>
-                <sendOnSuccess>false</sendOnSuccess>
-            </notifier>
-            <notifier>
-              <type>irc</type>
-              <configuration>
-                <host>irc.codehaus.org</host>
-                <port>6667</port>
-                <channel>#servicemix</channel>
-              </configuration>
-              <sendOnSuccess>false</sendOnSuccess>
-            </notifier-->
-        </notifiers>
-    </ciManagement>
-
-    <mailingLists>
-        <mailingList>
-            <name>ServiceMix Developer List</name>
-            <subscribe>servicemix-dev-subscribe@geronimo.apache.org</subscribe>
-            <unsubscribe>servicemix-dev-unsubscribe@geronimo.apache.org</unsubscribe>
-            <post>servicemix-dev@geronimo.apache.org</post>
-            <archive>http://www.nabble.com/ServiceMix---Dev-f12051.html</archive>
-            <otherArchives>
-                <otherArchive>http://dir.gmane.org/gmane.comp.java.servicemix.devel</otherArchive>
-                <otherArchive>http://mail-archives.apache.org/mod_mbox/geronimo-servicemix-dev/</otherArchive>
-            </otherArchives>
-        </mailingList>
-        <mailingList>
-            <name>ServiceMix User List</name>
-            <subscribe>servicemix-users-subscribe@geronimo.apache.org</subscribe>
-            <unsubscribe>servicemix-users-unsubscribe@geronimo.apache.org</unsubscribe>
-            <post>servicemix-users@geronimo.apache.org</post>
-            <archive>http://www.nabble.com/ServiceMix---User-f12050.html</archive>
-            <otherArchives>
-                <otherArchive>http://dir.gmane.org/gmane.comp.java.servicemix.user</otherArchive>
-                <otherArchive>http://mail-archives.apache.org/mod_mbox/geronimo-servicemix-users/</otherArchive>
-            </otherArchives>
-        </mailingList>
-        <mailingList>
-            <name>ServiceMix SCM List</name>
-            <subscribe>servicemix-commits-subscribe@geronimo.apache.org</subscribe>
-            <unsubscribe>servicemix-commits-unsubscribe@geronimo.apache.org</unsubscribe>
-            <post>servicemix-commits@geronimo.apache.org</post>
-            <archive>http://mail-archives.apache.org/mod_mbox/geronimo-servicemix-commits/</archive>
-        </mailingList>
-    </mailingLists>
-
-    <developers>
-        <developer>
-            <id>rajdavies</id>
-            <name>Rob Davies</name>
-            <email>rajdavies@gmail.com</email>
-            <organization>Exist Labs</organization>
-        </developer>
-        <developer>
-            <id>jstrachan</id>
-            <name>James Strachan</name>
-            <email>jstrachan@logicblaze.com</email>
-            <organization>LogicBlaze</organization>
-            <organizationUrl>http://www.logicblaze.com/</organizationUrl>
-        </developer>
-        <developer>
-            <id>chirino</id>
-            <name>Hiram Chirino</name>
-            <email>hiram@logicblaze.com</email>
-            <organization>LogicBlaze</organization>
-            <organizationUrl>http://www.logicblaze.com/</organizationUrl>
-        </developer>
-        <developer>
-            <id>dandiep</id>
-            <name>Dan Diephouse</name>
-            <email>dandiep@codehaus.org</email>
-            <organization>dandiep</organization>
-        </developer>
-        <developer>
-            <id>pdodds</id>
-            <name>Philip Dodds</name>
-            <email>philip.dodds@gmail.com</email>
-            <organization>Five Clouds</organization>
-        </developer>
-        <developer>
-            <id>jlim</id>
-            <name>Jonas Lim</name>
-            <email>jlim@exist.com</email>
-            <organization>Exist Labs</organization>
-        </developer>
-        <developer>
-            <id>ffang</id>
-            <name>Freeman Fang</name>
-            <email>freeman.fang@gmail.com</email>
-            <organization>IONA</organization>
-        </developer>
-        <developer>
-            <id>foconer</id>
-            <name>Frederick Oconer</name>
-            <email>foconer@exist.com</email>
-            <organization>Exist Labs</organization>
-        </developer>
-        <developer>
-            <id>jgapuz</id>
-            <name>Joseph Gapuz</name>
-            <email>jgapuz@exist.com</email>
-            <organization>Exist Labs</organization>
-        </developer>
-        <developer>
-            <id>pvillacorta</id>
-            <name>Patrick Villacorta</name>
-            <email>pvillacorta@exist.com</email>
-            <organization>Exist Labs</organization>
-        </developer>
-        <developer>
-            <id>dflores</id>
-            <name>Darwin Flores</name>
-            <email>dflores@exist.com</email>
-            <organization>Exist Labs</organization>
-        </developer>
-        <developer>
-            <id>myap</id>
-            <name>Merwin Yap</name>
-            <email>myap@exist.com</email>
-            <organization>Exist Labs</organization>
-        </developer>
-        <developer>
-            <id>gnt</id>
-            <name>Guillaume Nodet</name>
-            <email>gnodet@logicblaze.com</email>
-            <organization>LogicBlaze</organization>
-            <organizationUrl>http://www.logicblaze.com/</organizationUrl>
-            <timezone>+1</timezone>
-        </developer>
-        <developer>
-            <id>gastaldi</id>
-            <name>George Gastaldi</name>
-            <email>gastaldi@apache.org</email>
-        </developer>
-        <developer>
-            <id>lhein</id>
-            <name>Lars Heinemann</name>
-            <email>lhein@apache.org</email>
-            <organization>Compart Systemhaus GmbH</organization>
-            <organizationUrl>http://www.compart.net/</organizationUrl>
-            <timezone>+1</timezone>
-        </developer>
-    </developers>
 
     <scm>
-        <connection>scm:svn:http://svn.apache.org/repos/asf/incubator/servicemix/trunk</connection>
-        <developerConnection>scm:svn:https://svn.apache.org/repos/asf/incubator/servicemix/trunk</developerConnection>
-        <url>http://svn.apache.org/viewcvs.cgi/incubator/servicemix/trunk</url>
+        <connection>scm:svn:http://svn.apache.org/repos/asf/servicemix/smx3/trunk/</connection>
+        <developerConnection>scm:svn:https://svn.apache.org/repos/asf/servicemix/smx3/trunk/</developerConnection>
+        <url>http://svn.apache.org/viewcvs.cgi/servicemix/smx3/trunk/</url>
     </scm>
 
     <properties>
@@ -712,41 +555,45 @@
                 <artifactId>servicemix-console</artifactId>
                 <version>3.3-SNAPSHOT</version>
             </dependency>
+            <!--
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-gbean</artifactId>
                 <version>3.3-SNAPSHOT</version>
             </dependency>
+          -->
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-jms</artifactId>
-                <version>3.3-SNAPSHOT</version>
+                <version>4.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-jsr181</artifactId>
-                <version>3.3-SNAPSHOT</version>
+                <version>4.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-http</artifactId>
-                <version>3.3-SNAPSHOT</version>
+                <version>4.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-mail</artifactId>
-                <version>3.3-SNAPSHOT</version>
+                <version>4.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-osworkflow</artifactId>
-                <version>3.3-SNAPSHOT</version>
+                <version>4.0-SNAPSHOT</version>
             </dependency>
+            <!--
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-sca</artifactId>
                 <version>3.3-SNAPSHOT</version>
             </dependency>
+          -->
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-soap</artifactId>
@@ -765,7 +612,7 @@
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-wsn2005</artifactId>
-                <version>3.3-SNAPSHOT</version>
+                <version>4.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
@@ -775,72 +622,72 @@
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-bean</artifactId>
-                <version>3.3-SNAPSHOT</version>
+                <version>4.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-eip</artifactId>
-                <version>3.3-SNAPSHOT</version>
+                <version>4.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-script</artifactId>
-                <version>3.3-SNAPSHOT</version>
+                <version>4.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-scripting</artifactId>
-                <version>3.3-SNAPSHOT</version>
+                <version>4.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-validation</artifactId>
-                <version>3.3-SNAPSHOT</version>
+                <version>4.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-file</artifactId>
-                <version>3.3-SNAPSHOT</version>
+                <version>4.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-ftp</artifactId>
-                <version>3.3-SNAPSHOT</version>
+                <version>4.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-xmpp</artifactId>
-                <version>3.3-SNAPSHOT</version>
+                <version>4.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-quartz</artifactId>
-                <version>3.3-SNAPSHOT</version>
+                <version>4.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-saxon</artifactId>
-                <version>3.3-SNAPSHOT</version>
+                <version>4.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-truezip</artifactId>
-                <version>3.3-SNAPSHOT</version>
+                <version>4.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-cxf-bc</artifactId>
-                <version>3.3-SNAPSHOT</version>
+                <version>4.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-cxf-se</artifactId>
-                <version>3.3-SNAPSHOT</version>
+                <version>4.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-camel</artifactId>
-                <version>3.3-SNAPSHOT</version>
+                <version>4.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.servicemix.samples</groupId>
@@ -879,11 +726,13 @@
                 <version>3.3-SNAPSHOT</version>
                 <type>pom</type>
             </dependency>
+            <!--
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-beanflow</artifactId>
                 <version>3.3-SNAPSHOT</version>
             </dependency>
+          -->
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-web-console</artifactId>
