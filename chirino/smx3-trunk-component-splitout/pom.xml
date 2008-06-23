@@ -51,6 +51,27 @@
     <properties>
         <servicemix-shared-version>4.0-SNAPSHOT</servicemix-shared-version>
         <servicemix-quartz-version>4.0-SNAPSHOT</servicemix-quartz-version>  
+        <servicemix-jms-version>4.0-SNAPSHOT</servicemix-jms-version>
+        <servicemix-jsr181-version>4.0-SNAPSHOT</servicemix-jsr181-version>
+        <servicemix-http-version>4.0-SNAPSHOT</servicemix-http-version>
+        <servicemix-mail-version>4.0-SNAPSHOT</servicemix-mail-version>
+        <servicemix-osworkflow-version>4.0-SNAPSHOT</servicemix-osworkflow-version>
+        <servicemix-wsn2005-version>4.0-SNAPSHOT</servicemix-wsn2005-version>
+        <servicemix-lwcontainer-version>3.3-SNAPSHOT</servicemix-lwcontainer-version>
+        <servicemix-bean-version>4.0-SNAPSHOT</servicemix-bean-version>
+        <servicemix-eip-version>4.0-SNAPSHOT</servicemix-eip-version>
+        <servicemix-script-version>4.0-SNAPSHOT</servicemix-script-version>
+        <servicemix-scripting-version>4.0-SNAPSHOT</servicemix-scripting-version>
+        <servicemix-validation-version>4.0-SNAPSHOT</servicemix-validation-version>
+        <servicemix-ftp-version>4.0-SNAPSHOT</servicemix-ftp-version>
+        <servicemix-xmpp-version>4.0-SNAPSHOT</servicemix-xmpp-version>
+        <servicemix-saxon-version>4.0-SNAPSHOT</servicemix-saxon-version>
+        <servicemix-truezip-version>4.0-SNAPSHOT</servicemix-truezip-version>
+        <servicemix-camel-version>4.0-SNAPSHOT</servicemix-camel-version>
+        <servicemix-cxf-bc-version>4.0-SNAPSHOT</servicemix-cxf-bc-version>
+        <servicemix-cxf-se-version>4.0-SNAPSHOT</servicemix-cxf-se-version>
+        <servicemix-drools-version>4.0-SNAPSHOT</servicemix-drools-version>
+        <servicemix-file-version>4.0-SNAPSHOT</servicemix-file-version>
         
         <xfire-jsr181-api-version>1.0-M1</xfire-jsr181-api-version>
         <xfire-version>1.2.5</xfire-version>
@@ -567,27 +588,27 @@
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-jms</artifactId>
-                <version>4.0-SNAPSHOT</version>
+                <version>${servicemix-jms-version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-jsr181</artifactId>
-                <version>4.0-SNAPSHOT</version>
+                <version>${servicemix-jsr181-version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-http</artifactId>
-                <version>4.0-SNAPSHOT</version>
+                <version>${servicemix-http-version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-mail</artifactId>
-                <version>4.0-SNAPSHOT</version>
+                <version>${servicemix-mail-version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-osworkflow</artifactId>
-                <version>4.0-SNAPSHOT</version>
+                <version>${servicemix-osworkflow-version}</version>
             </dependency>
             <!--
             <dependency>
@@ -614,52 +635,52 @@
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-wsn2005</artifactId>
-                <version>4.0-SNAPSHOT</version>
+                <version>${servicemix-wsn2005-version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-lwcontainer</artifactId>
-                <version>3.3-SNAPSHOT</version>
+                <version>${servicemix-lwcontainer-version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-bean</artifactId>
-                <version>4.0-SNAPSHOT</version>
+                <version>${servicemix-bean-version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-eip</artifactId>
-                <version>4.0-SNAPSHOT</version>
+                <version>${servicemix-eip-version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-script</artifactId>
-                <version>4.0-SNAPSHOT</version>
+                <version>${servicemix-script-version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-scripting</artifactId>
-                <version>4.0-SNAPSHOT</version>
+                <version>${servicemix-scripting-version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-validation</artifactId>
-                <version>4.0-SNAPSHOT</version>
+                <version>${servicemix-validation-version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-file</artifactId>
-                <version>4.0-SNAPSHOT</version>
+                <version>${servicemix-file-version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-ftp</artifactId>
-                <version>4.0-SNAPSHOT</version>
+                <version>${servicemix-ftp-version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-xmpp</artifactId>
-                <version>4.0-SNAPSHOT</version>
+                <version>${servicemix-xmpp-version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
@@ -669,27 +690,32 @@
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-saxon</artifactId>
-                <version>4.0-SNAPSHOT</version>
+                <version>${servicemix-saxon-version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-truezip</artifactId>
-                <version>4.0-SNAPSHOT</version>
+                <version>${servicemix-truezip-version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-cxf-bc</artifactId>
-                <version>4.0-SNAPSHOT</version>
+                <version>${servicemix-cxf-bc-version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-cxf-se</artifactId>
-                <version>4.0-SNAPSHOT</version>
+                <version>${servicemix-cxf-se-version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.servicemix</groupId>
                 <artifactId>servicemix-camel</artifactId>
-                <version>4.0-SNAPSHOT</version>
+                <version>${servicemix-camel-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.servicemix</groupId>
+                <artifactId>servicemix-drools</artifactId>
+                <version>${servicemix-drools-version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.servicemix.samples</groupId>
