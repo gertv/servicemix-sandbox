@@ -27,8 +27,9 @@ Step-by-step
 TODO
 ----
 A lot, but these come to mind...
-- asynchronous archival in JCR instead of blocking message delivery
-- 
+- asynchronous archival in JCR instead of blocking message delivery (using an ActiveMQ queue)
+- archiving/showing message flows based on the correlation id
+- making the web UI look good
 
 
 
