@@ -19,8 +19,15 @@
   </build>
   <properties>
     <servicemix-version>3.3-SNAPSHOT</servicemix-version>
-    <sling-version>2.0.0-incubator-SNAPSHOT</sling-version>
+    <sling-version>2.0.2-incubator</sling-version>
   </properties>
+  <repositories>
+    <repository>
+      <id>asf-incubator</id>
+      <name>ASF Incubator repository</name>
+      <url>http://people.apache.org/repo/m2-incubating-repository/</url>
+    </repository>
+  </repositories>
   <modules>
     <module>servicemix-audit-jcr</module>
     <module>servicemix-sling-console</module>

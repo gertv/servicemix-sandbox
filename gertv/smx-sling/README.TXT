@@ -27,9 +27,17 @@ Step-by-step
 TODO
 ----
 A lot, but these come to mind...
-- asynchronous archival in JCR instead of blocking message delivery (using an ActiveMQ queue)
-- archiving/showing message flows based on the correlation id
+
+On the auditor...
+- asynchronous archival in JCR instead of blocking message delivery
+  (just put the message metadata in a queue and asynchronously process the queue to send the messages to JCR)
+- refactor JCR auditor (with a configurable RepositoryFactory) to separate Sling specific details from the basic JCR stuff
+- archiving message flows based on the correlation id
+- allow the auditor to be configured to only audit metadata for some exchanges (to allow usage of stream-based messages)
+
+On the web console...
+- build a dashboard
+- add information about the endpoints themselves
+- make it possible to edit/resend exchanges
 - making the web UI look good
-
-
 
