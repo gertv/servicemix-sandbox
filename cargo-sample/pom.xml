@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.apache.servicemix.tooling</groupId>
+    <artifactId>cargo-test</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>Cargo Core Containers</name>
+    <packaging>jar</packaging>
+
+    <properties>
+        <servicemix-version>3.2.1</servicemix-version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.servicemix.samples</groupId>
+            <artifactId>camel-sa</artifactId>
+            <type>zip</type>
+            <version>${servicemix-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.servicemix</groupId>
+            <artifactId>apache-servicemix</artifactId>
+            <type>tar.gz</type>
+            <version>${servicemix-version}</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.cargo</groupId>
+                <artifactId>cargo-maven2-plugin</artifactId>
+                <version>1.0-alpha-5</version>
+                <executions>
+                    <execution>
+                        <id>start-container</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>start</goal>
+                        </goals>
+                        <configuration>
+                            <wait>false</wait>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>deploy-into-container</id>
+                        <phase>integration-test</phase>
+                        <goals>
+                            <goal>deploy</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>stop-container</id>
+                        <phase>integration-test</phase>
+                        <goals>
+                            <goal>stop</goal>
+                        </goals>
+                    </execution>
+
+                </executions>
+                <configuration>
+                    <container>
+                        <containerId>servicemix3x</containerId>
+                        <zipUrlInstaller>
+                            <url>
+                                file:${settings.localRepository}/org/apache/servicemix/apache-servicemix/${servicemix-version}/apache-servicemix-${servicemix-version}.tar.gz
+                            </url>
+                            <installDir>servicemix3</installDir>
+                        </zipUrlInstaller>
+                        <implementation>
+                            org.apache.servicemix.cargo.container.ServiceMix3xInstalledLocalContainer
+                        </implementation>
+                    </container>
+                    <configuration>
+                        <type>standalone</type>
+                        <implementation>
+                            org.apache.servicemix.cargo.container.ServiceMix3xStandaloneLocalConfiguration
+                        </implementation>
+                    </configuration>
+
+                    <deployer>
+                        <implementation>
+                            org.apache.servicemix.cargo.container.ServiceMix3xInstalledLocalDeployer
+                        </implementation>
+                        <type>installed</type>
+                        <deployables>
+                            <deployable>
+                                <groupId>
+                                    org.apache.servicemix.samples
+                                </groupId>
+                                <artifactId>camel-sa</artifactId>
+                                <type>zip</type>
+                                <implementation>
+                                    org.apache.servicemix.cargo.container.ServiceMixDeployable
+                                </implementation>
+                            </deployable>
+                        </deployables>
+                    </deployer>
+
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.servicemix.tooling</groupId>
+                        <artifactId>
+                            cargo-container-servicemix
+                        </artifactId>
+                        <version>1.0-SNAPSHOT</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>
