@@ -21,6 +21,7 @@ import java.io.FileFilter;
 import java.io.FileNotFoundException;
 import java.util.jar.JarFile;
 
+import org.apache.servicemix.cargo.container.ServiceMix3xStandaloneLocalConfiguration;
 import org.apache.tools.ant.taskdefs.Java;
 import org.apache.tools.ant.types.FileSet;
 import org.apache.tools.ant.types.Path;
@@ -49,6 +50,8 @@ public abstract class AbstractServiceMixInstalledLocalContainer
 
     private AntContainerExecutorThread serviceMixRunner;
     
+    private ServiceMix3xStandaloneLocalConfiguration configuration;
+    
     /**
      * {@inheritDoc}
      * @see AbstractInstalledLocalContainer#AbstractInstalledLocalContainer(LocalConfiguration)
@@ -56,6 +59,11 @@ public abstract class AbstractServiceMixInstalledLocalContainer
     public AbstractServiceMixInstalledLocalContainer(LocalConfiguration configuration)
     {
         super(configuration);
+        
+        if (configuration instanceof ServiceMix3xStandaloneLocalConfiguration) {
+        	this.configuration = (ServiceMix3xStandaloneLocalConfiguration) configuration;
+        }
+        
     }
 
     /**
@@ -180,7 +188,6 @@ public abstract class AbstractServiceMixInstalledLocalContainer
     
     protected void waitForCompletion(boolean waitForStarting) throws InterruptedException {
         
-        
         if (waitForStarting)
         {
             waitForContainerStart();
@@ -190,7 +197,7 @@ public abstract class AbstractServiceMixInstalledLocalContainer
      
     private void waitForContainerStart()
     {
-        int retryCount = 60;
+        int retryCount = configuration.getServerStartupMaxRetryCount();
         
         Object serverState = null;
         
@@ -198,7 +205,7 @@ public abstract class AbstractServiceMixInstalledLocalContainer
         {
             try {
                 
-                Thread.sleep(1000);
+                Thread.sleep(configuration.getTimeInMsBetweenStartupChecks());
                 retryCount--;
                 
                 serverState = ServiceMixJMXUtil.getServerState();
@@ -223,7 +230,7 @@ public abstract class AbstractServiceMixInstalledLocalContainer
             int newDeploymentCount = -1;
             while ((oldDeploymentCount != newDeploymentCount) || newDeploymentCount == -1) {
                 oldDeploymentCount = ServiceMixJMXUtil.getDeploymentCount();
-                Thread.sleep(5000);
+                Thread.sleep(configuration.getTimeInMsBetweenDeploymentChecks());
                 newDeploymentCount = ServiceMixJMXUtil.getDeploymentCount();
             }
         } catch (Exception e) {
