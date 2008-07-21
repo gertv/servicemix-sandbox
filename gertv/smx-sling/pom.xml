@@ -27,6 +27,11 @@
       <name>ASF Incubator repository</name>
       <url>http://people.apache.org/repo/m2-incubating-repository/</url>
     </repository>
+    <repository>
+      <id>asf-snapshots</id>
+      <name>ASF Snapshot repository</name>
+      <url>http://people.apache.org/repo/m2-snapshot-repository/</url>
+    </repository>
   </repositories>
   <modules>
     <module>servicemix-audit-jcr</module>
