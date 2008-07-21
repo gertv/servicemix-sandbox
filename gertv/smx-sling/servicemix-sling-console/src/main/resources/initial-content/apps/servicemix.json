@@ -1,0 +1,7 @@
+{
+   "jcr:primaryType":"nt:unstructured",
+
+   "servicemix":{
+      "jcr:primaryType":"nt:unstructured"
+   }
+}
