@@ -20,7 +20,16 @@ Step-by-step
    - servicemix-audit-jcr-1.0-SNAPSHOT.jar
 
 6. Reconfigure ServiceMix
-   - add <bean class="org.apache.servicemix.audit.jcr.SlingAuditor"/> to the <services/> section in conf/servicemix.xml
+   - modify conf/servicemix.xml
+     - add <bean id="JcrClientFactory" class="org.apache.jackrabbit.rmi.client.ClientRepositoryFactory"/>
+     - add <bean id="JcrRepository" factory-bean="JcrClientFactory" factory-method="getRepository"><constructor-arg value="rmi://localhost:1099/jackrabbit"/></bean>
+     - add to the <services/> section:
+           <bean class="org.apache.servicemix.audit.jcr.SlingAuditor">
+             <property name="repository" ref="JcrRepository"/>
+             <property name="strategy">
+              <bean class="org.apache.servicemix.audit.jcr.SlingJcrAuditorStrategy">
+             </property>
+           </bean>
    - change the rmi.port in conf/servicemix.properties to avoid the conflict with the Sling RMI registry
 
 

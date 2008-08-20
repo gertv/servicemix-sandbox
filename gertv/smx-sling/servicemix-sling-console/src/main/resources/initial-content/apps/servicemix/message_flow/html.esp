@@ -1,0 +1,23 @@
+<html>
+<head>
+<title>ServiceMix :: Dashboard</title>
+<link rel="stylesheet" type="text/css" href="theme/master.css"/>
+</head>
+<body>
+<div id="page">
+<h1>Servicemix :: Message flow</h1>
+
+<div id="content">
+ <div id="portlet">
+   <h2>Recent exchange archives</h2>
+   <ul>
+   
+   </ul>
+ </div> 
+</div>
+
+<% sling.include("/servicemix/navigation.div"); %>
+
+</div>
+</body>
+</html>

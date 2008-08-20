@@ -6,6 +6,11 @@
       "jcr:primaryType":"nt:unstructured",
       "sling:resourceType":"servicemix/exchanges"
    },
+
+   "message_flow":{
+      "jcr:primaryType":"nt:unstructured",
+      "sling:resourceType":"servicemix/message_flow"
+   },  
    
    "navigation":{
       "jcr:primaryType":"nt:unstructured",
