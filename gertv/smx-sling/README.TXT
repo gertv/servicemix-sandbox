@@ -24,7 +24,7 @@ Step-by-step
      - add <bean id="JcrClientFactory" class="org.apache.jackrabbit.rmi.client.ClientRepositoryFactory"/>
      - add <bean id="JcrRepository" factory-bean="JcrClientFactory" factory-method="getRepository"><constructor-arg value="rmi://localhost:1099/jackrabbit"/></bean>
      - add to the <services/> section:
-           <bean class="org.apache.servicemix.audit.jcr.SlingAuditor">
+           <bean class="org.apache.servicemix.audit.jcr.JcrAuditor">
              <property name="repository" ref="JcrRepository"/>
              <property name="strategy">
               <bean class="org.apache.servicemix.audit.jcr.SlingJcrAuditorStrategy">
