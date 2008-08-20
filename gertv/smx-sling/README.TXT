@@ -27,7 +27,7 @@ Step-by-step
            <bean class="org.apache.servicemix.audit.jcr.JcrAuditor">
              <property name="repository" ref="JcrRepository"/>
              <property name="strategy">
-              <bean class="org.apache.servicemix.audit.jcr.SlingJcrAuditorStrategy">
+              <bean class="org.apache.servicemix.audit.jcr.SlingJcrAuditorStrategy"/>
              </property>
            </bean>
    - change the rmi.port in conf/servicemix.properties to avoid the conflict with the Sling RMI registry
