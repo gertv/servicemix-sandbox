@@ -7,9 +7,9 @@
       "sling:resourceType":"servicemix/exchanges"
    },
 
-   "message_flow":{
+   "message_flows":{
       "jcr:primaryType":"nt:unstructured",
-      "sling:resourceType":"servicemix/message_flow"
+      "sling:resourceType":"servicemix/message_flows"
    },  
    
    "navigation":{

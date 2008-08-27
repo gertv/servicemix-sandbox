@@ -1,19 +1,45 @@
 <html>
 <head>
 <title>ServiceMix :: Dashboard</title>
-<link rel="stylesheet" type="text/css" href="theme/master.css"/>
+<link rel="stylesheet" type="text/css" href="/theme/master.css"/>
 </head>
 <body>
 <div id="page">
 <h1>Servicemix :: Message flow</h1>
 
 <div id="content">
- <div id="portlet">
-   <h2>Recent exchange archives</h2>
-   <ul>
-   
-   </ul>
- </div> 
+<br>
+<%
+var first = currentNode.getChildren()[0];
+%>
+
+<table>
+<tr>
+  <td><b>MEP: </b></td>
+  <td><%=first.Pattern == undefined ? "n/a" : first.Pattern%></td>
+</tr>
+<tr>
+  <td><b>Components: </b></td>
+  <td><%=first.Components == undefined ? "n/a" : first.Components%></td>
+</tr>
+<tr>
+  <td><b>Status: </b></td>
+  <td><%=first.ExchangeStatus == undefined ? "n/a" : first.ExchangeStatus%></td>
+</tr>
+</table>
+
+<br><br>
+<b>Exchanges:</b>
+<h2></h2>
+
+<table>
+<% var current = 0;
+   for (var exchange in currentNode.getChildren()) {
+    sling.include(currentNode[exchange] + ".tr"); 
+    if (++current >= 50) break;
+ } 
+%>
+</table>
 </div>
 
 <% sling.include("/servicemix/navigation.div"); %>

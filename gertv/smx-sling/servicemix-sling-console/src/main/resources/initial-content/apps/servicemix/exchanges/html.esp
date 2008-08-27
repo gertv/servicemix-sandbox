@@ -1,20 +1,23 @@
 <html>
 <head>
-<title>ServiceMix :: Browse the archive</title>
+<title>Apache ServiceMix :: Browse the archive</title>
 <link rel="stylesheet" type="text/css" href="/theme/master.css"/>
 </head>
 <body>
 <div id="page">
-<h1>ServiceMix :: Browse the archive</h1>
+<h1>Apache ServiceMix :: Browse the archive</h1>
 
 <div id="content">
+<br>
+<b>Message flows:</b>
 <h2></h2>
+
 <table>
 <% var current = 0;
- for (var exchange in currentNode.getChildren()) {
-   sling.include(currentNode[exchange] + ".tr");
-   if (++current >= 50) break;
- }
+   for (var flow in currentNode.getChildren()) {
+    sling.include(currentNode[flow] + ".tr"); 
+    if (++current >= 50) break;
+ } 
 %>
 </table>
 </div>

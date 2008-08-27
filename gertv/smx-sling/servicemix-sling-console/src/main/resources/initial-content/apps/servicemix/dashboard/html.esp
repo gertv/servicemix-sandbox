@@ -1,30 +1,64 @@
 <html>
 <head>
-<title>ServiceMix :: Dashboard</title>
+<title>Apache ServiceMix :: Dashboard</title>
 <link rel="stylesheet" type="text/css" href="theme/master.css"/>
 </head>
 <body>
 <div id="page">
-<h1>Servicemix :: Dashboard</h1>
+<h1>Apache Servicemix :: Dashboard</h1>
 
 <div id="content">
  <div id="portlet">
-   <h2>Recent exchange archives</h2>
+   <h2>Recent exchange archives (sorted by date)</h2>
    <ul>
    <%
-        var iter = request.resourceResolver.findResources("content/servicemix/exchanges/* order by @Created descending",
+        var iter = request.resourceResolver.findResources("content/servicemix/message_flows/* order by @Created descending",
                             Packages.javax.jcr.query.Query.XPATH);
         var i = 0;
-        while (iter.hasNext() && ++i <= 10) {
+        while (iter.hasNext() && ++i <= 15) {
            var resource = iter.next();
-           var name = resource.getPath().substr(resource.getPath().lastIndexOf("/")+1)
+           var name = resource.getPath().substr(resource.getPath().lastIndexOf("/")+1);
            %>
 	   <li><a href="<%= resource.getPath() + ".html" %>"><%=name%></a></li>
 <%
         }
         %>
    </ul>
- </div> 
+ </div>
+ 
+ <div id="portlet">
+ <h2>Recent exchange archives (sorted by correlation id)</h2>
+ <ul>
+   <%          
+     var current = 0;
+     for (var n in currentNode.getChildren()) {
+              
+     var node_name = currentNode[n].getPath().substr(currentNode[n].getPath().lastIndexOf("/")+1);
+               
+     if (node_name == "message_flows") {
+                              
+        var cNode = currentNode[n];
+                  
+        /*dates nodes*/
+        for (var dt in cNode.getChildren()) {
+                  
+          var idNode = cNode[dt];
+                  
+          /*corr_ids nodes*/
+          for (var id in idNode.getChildren()) {
+                  
+            var name2 = idNode[id].getPath().substr(idNode[id].getPath().lastIndexOf("/")+1);
+            %>
+	          <li><a href="<%= idNode[id].getPath() + ".html" %>"><%= name2%></a></li> 
+            <%
+            if (++current >= 15) break;
+          }
+        }
+     }           
+    }
+        %>
+   </ul>
+ </div>
 </div>
 
 <% sling.include("/servicemix/navigation.div"); %>

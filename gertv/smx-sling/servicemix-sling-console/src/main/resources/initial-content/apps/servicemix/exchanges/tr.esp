@@ -1,10 +1,4 @@
-<tr>
-  <!-- <td><a href="<%=currentNode%>.html">+</a></td>
-  <td><%=currentNode['org.apache.servicemix.datestamp'] %></td>
-  <td><%=currentNode.Service == undefined ? "n/a" : currentNode.Service%></td>
-  <td><%=currentNode.Endpoint == undefined ? "n/a" : currentNode.Endpoint%></td>
-  <td><%=currentNode.ExchangeStatus%></td> -->
-  
-  <td><a href="<%=currentNode%>.html">+ <%=currentNode['CorrelationId'] %></a></td>
-  
+<tr>  
+  <td>&rarr;</td>
+  <td><a href="<%=currentNode%>.html"><%=currentNode['CorrelationId'] %></a></td>
 </tr>
