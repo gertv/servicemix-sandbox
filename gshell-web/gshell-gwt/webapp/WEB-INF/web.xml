@@ -25,9 +25,18 @@
   <description>ServiceMix Web Console</description>
   <display-name>ServiceMix Console</display-name>
 
-  
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
   
+  <servlet>
+    <servlet-name>shell</servlet-name>
+    <servlet-class>org.apache.servicemix.gshellweb.server.ShellServiceImpl</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>shell</servlet-name>
+    <url-pattern>/org.apache.servicemix.gshellweb.WebConsole/shell</url-pattern>
+  </servlet-mapping>
+
 </web-app>

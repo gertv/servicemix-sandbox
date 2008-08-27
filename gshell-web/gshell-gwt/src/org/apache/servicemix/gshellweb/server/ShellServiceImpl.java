@@ -22,18 +22,24 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.io.InputStream;
 import java.io.PipedInputStream;
-import java.io.Reader;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.PipedOutputStream;
 import java.io.IOException;
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 
 import javax.servlet.ServletException;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 import org.apache.servicemix.gshellweb.client.ShellService;
+import org.apache.geronimo.gshell.spring.ProxyIO;
+import org.apache.geronimo.gshell.spring.EnvironmentTargetSource;
+import org.apache.geronimo.gshell.command.IO;
+import org.apache.geronimo.gshell.command.Variables;
+import org.apache.geronimo.gshell.shell.Environment;
+import org.apache.geronimo.gshell.DefaultEnvironment;
+import org.apache.geronimo.gshell.DefaultVariables;
 
 public class ShellServiceImpl extends RemoteServiceServlet implements ShellService {
 
@@ -70,9 +76,14 @@ public class ShellServiceImpl extends RemoteServiceServlet implements ShellServi
         System.out.println("setNextLineIn [sessionId=" + sessionId + ", in=" + in + "]");
         Session session = useSession(sessionId);
         try {
+            EnvironmentTargetSource.setEnvironment(session.environment);
+            ProxyIO.setIO(session.io);
+            CommandExecutorHolder.getCommandExecutor().execute(in);
             session.outPipe.write(("Command: " + in + "\n").getBytes());
-        } catch (IOException e) {
+        } catch (Exception e) {
             handleException(sessionId, e);
+        } finally {
+            ProxyIO.setIO(null);
         }
     }
 
@@ -81,7 +92,7 @@ public class ShellServiceImpl extends RemoteServiceServlet implements ShellServi
         Session session = useSession(sessionId);
         try {
             return session.outReader.readLine();
-        } catch (IOException e) {
+        } catch (Exception e) {
             handleException(sessionId, e);
             return null;
         }
@@ -92,14 +103,15 @@ public class ShellServiceImpl extends RemoteServiceServlet implements ShellServi
         Session session = useSession(sessionId);
         try {
             return session.errReader.readLine();
-        } catch (IOException e) {
+        } catch (Exception e) {
             handleException(sessionId, e);
             return null;
         }
 	}
 
-    private void handleException(String sessionId, IOException e) {
+    private void handleException(String sessionId, Exception e) {
         System.err.println("Exception in session: " + sessionId + ": " + e);
+        e.printStackTrace(System.err);
     }
 
     private Session useSession(String sessionId) {
@@ -129,6 +141,9 @@ public class ShellServiceImpl extends RemoteServiceServlet implements ShellServi
         private BufferedReader errReader;
         private PipedOutputStream outPipe;
         private PipedOutputStream errPipe;
+        private IO io;
+        private Environment environment;
+        private Variables variables;
 
         public Session() throws IOException {
             // TODO: bridge the out / err to gshell
@@ -139,6 +154,10 @@ public class ShellServiceImpl extends RemoteServiceServlet implements ShellServi
             outReader = new BufferedReader(new InputStreamReader(out));
             err = new PipedInputStream(errPipe);
             errReader = new BufferedReader(new InputStreamReader(err));
+
+            io = new IO(new ByteArrayInputStream(new byte[0]), outPipe, errPipe);
+            variables = new DefaultVariables();
+            environment = new DefaultEnvironment(io, variables);
 
             updateLastUsed();
         }

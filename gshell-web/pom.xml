@@ -94,6 +94,7 @@
   </repositories>
   
  <pluginRepositories>
+     <!--
     <pluginRepository>  
       <id>gwtforge</id>  
       <url>http://gwtforge.com/maven-repository/trunk/</url>  
@@ -102,6 +103,7 @@
       <id>gwt-maven</id>
       <url>http://gwt-maven.googlecode.com/svn/trunk/mavenrepo/</url>
     </pluginRepository>
+-->
   </pluginRepositories>
 
   <modules>

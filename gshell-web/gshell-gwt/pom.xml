@@ -36,19 +36,34 @@
     <dependency>
       <groupId>commons-logging</groupId>
       <artifactId>commons-logging-api</artifactId>
-      <version>1.0.4</version>
+      <version>1.1</version>
     </dependency>
 
     <dependency>
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-user</artifactId>
-      <version>1.5-RC1</version>
+      <version>1.5.1</version>
     </dependency>
 
     <dependency>
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-servlet</artifactId>
-      <version>1.5-RC1</version>
+      <version>1.5.1</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-dev</artifactId>
+      <version>1.5.1</version>
+      <classifier>linux</classifier>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+        <groupId>org.apache.servicemix.kernel.gshell</groupId>
+        <artifactId>org.apache.servicemix.kernel.gshell.core</artifactId>
+        <version>${servicemix.kernel.version}</version>
+        <scope>provided</scope>
     </dependency>
 
     <!-- testing -->
@@ -87,66 +102,39 @@
 
   <build>
     <sourceDirectory>src</sourceDirectory>
+    <resources>
+      <resource>
+        <directory>src</directory>
+        <includes>
+          <include>**/*.css</include>
+          <include>**/*.gif</include>
+          <include>**/*.html</include>
+          <include>**/*.java</include>
+          <include>**/*.jpg</include>
+          <include>**/*.png</include>
+          <include>**/*.properties</include>
+          <include>**/*.xml</include>
+        </includes>
+      </resource>
+    </resources>
     <testSourceDirectory>test</testSourceDirectory>
     <testResources>
       <testResource>
         <directory>test</directory>
         <includes>
-            <include>*.xml</include>
-			<include>*.log</include>
+            <include>**/*.css</include>
+            <include>**/*.gif</include>
+            <include>**/*.html</include>
+            <include>**/*.java</include>
+            <include>**/*.jpg</include>
+            <include>**/*.png</include>
+            <include>**/*.properties</include>
+            <include>**/*.xml</include>
         </includes>
-        
       </testResource>
     </testResources>    
-    <!--
-        <resources>
-          <resource>
-            <directory>src/webapp</directory>
-          </resource>
-        </resources>
-    -->
-
-    <plugins>
-<!-- We might have to manually install the gwt plugins into maven
-       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-install-plugin</artifactId>
-        <version>2.2</version>
-        <executions>
-          <execution>
-            <id>gwt-servlet</id>
-            <goals>
-              <goal>install-file</goal>
-            </goals>
-            <phase>validate</phase>
-            <configuration>
-              <groupId>com.google.gwt</groupId>
-              <artifactId>gwt-servlet</artifactId>
-              <version>1.5-snapshot</version>
-              <packaging>jar</packaging>
-              <pomFile>gwt-servlet-1.5-snapshot.pom</pomFile>
-              <file>dependencies/gwt-servlet-1.5-snapshot.jar</file>
-            </configuration>
-          </execution>
-          <execution>
-            <id>gwt-user</id>
-            <goals>
-              <goal>install-file</goal>
-            </goals>
-            <phase>validate</phase>
-            <configuration>
-              <groupId>com.google.gwt</groupId>
-              <artifactId>gwt-user</artifactId>
-              <version>1.5-snapshot</version>
-              <packaging>jar</packaging>
-              <pomFile>gwt-user-1.5-snapshot.pom</pomFile>
-              <file>dependencies/gwt-user-1.5-snapshot.jar</file>
-            </configuration>
-          </execution>          
-        </executions>
-      </plugin>
--->
     
+    <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -158,39 +146,77 @@
       </plugin>
 
       <plugin>  
-        <groupId>gwtforge.gwtplugin</groupId>  
-        <artifactId>gwtforge.gwtplugin</artifactId>  
-        <!-- <version>1.4.61</version> -->
-        <version>1.5-dev-27-01-2008</version>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>exec-maven-plugin</artifactId>
+          <version>1.1</version>
+          <executions>
+            <execution>
+              <!-- TODO can't find another phase that works thats called after test but before package -->
+              <!--<phase>process-test-classes</phase>-->
+              <phase>process-classes</phase>
+              <goals>
+                <goal>exec</goal>
+              </goals>
+            </execution>
+          </executions>
 
-        <!--Associate the plugin to the maven compile phase-->  
-        <executions>  
-          <execution>  
-            <phase>compile</phase>  
-            <goals>  
-              <goal>compile</goal>  
-            </goals>  
-          </execution>  
-        </executions>  
-  
-        <configuration>
-          <!-- The plugin will discover the modules by itself -->  
-          <!-- Define here the target compilation directory -->  
-          <out>.</out>
-          <!--  Define here the log level of the gwt compiler -->  
-          <!--  Could be : INFO , ERROR , WARN , SPAM -->  
-          <loglevel>ALL</loglevel>
+          <configuration>
+            <executable>java</executable>
+            <classpathScope>test</classpathScope>
+            <includePluginDependencies>true</includePluginDependencies>
+            <includeProjectDependencies>true</includeProjectDependencies>
 
-          <!-- OPTIONAL JVM OPTIONS -->  
-          <!-- See http://java.sun.com/docs/hotspot/gc5.0/gc_tuning_5.html#0.0.0.0./Heap/Size/7Coutline -->  
-          <!--  Define the java heap size -->  
-          <initialheapsize>500m</initialheapsize>  
-          <!--  Define the maximum java heap size  -->  
-          <maximumheapsize>500m</maximumheapsize>  
-          <!-- Define the heap size for young generation -->  
-          <younggenerationheapsize>250m</younggenerationheapsize>
-        </configuration>
+            <arguments>
+              <argument>-Xmx512m</argument>
+              <argument>-classpath</argument>
+              <classpath/>
+              <argument>com.google.gwt.dev.GWTCompiler</argument>
+              <argument>-gen</argument>
+              <argument>target/gwt-gen</argument>
+              <argument>-out</argument>
+              <argument>target/${pom.artifactId}-${pom.version}</argument>
+              <argument>-logLevel</argument>
+              <argument>INFO</argument>
+              <argument>org.apache.servicemix.gshellweb.WebConsole</argument>
+            </arguments>
+          </configuration>
       </plugin>  
+
+        <plugin>
+            <groupId>org.apache.felix</groupId>
+            <artifactId>maven-bundle-plugin</artifactId>
+            <version>1.4.3</version>
+            <configuration>
+                <instructions>
+                    <Import-Package>
+                        javax.servlet,
+                        javax.servlet.http,
+                        org.apache.geronimo.gshell,
+                        org.apache.geronimo.gshell.command,
+                        org.apache.geronimo.gshell.shell,
+                        org.apache.geronimo.gshell.spring
+                    </Import-Package>
+                    <Export-Package></Export-Package>
+                    <Bundle-ClassPath>.,WEB-INF/classes,WEB-INF/lib/gwt-user-1.5.1.jar,WEB-INF/lib/gwt-servlet-1.5.1.jar</Bundle-ClassPath>
+                    <Spring-Context>*;publish-context:=false;create-asynchronously:=false</Spring-Context>
+                </instructions>
+                <supportedProjectTypes>
+                  <supportedProjectType>war</supportedProjectType>
+                </supportedProjectTypes>
+                <manifestLocation>
+                    ${basedir}/target/${pom.artifactId}-${pom.version}/META-INF
+                </manifestLocation>
+            </configuration>
+            <executions>
+                <execution>
+                    <id>bundle-manifest</id>
+                    <phase>process-classes</phase>
+                    <goals>
+                        <goal>manifest</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -199,35 +225,22 @@
         <configuration>
           <webXml>webapp/WEB-INF/web.xml</webXml>
           <warSourceDirectory>webapp</warSourceDirectory>
+          <archive>
+            <manifestFile>${basedir}/target/${pom.artifactId}-${pom.version}/META-INF/MANIFEST.MF</manifestFile>
+          </archive>
         </configuration>
       </plugin>
 
       <plugin>
         <groupId>org.mortbay.jetty</groupId>
         <artifactId>maven-jetty-plugin</artifactId>
+        <version>6.1.12rc1</version>
         <configuration>
           <webAppSourceDirectory>${basedir}/target/${pom.artifactId}-${pom.version}</webAppSourceDirectory>
           <webXml>${basedir}/target/${pom.artifactId}-${pom.version}/WEB-INF/web.xml</webXml>
         </configuration>
       </plugin>
       
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>selenium-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <phase>pre-integration-test</phase>
-                        <goals>
-                            <goal>start-server</goal>
-                        </goals>
-                        <configuration>
-                            <background>true</background>
-                            <logOutput>true</logOutput>
-                        </configuration>
-                    </execution>
-                 
-                </executions>
-            </plugin>      
     </plugins>
   </build>
 
