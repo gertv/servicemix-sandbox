@@ -11,7 +11,6 @@ import javax.jcr.SimpleCredentials;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.servicemix.jbi.audit.AuditorException;
-import org.apache.servicemix.jbi.event.ExchangeEvent;
 
 /**
  * 
@@ -41,6 +40,7 @@ public class JcrAuditor extends AsynchronousAbstractAuditor {
         super.doStart();
     }
 
+    
     protected Session getSession() throws LoginException, RepositoryException {
         if (session.get() == null) {
             Session session = repository.login(new SimpleCredentials("admin",
@@ -50,23 +50,23 @@ public class JcrAuditor extends AsynchronousAbstractAuditor {
         return session.get();
     }
 
-    public void onExchangeSent(ExchangeEvent event) {
+    public void onExchangeSent(MessageExchange exchange) {
 
         try {
-            strategy.processExchange(event.getExchange(), getSession());
+            strategy.processExchange(exchange, getSession());
             getSession().save();
 
             LOG.info("Successfully stored information about message exchange "
-                    + event.getExchange().getExchangeId()
+                    + exchange.getExchangeId()
                     + " in the JCR repository");
         } catch (Exception e) {
             LOG.error("Unable to store information about message exchange "
-                    + event.getExchange().getExchangeId(), e);
+                    + exchange.getExchangeId(), e);
         }
     }
 
     @Override
-    public void onExchangeAccepted(ExchangeEvent event) {
+    public void onExchangeAccepted(MessageExchange exchange) {
 
     }
 

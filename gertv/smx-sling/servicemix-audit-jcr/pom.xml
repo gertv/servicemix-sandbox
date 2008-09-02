@@ -22,6 +22,11 @@
       <version>1.0</version>
     </dependency>
     <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jms</artifactId>
+            <version>${spring-version}</version>
+    </dependency>
+    <dependency>
       <groupId>org.apache.sling</groupId>
       <artifactId>org.apache.sling.jcr.jackrabbit.client</artifactId>
       <version>${sling-version}</version>
