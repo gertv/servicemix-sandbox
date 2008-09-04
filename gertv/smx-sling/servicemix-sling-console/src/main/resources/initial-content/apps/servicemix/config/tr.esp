@@ -1,0 +1,4 @@
+<tr>  
+  <td>&rarr;</td>
+  <td><a href="<%=currentNode%>.html"><%=currentNode['CorrelationId'] %></a></td>
+</tr>

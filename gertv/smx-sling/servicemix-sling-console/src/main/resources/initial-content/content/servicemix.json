@@ -15,5 +15,10 @@
    "navigation":{
       "jcr:primaryType":"nt:unstructured",
       "sling:resourceType":"servicemix/navigation"
+   },
+   
+   "config":{
+      "jcr:primaryType":"nt:unstructured",
+      "sling:resourceType":"servicemix/config"
    }
 }

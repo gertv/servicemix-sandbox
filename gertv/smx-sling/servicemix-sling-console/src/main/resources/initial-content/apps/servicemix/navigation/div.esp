@@ -1,4 +1,7 @@
 <div id="sidebar">
 <h2>Back to...</h2>
-<a href="/servicemix.html">dashboard</a>
+<ul>
+<li><a href="/servicemix.html">dashboard</a></li>
+<li><a href="/servicemix/config.html">config</a></li>
+</ul>
 </div>
