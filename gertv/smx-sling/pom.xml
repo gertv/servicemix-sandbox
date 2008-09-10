@@ -21,6 +21,7 @@
     <servicemix-version>3.3-SNAPSHOT</servicemix-version>
     <sling-version>2.0.2-incubator</sling-version>
     <spring-version>2.5.5</spring-version>
+    <slf4j-version>1.5.0</slf4j-version>
   </properties>
   <repositories>
     <repository>

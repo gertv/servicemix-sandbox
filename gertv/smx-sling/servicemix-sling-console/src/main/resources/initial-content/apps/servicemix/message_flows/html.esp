@@ -21,3 +21,26 @@
 <% sling.include("/content/servicemix/navigation.div"); %>
 </div>
 </html>
+<html>
+<head>
+<title>Apache ServiceMix :: Browse the archive</title>
+<link rel="stylesheet" type="text/css" href="/theme/master.css"/>
+</head>
+<body>
+<div id="page">
+<h1>Apache ServiceMix :: Browse the archive</h1>
+
+<div id="content">
+<br>
+
+
+<br><br>
+<b>exchanges:</b>
+<h2></h2>
+
+
+
+</div>
+<% sling.include("/content/servicemix/navigation.div"); %>
+</div>
+</html>
