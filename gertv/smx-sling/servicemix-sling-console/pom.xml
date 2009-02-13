@@ -41,7 +41,7 @@
                 <configuration>
                     <instructions>
                         <Sling-Initial-Content>
-                            initial-content
+                            initial-content;overwrite:=true
                         </Sling-Initial-Content>
                     </instructions>
                 </configuration>
