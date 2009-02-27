@@ -28,8 +28,7 @@ import org.springframework.jms.listener.DefaultMessageListenerContainer;
 
 /**
  * 
- * Abstract class for take care of all the serialization and multi-threading
- * stuff
+ * Abstract class for take care of all the serialization and multi-threading stuff
  * 
  * @author vkrejcirik
  * 
@@ -37,8 +36,7 @@ import org.springframework.jms.listener.DefaultMessageListenerContainer;
  */
 public abstract class AsynchronousAbstractAuditor extends AbstractAuditor {
 
-    private static final Log LOG = LogFactory
-            .getLog(AsynchronousAbstractAuditor.class);
+    private static final Log LOG = LogFactory.getLog(AsynchronousAbstractAuditor.class);
 
     private Session acceptedSession;
     private Session sentSession;
@@ -66,25 +64,20 @@ public abstract class AsynchronousAbstractAuditor extends AbstractAuditor {
     public void doStart() throws JBIException {
 
         try {
-            connection = ActiveMQConnection
-                    .makeConnection("tcp://localhost:61616");
+            connection = ActiveMQConnection.makeConnection("tcp://localhost:61616");
 
-            acceptedSession = connection.createSession(false,
-                    Session.AUTO_ACKNOWLEDGE);
+            acceptedSession = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 
-            sentSession = connection.createSession(false,
-                    Session.AUTO_ACKNOWLEDGE);
+            sentSession = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 
-            acceptedDestination = acceptedSession
-                    .createQueue("messages.accepted");
+            acceptedDestination = acceptedSession.createQueue("messages.accepted");
 
             sentDestination = sentSession.createQueue("messages.sent");
 
         } catch (URISyntaxException e) {
             throw new JBIException("URI syntax is wrong", e);
         } catch (JMSException e1) {
-            throw new JBIException("Error while creating queue for exchange",
-                    e1);
+            throw new JBIException("Error while creating queue for exchange", e1);
         }
 
         sentListenerContainer = new DefaultMessageListenerContainer();
@@ -97,8 +90,7 @@ public abstract class AsynchronousAbstractAuditor extends AbstractAuditor {
         acceptedConnectionFactory.setBrokerURL("tcp://localhost:61616");
 
         sentListenerContainer.setConnectionFactory(sentConnectionFactory);
-        acceptedListenerContainer
-                .setConnectionFactory(acceptedConnectionFactory);
+        acceptedListenerContainer.setConnectionFactory(acceptedConnectionFactory);
 
         sentListenerContainer.setConcurrentConsumers(1);
         acceptedListenerContainer.setConcurrentConsumers(1);
@@ -187,8 +179,7 @@ public abstract class AsynchronousAbstractAuditor extends AbstractAuditor {
 
     public abstract void onExchangeAccepted(MessageExchange exchange);
 
-    protected AuditorMarshaler getMarshaler() throws PathNotFoundException,
-            LoginException, RepositoryException {
+    protected AuditorMarshaler getMarshaler() throws PathNotFoundException, LoginException, RepositoryException {
         return null;
 
     }
@@ -206,8 +197,7 @@ public abstract class AsynchronousAbstractAuditor extends AbstractAuditor {
                 onExchangeSent(exchange);
 
             } else {
-                throw new IllegalArgumentException(
-                        "Message must be of type ObjectMessage");
+                throw new IllegalArgumentException("Message must be of type ObjectMessage");
             }
         }
     }
@@ -225,8 +215,7 @@ public abstract class AsynchronousAbstractAuditor extends AbstractAuditor {
                 onExchangeAccepted(exchange);
 
             } else {
-                throw new IllegalArgumentException(
-                        "Message must be of type ObjectMessage");
+                throw new IllegalArgumentException("Message must be of type ObjectMessage");
             }
         }
     }
@@ -235,7 +224,7 @@ public abstract class AsynchronousAbstractAuditor extends AbstractAuditor {
 
         public void onEvent(EventIterator event) {
 
-            LOG.debug("event!");
+            LOG.debug("event! change marshaler");
 
             try {
                 marshaler = getMarshaler();

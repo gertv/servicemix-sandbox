@@ -9,11 +9,12 @@ import javax.jms.Session;
  * 
  * 
  * @author vkrejcirik
- *
+ * 
  */
 public interface AuditorMarshaler {
 
     public ObjectMessage marschal(MessageExchange exchange, Session session);
+
     public MessageExchange unmarshal(ObjectMessage message);
-    
+
 }

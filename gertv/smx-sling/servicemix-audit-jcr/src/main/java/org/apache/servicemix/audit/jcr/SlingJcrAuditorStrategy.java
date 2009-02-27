@@ -24,7 +24,6 @@ import org.apache.jackrabbit.value.DateValue;
 import org.apache.servicemix.jbi.jaxp.SourceTransformer;
 import org.apache.servicemix.jbi.util.MessageUtil;
 
-
 /**
  * 
  * Class for processing message exchange based on correlation id
@@ -37,49 +36,63 @@ public class SlingJcrAuditorStrategy implements JcrAuditorStrategy {
     public static final String RESOURCE_TYPE = "sling:resourceType";
 
     // esp files for rendering
-    public static final String EXCHANGES_RESOURCE_TYPE = "servicemix/exchanges";
+    public static final String MESSAGE_FLOWS_RESOURCE_TYPE = "servicemix/message_flows";
     public static final String EXCHANGE_RESOURCE_TYPE = "servicemix/exchange";
     public static final String MESSAGE_FLOW_RESOURCE_TYPE = "servicemix/message_flow";
     public static final String NORMALIZED_MESSAGE_RESOURCE_TYPE = "servicemix/normalizedmessage";
-
+    public static final String ENDPOINT_RESOURCE_TYPE = "servicemix/endpoint";
     // content
     public static final String CONTENT_MESSAGE_FLOWS_TYPE = "content/servicemix/message_flows";
+    public static final String CONTENT_ENDPOINTS = "content/servicemix/endpoints";
     public static final String CONTENT_EXCHANGES_TYPE = "content/servicemix/exchanges";
 
     private static final SourceTransformer TRANSFORMER = new SourceTransformer();
 
     // let's time slice our message exchange archive on an hourly basis
-    private static final DateFormat FORMAT = new SimpleDateFormat(
-            "yyyyMMddhha", Locale.ENGLISH);
+    private static final DateFormat FORMAT = new SimpleDateFormat("yyyyMMddhha", Locale.ENGLISH);
 
-    public void processExchange(MessageExchange messageExchange, Session session)
-            throws ItemExistsException, PathNotFoundException,
-            VersionException, ConstraintViolationException, LockException,
-            RepositoryException, MessagingException, TransformerException {
+    public void processExchange(MessageExchange messageExchange, Session session) throws ItemExistsException, PathNotFoundException,
+            VersionException, ConstraintViolationException, LockException, RepositoryException, MessagingException, TransformerException {
 
+        /*
+         * (String) messageExchange .getProperty("org.apache.servicemix.senderEndpoint")
+         */
+
+        // get endpoint node for this exchange
+        Node endpointNode = getEndpointNode(session, (String) messageExchange.getProperty("org.apache.servicemix.senderEndpoint"));
+
+        String exId = (String) messageExchange.getExchangeId().replaceAll(":", "_");
+
+        // add this exchange to the endpoint node, if not exists yet
+        try {
+            endpointNode.getNode(exId);
+        } catch (PathNotFoundException e) {
+            Node newNode = endpointNode.addNode(exId);
+            newNode.setProperty("Created", new DateValue(new GregorianCalendar()));
+            newNode.setProperty("exchangeId", messageExchange.getExchangeId());
+        }
+
+        // construct exchange node
         Node node = getNodeForExchange(messageExchange, session);
 
-        node.setProperty("ExchangeStatus", messageExchange.getStatus()
-                .toString());
+        node.setProperty("ExchangeStatus", messageExchange.getStatus().toString());
         node.setProperty("Pattern", messageExchange.getPattern().toString());
 
+        node.setProperty("endpointId", ((String) messageExchange.getProperty("org.apache.servicemix.senderEndpoint")).replaceAll(":", "_")
+                .replaceAll("/", "-"));
+
         if (messageExchange.getEndpoint() != null) {
-            node.setProperty("Endpoint", messageExchange.getEndpoint()
-                    .getEndpointName());
+            node.setProperty("Endpoint", messageExchange.getEndpoint().getEndpointName());
         }
 
         if (messageExchange.getService() != null) {
-            node
-                    .setProperty("Service", messageExchange.getService()
-                            .toString());
+            node.setProperty("Service", messageExchange.getService().toString());
         }
 
         for (Object key : messageExchange.getPropertyNames()) {
             String name = (String) key;
 
-            node
-                    .setProperty(name, messageExchange.getProperty(name)
-                            .toString());
+            node.setProperty(name, messageExchange.getProperty(name).toString());
         }
 
         addNormalizedMessages(node, messageExchange);
@@ -89,7 +102,7 @@ public class SlingJcrAuditorStrategy implements JcrAuditorStrategy {
 
     /**
      * 
-     * 
+     * Get node for given Exchange
      * 
      * @param exchange
      * @param session
@@ -101,15 +114,11 @@ public class SlingJcrAuditorStrategy implements JcrAuditorStrategy {
      * @throws LockException
      * @throws RepositoryException
      */
-    private Node getNodeForExchange(MessageExchange exchange, Session session)
-            throws ItemExistsException, PathNotFoundException,
-            VersionException, ConstraintViolationException, LockException,
-            RepositoryException {
+    private Node getNodeForExchange(MessageExchange exchange, Session session) throws ItemExistsException, PathNotFoundException,
+            VersionException, ConstraintViolationException, LockException, RepositoryException {
 
         String id = exchange.getExchangeId().replaceAll(":", "_");
-        String corr_id = exchange.getProperty(
-                "org.apache.servicemix.correlationId").toString().replaceAll(
-                ":", "_");
+        String corr_id = exchange.getProperty("org.apache.servicemix.correlationId").toString().replaceAll(":", "_");
 
         // node with date
         // Node parent = getExchangeBaseNode(session);
@@ -134,7 +143,7 @@ public class SlingJcrAuditorStrategy implements JcrAuditorStrategy {
 
     /**
      * 
-     * 
+     * Get node for correlation id
      * 
      * @param parent
      * @param corr_id
@@ -146,9 +155,8 @@ public class SlingJcrAuditorStrategy implements JcrAuditorStrategy {
      * @throws LockException
      * @throws ConstraintViolationException
      */
-    private synchronized Node getCorrelationIdNode(Node parent, String corr_id,
-            String id) throws RepositoryException, ValueFormatException,
-            VersionException, LockException, ConstraintViolationException {
+    private synchronized Node getCorrelationIdNode(Node parent, String corr_id, String id) throws RepositoryException,
+            ValueFormatException, VersionException, LockException, ConstraintViolationException {
 
         // first exchange of the flow
         if (corr_id == null) {
@@ -161,8 +169,6 @@ public class SlingJcrAuditorStrategy implements JcrAuditorStrategy {
         }
 
         try {
-            
-            System.out.println(corr_id);
             return parent.getNode(corr_id);
 
         } catch (PathNotFoundException e) {
@@ -185,20 +191,36 @@ public class SlingJcrAuditorStrategy implements JcrAuditorStrategy {
      * @return Node
      * @throws RepositoryException
      */
-    private Node getMessageFlowBaseNode(Session session)
-            throws RepositoryException {
-        Node exchanges = session.getRootNode().getNode(
-                CONTENT_MESSAGE_FLOWS_TYPE);
+    private Node getMessageFlowBaseNode(Session session) throws RepositoryException {
+        Node messageFlows = session.getRootNode().getNode(CONTENT_MESSAGE_FLOWS_TYPE);
 
-        return createOrGet(exchanges, FORMAT.format(new Date()));
+        return createOrGet(messageFlows, FORMAT.format(new Date()), MESSAGE_FLOWS_RESOURCE_TYPE);
     }
 
     /**
      * 
-     * Create or get node with the path
+     * Get base node for endpoint
      * 
-     * @param exchanges
+     * @param session
+     * @param endpointName
+     * @return Node
+     * @throws RepositoryException
+     */
+    private Node getEndpointNode(Session session, String endpointName) throws RepositoryException {
+        Node endpoints = session.getRootNode().getNode(CONTENT_ENDPOINTS);
+
+        String id = endpointName.replaceAll(":", "_").replaceAll("/", "-");
+
+        return createOrGet(endpoints, id, ENDPOINT_RESOURCE_TYPE);
+    }
+
+    /**
+     * 
+     * Create or get child node with path and resource type
+     * 
+     * @param parent
      * @param path
+     * @param resourceType
      * @return Node
      * @throws ValueFormatException
      * @throws VersionException
@@ -206,16 +228,14 @@ public class SlingJcrAuditorStrategy implements JcrAuditorStrategy {
      * @throws ConstraintViolationException
      * @throws RepositoryException
      */
-    private synchronized Node createOrGet(Node exchanges, String path)
-            throws ValueFormatException, VersionException, LockException,
-            ConstraintViolationException, RepositoryException {
+    private synchronized Node createOrGet(Node parent, String path, String resourceType) throws ValueFormatException, VersionException,
+            LockException, ConstraintViolationException, RepositoryException {
         try {
-            return exchanges.getNode(path);
+            return parent.getNode(path);
 
         } catch (PathNotFoundException e) {
-            Node node = exchanges.addNode(path);
-            node.setProperty(RESOURCE_TYPE, EXCHANGES_RESOURCE_TYPE);
-
+            Node node = parent.addNode(path);
+            node.setProperty(RESOURCE_TYPE, resourceType);
             node.setProperty("Created", new DateValue(new GregorianCalendar()));
             return node;
         }
@@ -223,7 +243,7 @@ public class SlingJcrAuditorStrategy implements JcrAuditorStrategy {
 
     /**
      * 
-     * 
+     * Add in, out and fault messages, if exist
      * 
      * @param node
      * @param exchange
@@ -236,12 +256,9 @@ public class SlingJcrAuditorStrategy implements JcrAuditorStrategy {
      * @throws RepositoryException
      * @throws TransformerException
      */
-    private void addNormalizedMessages(Node node, MessageExchange exchange)
-            throws ItemExistsException, PathNotFoundException,
-            VersionException, ConstraintViolationException, LockException,
-            MessagingException, RepositoryException, TransformerException {
-        
-        
+    private void addNormalizedMessages(Node node, MessageExchange exchange) throws ItemExistsException, PathNotFoundException,
+            VersionException, ConstraintViolationException, LockException, MessagingException, RepositoryException, TransformerException {
+
         if (exchange.getMessage("in") != null) {
             addNormalizedMessages(node, "In", exchange.getMessage("in"));
         }
@@ -255,7 +272,7 @@ public class SlingJcrAuditorStrategy implements JcrAuditorStrategy {
 
     /**
      * 
-     * 
+     * Add normalized message to node as property
      * 
      * @param parent
      * @param type
@@ -269,11 +286,9 @@ public class SlingJcrAuditorStrategy implements JcrAuditorStrategy {
      * @throws MessagingException
      * @throws TransformerException
      */
-    private void addNormalizedMessages(Node parent, String type,
-            NormalizedMessage message) throws ItemExistsException,
-            PathNotFoundException, VersionException,
-            ConstraintViolationException, LockException, RepositoryException,
-            MessagingException, TransformerException {
+    private void addNormalizedMessages(Node parent, String type, NormalizedMessage message) throws ItemExistsException,
+            PathNotFoundException, VersionException, ConstraintViolationException, LockException, RepositoryException, MessagingException,
+            TransformerException {
         if (message != null) {
             Node node;
             try {
@@ -292,15 +307,14 @@ public class SlingJcrAuditorStrategy implements JcrAuditorStrategy {
 
     /**
      * 
-     * 
+     * Get content from normalized message
      * 
      * @param message
      * @return String
      * @throws MessagingException
      * @throws TransformerException
      */
-    private String getNormalizedMessageContent(NormalizedMessage message)
-            throws MessagingException, TransformerException {
+    private String getNormalizedMessageContent(NormalizedMessage message) throws MessagingException, TransformerException {
         MessageUtil.enableContentRereadability(message);
         return TRANSFORMER.toString(message.getContent());
     }

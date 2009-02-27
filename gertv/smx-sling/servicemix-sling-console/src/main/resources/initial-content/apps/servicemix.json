@@ -1,7 +1,7 @@
 {
-   "jcr:primaryType":"nt:unstructured",
+   "jcr:primaryType":"sling:Folder",
 
    "servicemix":{
-      "jcr:primaryType":"nt:unstructured"
+      "jcr:primaryType":"sling:Folder"
    }
 }

@@ -20,9 +20,8 @@ import javax.xml.transform.TransformerException;
  */
 public interface JcrAuditorStrategy {
 
-	public abstract void processExchange(MessageExchange messageExchange,
-			Session session) throws ItemExistsException, PathNotFoundException,
-			VersionException, ConstraintViolationException, LockException,
-			RepositoryException, MessagingException, TransformerException;
+    public abstract void processExchange(MessageExchange messageExchange, Session session) throws ItemExistsException,
+            PathNotFoundException, VersionException, ConstraintViolationException, LockException, RepositoryException, MessagingException,
+            TransformerException;
 
 }

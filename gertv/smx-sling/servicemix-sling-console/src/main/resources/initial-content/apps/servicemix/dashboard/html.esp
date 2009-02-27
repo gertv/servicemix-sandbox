@@ -27,7 +27,7 @@
  </div>
  
  <div id="portlet">
- <h2>Recent exchange archives (sorted by correlation id)</h2>
+ <h2>Recent messages flows archives (sorted by correlation id)</h2>
  <ul>
    <%          
      var current = 0;
@@ -59,6 +59,35 @@
         %>
    </ul>
  </div>
+ <div id="portlet">
+   <h2>Used endpoints</h2>
+     <ul>
+   <%
+        var iter = request.resourceResolver.findResources("content/servicemix/endpoints/* order by @Created descending",
+                            Packages.javax.jcr.query.Query.XPATH);
+        var i = 0;
+        while (iter.hasNext() && ++i <= 15) {
+           var resource = iter.next();
+           var name = resource.getPath().substr(resource.getPath().lastIndexOf("/")+1);
+           %>
+	   <li><a href="<%= resource.getPath() + ".html" %>"><%= name %></a></li>
+	 <%
+        }
+        %>
+   </ul>
+ </div>
+
+ <div id="portlet">
+   <h2>Failed exchanges</h2>
+
+ </div>
+
+ <div id="portlet">
+   <h2>Throughput</h2>
+
+   </ul>
+ </div>
+
 </div>
 
 <% sling.include("/servicemix/navigation.div"); %>

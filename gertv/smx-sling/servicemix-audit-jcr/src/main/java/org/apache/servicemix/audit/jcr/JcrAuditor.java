@@ -37,37 +37,29 @@ public class JcrAuditor extends AsynchronousAbstractAuditor {
     @Override
     public void doStart() throws JBIException {
         if (repository == null) {
-            throw new JBIException(
-                    "No repository configured, unable to start JCR auditor");
+            throw new JBIException("No repository configured, unable to start JCR auditor");
         }
         if (strategy == null) {
-            throw new JBIException(
-                    "No JcrAuditorStrategy configure, unable to start JCR auditor");
+            throw new JBIException("No JcrAuditorStrategy configure, unable to start JCR auditor");
         }
 
         try {
             marshaler = getMarshaler();
         } catch (LoginException e) {
-            throw new JBIException(
-                    "Login exception, unable to get Auditor Marshaler", e);
+            throw new JBIException("Login exception, unable to get Auditor Marshaler", e);
         } catch (RepositoryException e1) {
-            throw new JBIException(
-                    "Repository exception, unable to get Auditor Marshaler", e1);
+            throw new JBIException("Repository exception, unable to get Auditor Marshaler", e1);
         }
 
         try {
-           ObservationManager observationManager = getSession().getWorkspace().getObservationManager();
-           
-           observationManager.addEventListener(
-                    eventListener, Event.PROPERTY_CHANGED,
-                    CONFIG_TYPE, false, null, null, false);
-            
+            ObservationManager observationManager = getSession().getWorkspace().getObservationManager();
+
+            observationManager.addEventListener(eventListener, Event.PROPERTY_CHANGED, CONFIG_TYPE, false, null, null, false);
+
         } catch (UnsupportedRepositoryOperationException e) {
-            throw new JBIException(
-                    "Unsupported repository operation exception, unable to add Event Listener", e);
+            throw new JBIException("Unsupported repository operation exception, unable to add Event Listener", e);
         } catch (RepositoryException e1) {
-            throw new JBIException(
-                    "Repository exception, unable to add Event Listener", e1);
+            throw new JBIException("Repository exception, unable to add Event Listener", e1);
         }
 
         super.doStart();
@@ -75,8 +67,7 @@ public class JcrAuditor extends AsynchronousAbstractAuditor {
 
     protected Session getSession() throws LoginException, RepositoryException {
         if (session.get() == null) {
-            Session session = repository.login(new SimpleCredentials("admin",
-                    "admin".toCharArray()));
+            Session session = repository.login(new SimpleCredentials("admin", "admin".toCharArray()));
             this.session.set(session);
         }
         return session.get();
@@ -88,42 +79,21 @@ public class JcrAuditor extends AsynchronousAbstractAuditor {
             strategy.processExchange(exchange, getSession());
             getSession().save();
 
-            LOG.info("Successfully stored information about message exchange "
-                    + exchange.getExchangeId() + " in the JCR repository");
+            marshaler = getMarshaler();
+            System.out.println("&&&&&&&&&&&&&&&&&" + marshaler.toString());
+
+            LOG.info("Successfully stored information about message exchange " + exchange.getExchangeId() + " in the JCR repository");
+
+            log.info("Marshaler is set to: " + marshaler.toString());
+
         } catch (Exception e) {
-            LOG.error("Unable to store information about message exchange "
-                    + exchange.getExchangeId(), e);
+            LOG.error("Unable to store information about message exchange " + exchange.getExchangeId(), e);
         }
     }
 
     @Override
     public void onExchangeAccepted(MessageExchange exchange) {
 
-    }
-
-    @Override
-    protected AuditorMarshaler getMarshaler() throws LoginException,
-            RepositoryException {
-
-        AuditorMarshaler marshaler = null;
-        Node config = getSession().getRootNode().getNode(CONFIG_TYPE);
-        String mar = null;
-
-        try {
-                       
-            mar = config.getProperty("marshaler").getValue().getString();
-        } catch (RepositoryException e) {
-
-            config.setProperty("marshaler", "EntireMarshaler");
-            mar = "EntireMarshaler";
-        }
-
-        if (mar.equals("EntireMarshaler"))
-            marshaler = new EntireMarshaler();
-        else if (mar.equals("HeaderMetadataMarshaler"))
-            marshaler = new HeaderMetadataMarshaler();
-
-        return marshaler;
     }
 
     public String getDescription() {
@@ -159,14 +129,37 @@ public class JcrAuditor extends AsynchronousAbstractAuditor {
     }
 
     @Override
-    public String[] getExchangeIdsByRange(int arg0, int arg1)
-            throws AuditorException {
+    public String[] getExchangeIdsByRange(int arg0, int arg1) throws AuditorException {
         return null;
     }
 
     @Override
-    public MessageExchange[] getExchangesByIds(String[] arg0)
-            throws AuditorException {
+    public MessageExchange[] getExchangesByIds(String[] arg0) throws AuditorException {
         return null;
     }
+
+    @Override
+    protected AuditorMarshaler getMarshaler() throws LoginException, RepositoryException {
+
+        AuditorMarshaler marshaler = null;
+        Node config = getSession().getRootNode().getNode(CONFIG_TYPE);
+        String mar = null;
+
+        try {
+
+            mar = config.getProperty("marshaler").getValue().getString();
+        } catch (RepositoryException e) {
+
+            config.setProperty("marshaler", "EntireMarshaler");
+            mar = "EntireMarshaler";
+        }
+
+        if (mar.equals("EntireMarshaler"))
+            marshaler = new EntireMarshaler();
+        else if (mar.equals("HeaderMetadataMarshaler"))
+            marshaler = new HeaderMetadataMarshaler();
+
+        return marshaler;
+    }
+
 }

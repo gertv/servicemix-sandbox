@@ -1,8 +1,5 @@
 package org.apache.servicemix.audit.jcr;
 
-import java.io.IOException;
-import java.io.ObjectInput;
-
 import javax.jbi.messaging.MessageExchange;
 import javax.jms.JMSException;
 import javax.jms.ObjectMessage;
@@ -10,7 +7,6 @@ import javax.jms.Session;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.servicemix.jbi.messaging.MessageExchangeImpl;
 
 /**
  * 
@@ -21,21 +17,18 @@ import org.apache.servicemix.jbi.messaging.MessageExchangeImpl;
  */
 public class HeaderMetadataMarshaler implements AuditorMarshaler {
 
-    private static final Log LOG = LogFactory
-            .getLog(HeaderMetadataMarshaler.class);
+    private static final Log LOG = LogFactory.getLog(HeaderMetadataMarshaler.class);
 
     public ObjectMessage marschal(MessageExchange exchange, Session session) {
 
         ObjectMessage message = null;
-        OwnMessageExchangeImpl exchangeImpl = new OwnMessageExchangeImpl();
-
-        // TODO: naplnit exchangeImpl
+        OwnMessageExchangeImpl exchangeImpl = OwnMessageExchangeImpl.create(exchange);
 
         try {
             message = session.createObjectMessage(exchangeImpl);
 
         } catch (JMSException e) {
-            LOG.error("Error while serializing message exchange.");
+            LOG.error("Error while serializing own message exchange implementation.");
         }
 
         return message;
@@ -43,25 +36,13 @@ public class HeaderMetadataMarshaler implements AuditorMarshaler {
 
     public MessageExchange unmarshal(ObjectMessage message) {
 
-        MessageExchange exchange = new MessageExchangeImpl(){
-        
-            @Override
-            public void readExternal(ObjectInput arg0) throws IOException,
-                    ClassNotFoundException {
-                
-            }
-        };
-        
-        
-        OwnMessageExchangeImpl exchangeImpl = null;
+        MessageExchange exchange = null;
 
         try {
-            exchangeImpl = (OwnMessageExchangeImpl) message.getObject();
+            exchange = (MessageExchange) message.getObject();
         } catch (JMSException e) {
             LOG.error("Error while deserializing object message.");
         }
-
-        // TODO: naplnit exchange
 
         return exchange;
     }

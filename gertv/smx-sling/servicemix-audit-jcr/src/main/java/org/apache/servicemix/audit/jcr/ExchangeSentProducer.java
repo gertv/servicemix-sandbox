@@ -13,7 +13,7 @@ public class ExchangeSentProducer {
     }
 
     public void sendMessage(ObjectMessage message) {
-      
+
         jmsTemplate.convertAndSend(message);
     }
 

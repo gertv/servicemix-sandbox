@@ -1,3 +1,141 @@
+<<<<<<< .mine
+<html>
+<head>
+<title>Apache ServiceMix :: Configuration</title>
+<link rel="stylesheet" type="text/css" href="/theme/master.css"/>
+</head>
+<body>
+<div id="page">
+<h1>Apache ServiceMix :: Configuration</h1>
+
+<div id="content">
+<br>
+<b>Config values:</b>
+<h2></h2>
+
+<script type="text/javascript">
+  var xmlHttp;
+
+  function createXMLHttpRequest() {
+
+    var xmlHttp;
+
+    if (window.ActiveXObject) {
+	xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    else if(window.XMLHttpRequest) {
+	xmlHttp = new XMLHttpRequest();
+    }
+    return xmlHttp;
+  }
+
+  function viewInfo(info) {
+    var place = document.getElementById("infoView");
+    place.removeChild(place.childNodes[0])
+    var answer = document.createTextNode(info);
+    place.appendChild(answer);
+  }
+
+  function createCell(text) {
+  
+     var cell = document.createElement("td");
+     var textNode = document.createTextNode(text);
+     cell.appendChild(textNode);
+     return cell;
+  }
+
+  function updateSettingsTable() {
+  
+    var tableBody = document.getElementById("tableBody");
+       
+    while(tableBody.childNodes.length > 0) {
+       tableBody.removeChild(tableBody.childNodes[0]);
+    }
+  
+    var row = document.createElement("tr");
+    var cell = createCell("Log level");
+    row.appendChild(cell);
+    cell = createCell(document.getElementById("logger").value);
+    row.appendChild(cell);
+
+    document.getElementById("tableBody").appendChild(row);  
+  }
+
+  function saveSettings() {
+
+     var logger = document.getElementById("logger").value;
+
+     var url = "http://admin:admin@localhost:8080/servicemix/config?time=" + new Date().getTime();
+     var queryString = "logger=" + logger;
+
+     xmlHttp = createXMLHttpRequest();
+     xmlHttp.onreadystatechange = processSaveSettings;
+     xmlHttp.open("POST", url, true);
+     xmlHttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;");
+     xmlHttp.send(queryString);
+  }
+
+  function processSaveSettings() {
+
+     if ((xmlHttp.readyState == 4) && (xmlHttp.status == 200)) {
+           
+           var answer = xmlHttp.responseText;
+           viewInfo("Status: Logger is setting to " + answer);
+  
+           updateSettingsTable();        
+      }
+      else {
+         viewInfo("<b>Status:</b> Error while loading page" + xmlHttp.status +":"+ xmlHttp.statusText);
+      }
+   }
+
+</script>
+
+  <div id="selection">
+    <form action="#">
+     <select name="logger" id="logger">
+       <option value="debug">DEBUG</option>
+       <option value="info">INFO</option>
+     </select>
+
+     <input type="button" value="Save settings" onClick="saveSettings();"/>
+
+     <script type="text/javascript">
+       if (document.getElementById("logger").value == "debug") {
+       document.write("<input type=\"hidden\" name=\"currentNode@marshaler\" value=\"EntireMarshaler\"/>");
+       }
+       else {
+       document.write("<input type=\"hidden\" name=\"currentNode@marshaler\" value=\"HeaderMetadataMarshaler\"/>");
+       }
+     </script>
+    </form>
+  </div>
+
+<div id="loggerView">
+  <table id="settingsTable">
+    <tr><th>Property</th><th>value</th></tr>
+    <tbody id="tableBody">
+    <tr><td>Log level</td><td>
+      <% if (currentNode['marshaler'] == "EntireMarshaler") {
+      out.print('DEBUG');
+      } else {
+      out.print('INFO');
+      } %>
+    </td></tr>
+
+    </tbody>
+  </table>
+</div>
+
+<div id="infoView">
+  <b>Status:</b>
+</div>
+
+</div>
+<% sling.include("/content/servicemix/navigation.div"); %>
+</div>
+</html>
+=======
 <html>
 <head>
 <title>Apache ServiceMix :: Configuration</title>
@@ -56,3 +194,4 @@
 <% sling.include("/content/servicemix/navigation.div"); %>
 </div>
 </html>
+>>>>>>> .r747478

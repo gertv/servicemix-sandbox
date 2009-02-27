@@ -1,3 +1,11 @@
+<<<<<<< .mine
+<tr>
+  <td>&rarr;</td>
+  <td><a href="<%=currentNode%>.html"><%=currentNode['CorrelationId'] %></a></td>
+  <td>time: </td>
+  <td><%=currentNode['Created'] %></td>
+</tr>
+=======
 <tr>
   <td>&rarr;</td>
   <td><a href="<%=currentNode%>.html"><%=currentNode['CorrelationId'] %></a></td>
@@ -10,3 +18,4 @@
   <td>time: </td>
   <td><%=currentNode['Created'] %></td>
 </tr>
+>>>>>>> .r747478

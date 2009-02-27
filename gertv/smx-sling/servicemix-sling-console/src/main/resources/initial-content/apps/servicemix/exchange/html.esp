@@ -20,7 +20,20 @@
   if (property.match("org.apache.servicemix") || property.match("javax.jbi")) { %>
 <tr>
 <td><%= property %></td>
-<td><%= currentNode[property] %></td>
+<% if (property.match("org.apache.servicemix.senderEndpoint")) {
+       var name = currentNode.getPath().substr(resource.getPath().lastIndexOf("/")+1);
+       var path = "/servicemix/endpoints/"+currentNode['endpointId']+".html";
+  
+       out.print('<td><a href='+path+'>'+currentNode[property]+'</a></td>');
+ 
+   }
+   else if (property.match("endpointId")) {
+      continue;
+   }
+   else { 
+      out.print('<td>'+currentNode[property]+'</td>');
+   
+   } %>
 </tr>
 <% } } %>
 </table>

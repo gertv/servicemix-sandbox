@@ -1,20 +1,30 @@
 {
-   "jcr:primaryType":"nt:unstructured",
+   "jcr:primaryType":"sling:Folder",
    "sling:resourceType":"servicemix/dashboard",
    
    "exchanges":{
-      "jcr:primaryType":"nt:unstructured",
+      "jcr:primaryType":"sling:Folder",
       "sling:resourceType":"servicemix/exchanges"
    },
 
    "message_flows":{
-      "jcr:primaryType":"nt:unstructured",
+      "jcr:primaryType":"sling:Folder",
       "sling:resourceType":"servicemix/message_flows"
    },  
    
+   "endpoints":{
+      "jcr:primaryType":"sling:Folder",
+      "sling:resourceType":"servicemix/endpoints"
+   },
+
    "navigation":{
-      "jcr:primaryType":"nt:unstructured",
+      "jcr:primaryType":"sling:Folder",
       "sling:resourceType":"servicemix/navigation"
+   },
+   
+   "config":{
+      "jcr:primaryType":"sling:Folder",
+      "sling:resourceType":"servicemix/config"
    },
    
    "config":{

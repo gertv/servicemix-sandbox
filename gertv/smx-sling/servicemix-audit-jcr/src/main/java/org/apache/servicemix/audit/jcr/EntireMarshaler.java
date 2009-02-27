@@ -25,8 +25,7 @@ public class EntireMarshaler implements AuditorMarshaler {
         ObjectMessage message = null;
 
         try {
-            message = session
-                    .createObjectMessage((MessageExchangeImpl) exchange);
+            message = session.createObjectMessage((MessageExchangeImpl) exchange);
 
         } catch (JMSException e) {
             LOG.error("Error while serializing message exchange.");
