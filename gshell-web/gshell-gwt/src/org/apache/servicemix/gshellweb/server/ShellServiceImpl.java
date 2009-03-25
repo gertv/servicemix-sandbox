@@ -33,13 +33,11 @@ import javax.servlet.ServletException;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 import org.apache.servicemix.gshellweb.client.ShellService;
-import org.apache.geronimo.gshell.spring.ProxyIO;
-import org.apache.geronimo.gshell.spring.EnvironmentTargetSource;
-import org.apache.geronimo.gshell.command.IO;
 import org.apache.geronimo.gshell.command.Variables;
-import org.apache.geronimo.gshell.shell.Environment;
-import org.apache.geronimo.gshell.DefaultEnvironment;
-import org.apache.geronimo.gshell.DefaultVariables;
+import org.apache.geronimo.gshell.shell.ShellContext;
+import org.apache.geronimo.gshell.shell.Shell;
+import org.apache.geronimo.gshell.commandline.CommandLineExecutor;
+import org.apache.geronimo.gshell.io.IO;
 
 public class ShellServiceImpl extends RemoteServiceServlet implements ShellService {
 
@@ -59,7 +57,7 @@ public class ShellServiceImpl extends RemoteServiceServlet implements ShellServi
 
     public String login(String username, String password) {
         try {
-            Session session = new Session();
+            Session session = new Session(CommandExecutorHolder.getCommandExecutor());
             String sessionId = session.toString();
             sessions.put(sessionId, session);
             return sessionId;
@@ -76,14 +74,10 @@ public class ShellServiceImpl extends RemoteServiceServlet implements ShellServi
         System.out.println("setNextLineIn [sessionId=" + sessionId + ", in=" + in + "]");
         Session session = useSession(sessionId);
         try {
-            EnvironmentTargetSource.setEnvironment(session.environment);
-            ProxyIO.setIO(session.io);
-            CommandExecutorHolder.getCommandExecutor().execute(in);
+            session.execute(in);
             session.outPipe.write(("Command: " + in + "\n").getBytes());
         } catch (Exception e) {
             handleException(sessionId, e);
-        } finally {
-            ProxyIO.setIO(null);
         }
     }
 
@@ -133,7 +127,8 @@ public class ShellServiceImpl extends RemoteServiceServlet implements ShellServi
         }
     }
 
-    private static class Session {
+    private static class Session implements Shell, ShellContext {
+        private CommandLineExecutor executor;
         private long lastUsed;
         private InputStream out;
         private InputStream err;
@@ -142,10 +137,11 @@ public class ShellServiceImpl extends RemoteServiceServlet implements ShellServi
         private PipedOutputStream outPipe;
         private PipedOutputStream errPipe;
         private IO io;
-        private Environment environment;
         private Variables variables;
 
-        public Session() throws IOException {
+        public Session(CommandLineExecutor executor) throws IOException {
+            this.executor = executor;
+
             // TODO: bridge the out / err to gshell
             outPipe = new PipedOutputStream();
             errPipe = new PipedOutputStream();
@@ -155,17 +151,62 @@ public class ShellServiceImpl extends RemoteServiceServlet implements ShellServi
             err = new PipedInputStream(errPipe);
             errReader = new BufferedReader(new InputStreamReader(err));
 
-            io = new IO(new ByteArrayInputStream(new byte[0]), outPipe, errPipe);
-            variables = new DefaultVariables();
-            environment = new DefaultEnvironment(io, variables);
+            io = new IO(new ByteArrayInputStream(new byte[0]), outPipe, errPipe, true);
+            variables = new Variables();
 
             updateLastUsed();
         }
+
         public long getLastUsed() {
             return lastUsed;
         }
+
         public void updateLastUsed() {
             lastUsed = System.currentTimeMillis();
+        }
+
+        public ShellContext getContext() {
+            return this;
+        }
+
+        public Object execute(String line) throws Exception {
+            return executor.execute(this, line);
+        }
+
+        public Object execute(String command, Object[] args) throws Exception {
+            return executor.execute(this, command, args);
+        }
+
+        public Object execute(Object... args) throws Exception {
+            return executor.execute(this, args);
+        }
+
+        public boolean isOpened() {
+            return false;  //To change body of implemented methods use File | Settings | File Templates.
+        }
+
+        public void close() {
+            //To change body of implemented methods use File | Settings | File Templates.
+        }
+
+        public boolean isInteractive() {
+            return true;
+        }
+
+        public void run(Object... args) throws Exception {
+            //To change body of implemented methods use File | Settings | File Templates.
+        }
+
+        public Shell getShell() {
+            return this;
+        }
+
+        public IO getIo() {
+            return io;
+        }
+
+        public Variables getVariables() {
+            return variables;
         }
     }
 

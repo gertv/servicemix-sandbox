@@ -1,6 +1,6 @@
 package org.apache.servicemix.gshellweb.server;
 
-import org.apache.geronimo.gshell.command.CommandExecutor;
+import org.apache.geronimo.gshell.commandline.CommandLineExecutor;
 
 /**
  * Created by IntelliJ IDEA.
@@ -11,13 +11,13 @@ import org.apache.geronimo.gshell.command.CommandExecutor;
  */
 public class CommandExecutorHolder {
 
-    private static CommandExecutor commandExecutor;
+    private static CommandLineExecutor commandExecutor;
 
-    public static CommandExecutor getCommandExecutor() {
+    public static CommandLineExecutor getCommandExecutor() {
         return commandExecutor;
     }
 
-    public void setCommandExecutor(CommandExecutor commandExecutor) {
+    public void setCommandExecutor(CommandLineExecutor commandExecutor) {
         CommandExecutorHolder.commandExecutor = commandExecutor;
     }
 }

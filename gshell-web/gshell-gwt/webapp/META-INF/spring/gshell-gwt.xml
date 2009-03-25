@@ -32,7 +32,7 @@
   http://www.springframework.org/schema/osgi-compendium
   http://www.springframework.org/schema/osgi-compendium/spring-osgi-compendium.xsd">
 
-    <osgi:reference id="commandExecutor" interface="org.apache.geronimo.gshell.command.CommandExecutor">
+    <osgi:reference id="commandExecutor" interface="org.apache.geronimo.gshell.commandline.CommandLineExecutor">
     </osgi:reference>
 
     <bean id="holder" class="org.apache.servicemix.gshellweb.server.CommandExecutorHolder">

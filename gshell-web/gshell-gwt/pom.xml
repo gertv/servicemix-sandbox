@@ -42,19 +42,19 @@
     <dependency>
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-user</artifactId>
-      <version>1.5.1</version>
+      <version>1.5.3</version>
     </dependency>
 
     <dependency>
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-servlet</artifactId>
-      <version>1.5.1</version>
+      <version>1.5.3</version>
     </dependency>
     
     <dependency>
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-dev</artifactId>
-      <version>1.5.1</version>
+      <version>1.5.3</version>
       <classifier>linux</classifier>
       <scope>provided</scope>
     </dependency>
@@ -191,10 +191,7 @@
                     <Import-Package>
                         javax.servlet,
                         javax.servlet.http,
-                        org.apache.geronimo.gshell,
-                        org.apache.geronimo.gshell.command,
-                        org.apache.geronimo.gshell.shell,
-                        org.apache.geronimo.gshell.spring
+                        *
                     </Import-Package>
                     <Export-Package></Export-Package>
                     <Bundle-ClassPath>.,WEB-INF/classes,WEB-INF/lib/gwt-user-1.5.1.jar,WEB-INF/lib/gwt-servlet-1.5.1.jar</Bundle-ClassPath>
