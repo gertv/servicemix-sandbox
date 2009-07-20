@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
+
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+
+<book id="book" label="Apache ServiceMix Installation Guide" status="draft" lang="en">
+    <title>Apache ServiceMix @version@ Installation Guide</title>
+    <titleabbrv>smx install guide</titleabbrv>
+    <bookinfo>
+        <authorgroup>
+            <author>
+                <firstname>Guillaume</firstname>
+                <surname>Nodet</surname>
+                <email>gnodet@apache.org</email>
+                <othername>gnodet</othername>
+            </author>
+            <author>
+                <firstname>Gert</firstname>
+                <surname>Vanthienen</surname>
+                <email>gertv@apache.org</email>
+                <othername>gertv</othername>
+            </author>
+            <author>
+                <firstname>Lars</firstname>
+                <surname>Heinemann</surname>
+                <email>lhein@apache.org</email>
+                <othername>lhein</othername>
+            </author>
+            <author>
+                <firstname>Jean-Baptiste</firstname>
+                <surname>Onofre</surname>
+                <email>jbonofre@apache.org</email>
+                <othername>jbonofre</othername>
+            </author>
+            <author>
+                <firstname>Bruce</firstname>
+                <surname>Snyder</surname>
+                <email>bsnyder@apache.org</email>
+                <othername>bsnyder</othername>
+            </author>
+        </authorgroup>
+        <copyright>
+            <year>2009</year>
+            <holder>Apache Software Foundation</holder>
+        </copyright>
+        <date>2009-07-20</date>
+        <revhistory>
+            <revision>
+                <revnumber>001</revnumber>
+                <date>2009-07-19</date>
+                <authorinitials>jbonofre</authorinitials>
+                <revremark>Initial revision</revremark>
+            </revision>
+        </revhistory>
+        <corpname>Apache Software Foundation</corpname>
+    </bookinfo>
+    
+    <chapter id="introduction">
+        <title>Introduction</title>
+        <para>
+            Apache ServiceMix is an open source ESB (Enterprise Service Bus) that combines the functionality of a Service Oriented Architecture (SOA)
+            and an Event Driven Architecture (EDA) to create an agile, enterprise ESB.
+        </para>
+        <para>
+            Apache ServiceMix is an distributed ESB built from the ground up on the Java Business Integration (JBI) specification JSR 208 and released
+            under the Apache license. The goal of JBI is to allow components and services to be integrated in a vendor independent way, allowing users 
+            and vendors to plug and play.
+        </para>
+        <para>
+            ServiceMix is lightweight and easily embeddable, has integrated Spring support and can be run at the edge of the network (inside a client
+            or server), as a standalone ESB provider or as a service within another ESB. You can use ServiceMix in Java SE or Java EE application server.
+        </para>
+        <para>
+            ServiceMix uses ActiveMQ to provide remoting, clustering, reliability and distributed failover.
+        </para>
+        <para>
+            ServiceMix is completely integrated into Apache Geronimo, which allows you to deploy JBI components and services directly into Geronimo.
+            ServiceMix is being JBI certified as part of the Geronimo project.
+        </para>
+        <para>
+            ServiceMix can be embedded into a JEE application server such as JBoss, Oracle Weblogic or IBM Websphere.
+        </para>
+        <para>
+            ServiceMix includes a complete JBI container supporting all parts of the JBI specification including:
+            <itemizedlist>
+                <listitem><para>NMR (Normalized Message Router)</para></listitem>
+                <listitem><para>JBI Management MBeans</para></listitem>
+                <listitem><para>full support for the JBI deployment units with hot-deployment of JBI components.</para>
+            </itemizedlist>
+        </para>
+        <para>
+            ServiceMix also provides a simple to use client API for working with JBI components and services.
+        </para>
+        <para>
+            ServiceMix includes many JBI components including HTTP, JMX, CXF, BPEL, etc.
+        </para>
+    </chapter>
+    
+</book>

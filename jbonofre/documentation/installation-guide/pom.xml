@@ -31,5 +31,7 @@
     
     <groupId>org.apache.servicemix.documentation</groupId>
     <artifactId>installation-guide</artifactId>
+    
+    <name>ServiceMix :: Documentation :: Installation Guide</name>
          
 </project>
