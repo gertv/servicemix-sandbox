@@ -42,8 +42,13 @@
         <url>http://svn.apache.org/viewcvs.cgi/servicemix/documentation/trunk/</url>
     </scm>
     
-    <modules>
-        <module>installation-guide</module>
-    </modules>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>docbook-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
          
 </project>         

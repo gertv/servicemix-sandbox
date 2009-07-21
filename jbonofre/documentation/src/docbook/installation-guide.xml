@@ -101,7 +101,7 @@
             <itemizedlist>
                 <listitem><para>NMR (Normalized Message Router)</para></listitem>
                 <listitem><para>JBI Management MBeans</para></listitem>
-                <listitem><para>full support for the JBI deployment units with hot-deployment of JBI components.</para>
+                <listitem><para>full support for the JBI deployment units with hot-deployment of JBI components.</para></listitem>
             </itemizedlist>
         </para>
         <para>
