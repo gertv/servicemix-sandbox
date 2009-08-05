@@ -1,0 +1,239 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <!--
+
+        Licensed to the Apache Software Foundation (ASF) under one or more
+        contributor license agreements.  See the NOTICE file distributed with
+        this work for additional information regarding copyright ownership.
+        The ASF licenses this file to You under the Apache License, Version 2.0
+        (the "License"); you may not use this file except in compliance with
+        the License.  You may obtain a copy of the License at
+
+           http://www.apache.org/licenses/LICENSE-2.0
+
+        Unless required by applicable law or agreed to in writing, software
+        distributed under the License is distributed on an "AS IS" BASIS,
+        WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+        See the License for the specific language governing permissions and
+        limitations under the License.
+    -->
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.apache.servicemix.jbi</groupId>
+        <artifactId>jbi</artifactId>
+        <version>1.1.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>org.apache.servicemix.jbi</groupId>
+    <artifactId>org.apache.servicemix.jbi.itests</artifactId>
+    <packaging>jar</packaging>
+    <name>Apache ServiceMix JBI Integration Tests</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.servicemix.kernel</groupId>
+            <artifactId>org.apache.servicemix.kernel.main</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix.kernel.testing</groupId>
+            <artifactId>org.apache.servicemix.kernel.testing.support</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix.kernel</groupId>
+            <artifactId>org.apache.servicemix.kernel.filemonitor</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix.bundles</groupId>
+            <artifactId>org.apache.servicemix.bundles.woodstox</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix.bundles</groupId>
+            <artifactId>org.apache.servicemix.bundles.wsdl4j</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix.nmr</groupId>
+            <artifactId>org.apache.servicemix.nmr.api</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix.nmr</groupId>
+            <artifactId>org.apache.servicemix.nmr.core</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix.nmr</groupId>
+            <artifactId>org.apache.servicemix.nmr.osgi</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix.nmr</groupId>
+            <artifactId>org.apache.servicemix.nmr.spring</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix.document</groupId>
+            <artifactId>org.apache.servicemix.document</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix.specs</groupId>
+            <artifactId>org.apache.servicemix.specs.jbi-api-1.0</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix.jbi</groupId>
+            <artifactId>org.apache.servicemix.jbi.runtime</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix.jbi</groupId>
+            <artifactId>org.apache.servicemix.jbi.osgi</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix.jbi</groupId>
+            <artifactId>org.apache.servicemix.jbi.deployer</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix.kernel</groupId>
+            <artifactId>org.apache.servicemix.kernel.management</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.felix</groupId>
+            <artifactId>org.apache.felix.prefs</artifactId>
+            <scope>test</scope>
+        </dependency>
+	    <dependency>
+            <groupId>org.apache.xbean</groupId>
+            <artifactId>xbean-classloader</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix</groupId>
+            <artifactId>servicemix-shared</artifactId>
+            <classifier>installer</classifier>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix</groupId>
+            <artifactId>servicemix-eip</artifactId>
+            <classifier>installer</classifier>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix</groupId>
+            <artifactId>servicemix-jsr181</artifactId>
+            <classifier>installer</classifier>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix</groupId>
+            <artifactId>servicemix-http</artifactId>
+            <classifier>installer</classifier>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix.samples.wsdl-first</groupId>
+            <artifactId>wsdl-first-sa</artifactId>
+            <type>zip</type>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.geronimo.specs</groupId>
+            <artifactId>geronimo-jta_1.1_spec</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix.specs</groupId>
+            <artifactId>org.apache.servicemix.specs.javamail-api-1.4</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix.specs</groupId>
+            <artifactId>org.apache.servicemix.specs.activation-api-1.1</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix.specs</groupId>
+            <artifactId>org.apache.servicemix.specs.stax-api-1.0</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- generate dependencies versions -->
+            <plugin>
+                <groupId>org.apache.servicemix.tooling</groupId>
+                <artifactId>depends-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>generate-depends-file</id>
+                        <goals>
+                            <goal>generate-depends-file</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- Copy shared library and component -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>dependency-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-components</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>target/components</outputDirectory>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.apache.servicemix</groupId>
+                                    <artifactId>servicemix-shared</artifactId>
+                                    <classifier>installer</classifier>
+                                    <type>zip</type>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.apache.servicemix</groupId>
+                                    <artifactId>servicemix-eip</artifactId>
+                                    <classifier>installer</classifier>
+                                    <type>zip</type>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.apache.servicemix</groupId>
+                                    <artifactId>servicemix-jsr181</artifactId>
+                                    <classifier>installer</classifier>
+                                    <type>zip</type>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.apache.servicemix</groupId>
+                                    <artifactId>servicemix-http</artifactId>
+                                    <classifier>installer</classifier>
+                                    <type>zip</type>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.apache.servicemix.samples.wsdl-first</groupId>
+                                    <artifactId>wsdl-first-sa</artifactId>
+                                    <type>zip</type>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <forkMode>pertest</forkMode>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
