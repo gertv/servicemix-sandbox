@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<assembly>
+    <id></id> <!-- intentionally left blank -> http://jira.codehaus.org/browse/MASSEMBLY-301 -->
+    <formats>
+        <format>zip</format>
+    </formats>
+    <fileSets>
+
+      <!-- Expanded ServiceMix Runtime -->
+      <fileSet>
+          <directory>target/dependencies/win/apache-servicemix-kernel-${servicemix.kernel.version}</directory>
+          <outputDirectory>/</outputDirectory>
+          <excludes>
+             <exclude>**/demos/**</exclude>
+             <exclude>etc/org.apache.servicemix.features.cfg</exclude>
+             <exclude>LICENSE.txt</exclude>
+             <exclude>NOTICE.txt</exclude>
+             <exclude>README.txt</exclude>
+             <exclude>RELEASE-NOTES.txt</exclude>
+          </excludes>
+      </fileSet>
+
+      <!-- Copy over kernel demo to examples folder -->
+      <fileSet>
+          <directory>target/dependencies/unix/apache-servicemix-kernel-${servicemix.kernel.version}/demos</directory>
+          <outputDirectory>/examples/kernel-demos</outputDirectory>
+          <lineEnding>unix</lineEnding>
+          <includes>
+            <include>pom.xml</include>
+            <include>**/smx4web/**</include>
+          </includes>
+      </fileSet>
+      
+      <!-- Copy over ant files -->
+       <fileSet>
+            <directory>target/dependencies/unix/apache-servicemix-nmr-${servicemix.nmr.version}/ant</directory>
+            <outputDirectory>/ant</outputDirectory>
+            <lineEnding>dos</lineEnding>
+       </fileSet>
+
+      <!-- Copy license and other files from root -->
+      <fileSet>
+          <directory>${basedir}/..</directory>
+          <outputDirectory>/</outputDirectory>
+          <includes>
+              <include>README.txt</include>
+              <include>RELEASE*.txt</include>
+          </includes>
+          <lineEnding>dos</lineEnding>
+      </fileSet>
+
+      <!-- Copy over everything that needs to get dos line endings -->
+      <fileSet>
+          <directory>src/main/distribution/text</directory>
+          <outputDirectory>/</outputDirectory>
+          <lineEnding>dos</lineEnding>
+      </fileSet>        
+      <fileSet>
+          <directory>target/classes/etc</directory>
+          <outputDirectory>/etc/</outputDirectory>
+          <lineEnding>dos</lineEnding>
+      </fileSet>
+
+      <!-- Copy over jar files -->
+      <fileSet>
+          <directory>target/dependencies</directory>
+          <includes>
+              <include>servicemix-version.jar</include>
+          </includes>
+          <outputDirectory>/lib/</outputDirectory>
+      </fileSet>
+
+      <!-- Copy over the examples -->
+      <fileSet>
+          <directory>${basedir}/../examples</directory>
+          <outputDirectory>/examples/</outputDirectory>
+          <lineEnding>dos</lineEnding>
+          <excludes>
+              <exclude>pom.xml</exclude>
+              <exclude>**/itests/**</exclude>
+              <exclude>**/target/**</exclude>
+              <exclude>**/README.txt</exclude>
+              <exclude>**/cxf-http-osgi/**</exclude>
+              <exclude>**/cxf-jms-osgi/**</exclude>
+              <exclude>**/cxf-nmr-osgi/**</exclude>
+              <exclude>**/cxf-handler-cfg/**</exclude>
+              <exclude>**/cxf-soap-handler-osgi/**</exclude>
+              <exclude>**/wsdl-first/**</exclude>
+              <exclude>**/loan-broker-bpel/**</exclude>
+              <exclude>**/.classpath</exclude>
+              <exclude>**/.project</exclude>
+              <exclude>**/.settings/**</exclude>
+          </excludes>
+      </fileSet>
+
+      <fileSet>
+        <directory>target/features-repo</directory>
+        <outputDirectory>system</outputDirectory>
+      </fileSet>
+      
+    </fileSets>
+
+    <files>
+        <file>
+            <source>${basedir}/target/classes/features.xml</source>
+            <outputDirectory>system/org/apache/servicemix/${artifactId}/${version}</outputDirectory>
+            <destName>${artifactId}-${version}-features.xml</destName>
+            <fileMode>0644</fileMode>
+            <lineEnding>dos</lineEnding>
+        </file>
+        <file>
+            <source>${basedir}/target/maven-shared-archive-resources/META-INF/LICENSE</source>
+            <outputDirectory>/</outputDirectory>
+            <destName>LICENSE.txt</destName>
+            <fileMode>0644</fileMode>
+            <lineEnding>dos</lineEnding>
+        </file>
+        <file>
+            <source>${basedir}/target/maven-shared-archive-resources/META-INF/NOTICE</source>
+            <outputDirectory>/</outputDirectory>
+            <destName>NOTICE.txt</destName>
+            <fileMode>0644</fileMode>
+            <lineEnding>dos</lineEnding>
+        </file>
+        
+        <!--filtering README.txt-->
+        <file>
+              <source>${basedir}/../examples/bridge/README.txt</source>
+              <outputDirectory>/examples/bridge</outputDirectory>
+              <filtered>true</filtered>
+              <lineEnding>dos</lineEnding>
+        </file>
+        <file>
+              <source>${basedir}/../examples/cxf-ws-addressing/README.txt</source>
+              <outputDirectory>/examples/cxf-ws-addressing</outputDirectory>
+              <filtered>true</filtered>
+              <lineEnding>dos</lineEnding>
+        </file>
+        <file>
+              <source>${basedir}/../examples/cxf-jaxrs/README.txt</source>
+              <outputDirectory>/examples/cxf-jaxrs</outputDirectory>
+              <filtered>true</filtered>
+              <lineEnding>dos</lineEnding>
+        </file>
+        <file>
+            <source>${basedir}/../examples/cxf-wsdl-first-osgi-package/README.txt</source>
+            <outputDirectory>/examples/cxf-wsdl-first-osgi-package</outputDirectory>
+            <filtered>true</filtered>
+            <lineEnding>dos</lineEnding>
+        </file>
+        <file>
+              <source>${basedir}/../examples/bridge-camel/README.txt</source>
+              <outputDirectory>/examples/bridge-camel</outputDirectory>
+              <filtered>true</filtered>
+              <lineEnding>dos</lineEnding>
+        </file>
+        <file>
+              <source>${basedir}/../examples/camel/README.txt</source>
+              <outputDirectory>/examples/camel</outputDirectory>
+              <filtered>true</filtered>
+              <lineEnding>dos</lineEnding>
+        </file>
+        <file>
+              <source>${basedir}/../examples/cxf-wsdl-first/README.txt</source>
+              <outputDirectory>/examples/cxf-wsdl-first</outputDirectory>
+              <filtered>true</filtered>
+              <lineEnding>dos</lineEnding>
+        </file>
+        <file>
+              <source>${basedir}/../examples/camel-osgi/README.txt</source>
+              <outputDirectory>/examples/camel-osgi</outputDirectory>
+              <filtered>true</filtered>
+              <lineEnding>dos</lineEnding>
+            </file>
+            <file>
+              <source>${basedir}/../examples/camel-nmr/README.txt</source>
+              <outputDirectory>/examples/camel-nmr</outputDirectory>
+              <filtered>true</filtered>
+              <lineEnding>dos</lineEnding>
+            </file>
+            <file>
+              <source>${basedir}/../examples/cxf-nmr/README.txt</source>
+              <outputDirectory>/examples/cxf-nmr</outputDirectory>
+              <filtered>true</filtered>
+              <lineEnding>dos</lineEnding>
+            </file>
+            <file>
+              <source>${basedir}/../examples/cxf-osgi/README.txt</source>
+              <outputDirectory>/examples/cxf-osgi</outputDirectory>
+              <filtered>true</filtered>
+              <lineEnding>dos</lineEnding>
+            </file>
+            <file>
+              <source>${basedir}/../examples/cxf-camel-nmr/README.txt</source>
+              <outputDirectory>/examples/cxf-camel-nmr</outputDirectory>
+              <filtered>true</filtered>
+              <lineEnding>dos</lineEnding>
+            </file>
+            <file>
+              <source>${basedir}/../examples/simple/README.txt</source>
+              <outputDirectory>/examples/simple</outputDirectory>
+              <filtered>true</filtered>
+              <lineEnding>dos</lineEnding>
+            </file>
+            <file>
+              <source>${basedir}/target/classes/pom.xml</source>
+              <outputDirectory>/examples/</outputDirectory>
+              <filtered>true</filtered>
+              <lineEnding>dos</lineEnding>
+            </file>
+
+    </files>
+
+    <dependencySets>
+        <dependencySet>
+            <outputDirectory>/system</outputDirectory>
+            <outputFileNameMapping>org/apache/servicemix/nmr/${artifact.artifactId}/${artifact.baseVersion}/${artifact.artifactId}-${artifact.baseVersion}${dashClassifier?}.${artifact.extension}</outputFileNameMapping>
+            <unpack>false</unpack>
+            <scope>runtime</scope>
+            <includes>
+                <include>org.apache.servicemix.nmr:apache-servicemix-nmr:xml:features</include>
+            </includes>
+        </dependencySet>
+        <dependencySet>
+            <outputDirectory>/system</outputDirectory>
+            <outputFileNameMapping>org/apache/servicemix/camel/${artifact.artifactId}/${artifact.baseVersion}/${artifact.artifactId}-${artifact.baseVersion}${dashClassifier?}.${artifact.extension}</outputFileNameMapping>
+            <unpack>false</unpack>
+            <scope>runtime</scope>
+            <includes>
+                <include>org.apache.servicemix.camel:org.apache.servicemix.camel.features:xml:features</include>
+            </includes>
+        </dependencySet>
+    </dependencySets>
+
+</assembly>
