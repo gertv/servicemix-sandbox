@@ -92,7 +92,7 @@
                 <goal>generate-features-xml</goal>
               </goals>
               <configuration>
-                <kernelVersion>${servicemix.kernel.version}</kernelVersion>
+                <kernelVersion>${felix.karaf.version}</kernelVersion>
                 <bundles>target/classes/bundles.properties</bundles>
               </configuration>
             </execution>

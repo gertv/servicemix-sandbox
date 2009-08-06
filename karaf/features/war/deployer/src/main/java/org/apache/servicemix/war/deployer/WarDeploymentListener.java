@@ -26,7 +26,7 @@ import java.util.jar.Manifest;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.servicemix.kernel.filemonitor.DeploymentListener;
+import org.apache.felix.karaf.deployer.filemonitor.DeploymentListener;
 
 
 public class WarDeploymentListener implements DeploymentListener {

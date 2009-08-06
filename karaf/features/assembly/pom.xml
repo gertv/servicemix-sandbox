@@ -34,11 +34,11 @@
     <name>Apache ServiceMix :: Assembly</name>
 
     <dependencies>
-        <!-- making sure all kernel dependencies are in our local Maven repo -->
+        <!-- making sure all karaf dependencies are in our local Maven repo -->
         <dependency>
-            <groupId>org.apache.servicemix.kernel</groupId>
-            <artifactId>apache-servicemix-kernel</artifactId>
-            <version>${servicemix.kernel.version}</version>
+            <groupId>org.apache.felix.karaf</groupId>
+            <artifactId>apache-felix-karaf</artifactId>
+            <version>${felix.karaf.version}</version>
             <type>zip</type>
             <exclusions>
 	            <exclusion>
@@ -48,9 +48,9 @@
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>org.apache.servicemix.kernel</groupId>
-            <artifactId>apache-servicemix-kernel</artifactId>
-            <version>${servicemix.kernel.version}</version>
+            <groupId>org.apache.felix.karaf</groupId>
+            <artifactId>apache-felix-karaf</artifactId>
+            <version>${felix.karaf.version}</version>
             <type>tar.gz</type>
         </dependency>
         <!-- let's grab all the NMR dependencies as well -->
@@ -939,9 +939,9 @@
                         <configuration>
                             <artifactItems>
                                 <artifactItem>
-                                    <groupId>org.apache.servicemix.kernel</groupId>
-                                    <artifactId>apache-servicemix-kernel</artifactId>
-                                    <version>${servicemix.kernel.version}</version>
+                                    <groupId>org.apache.felix.karaf</groupId>
+                                    <artifactId>apache-felix-karaf</artifactId>
+                                    <version>${felix.karaf.version}</version>
                                     <type>tar.gz</type>
                                     <outputDirectory>target/dependencies/unix</outputDirectory>
                                 </artifactItem>
@@ -964,9 +964,9 @@
                         <configuration>
                             <artifactItems>
                                 <artifactItem>
-                                    <groupId>org.apache.servicemix.kernel</groupId>
-                                    <artifactId>apache-servicemix-kernel</artifactId>
-                                    <version>${servicemix.kernel.version}</version>
+                                    <groupId>org.apache.felix.karaf</groupId>
+                                    <artifactId>apache-felix-karaf</artifactId>
+                                    <version>${felix.karaf.version}</version>
                                     <type>zip</type>
                                     <outputDirectory>target/dependencies/win</outputDirectory>
                                 </artifactItem>

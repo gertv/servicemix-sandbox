@@ -35,9 +35,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.apache.servicemix.kernel</groupId>
-            <artifactId>org.apache.servicemix.kernel.filemonitor</artifactId>
-            <version>${servicemix.kernel.version}</version>
+            <groupId>org.apache.felix.karaf.deployer</groupId>
+            <artifactId>org.apache.felix.karaf.deployer.filemonitor</artifactId>
+            <version>${felix.karaf.version}</version>
         </dependency>
         <dependency>
             <groupId>commons-logging</groupId>
