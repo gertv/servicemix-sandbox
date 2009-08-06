@@ -19,7 +19,7 @@ package org.apache.servicemix.jbi.commands;
 import javax.jbi.JBIException;
 import javax.jbi.management.LifeCycleMBean;
 
-import org.apache.geronimo.gshell.clp.Option;
+import org.apache.felix.gogo.commands.Option;
 import org.apache.servicemix.jbi.deployer.ServiceAssembly;
 import org.apache.servicemix.jbi.deployer.Component;
 
