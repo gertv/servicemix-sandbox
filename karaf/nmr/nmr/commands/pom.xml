@@ -37,8 +37,9 @@
             <artifactId>org.apache.servicemix.nmr.core</artifactId>
         </dependency>
       <dependency>
-          <groupId>org.apache.servicemix.kernel.gshell</groupId>
-          <artifactId>org.apache.servicemix.kernel.gshell.core</artifactId>
+          <groupId>org.apache.felix.karaf.gshell</groupId>
+          <artifactId>org.apache.felix.karaf.gshell.console</artifactId>
+          <version>${felix.karaf.version}</version>
       </dependency>
     </dependencies>
 
@@ -53,7 +54,7 @@
                         <Import-Package>
                               org.apache.geronimo.gshell.wisdom.command,
                               org.apache.geronimo.gshell.wisdom.registry,
-                              org.apache.servicemix.kernel.gshell.core,
+                              org.apache.felix.karaf.gshell.console,
                               *
                         </Import-Package>
                         <Export-Package>${pom.artifactId}</Export-Package>

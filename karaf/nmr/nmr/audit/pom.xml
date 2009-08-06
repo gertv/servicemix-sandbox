@@ -45,12 +45,13 @@
             <artifactId>spring-beans</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.apache.servicemix.kernel</groupId>
-            <artifactId>org.apache.servicemix.kernel.main</artifactId>
+            <groupId>org.apache.felix.karaf</groupId>
+            <artifactId>org.apache.felix.karaf.main</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.apache.servicemix.kernel.gshell</groupId>
-            <artifactId>org.apache.servicemix.kernel.gshell.core</artifactId>
+            <groupId>org.apache.felix.karaf.gshell</groupId>
+            <artifactId>org.apache.felix.karaf.gshell.console</artifactId>
+            <version>${felix.karaf.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.lucene</groupId>
@@ -81,7 +82,7 @@
                             org.apache.geronimo.gshell.wisdom.command,
                             org.apache.geronimo.gshell.wisdom.registry,
                             org.apache.lucene*;resolution:=optional,
-                            org.apache.servicemix.kernel.gshell.core,
+                            org.apache.felix.karaf.gshell.console,
                             org.apache.servicemix.nmr.core,
                             *
                         </Import-Package>

@@ -61,7 +61,7 @@
         </osgi:service-properties>
     </osgi:service>
 
-    <osgi:service ref="listener" interface="org.apache.servicemix.kernel.filemonitor.DeploymentListener" />
+    <osgi:service ref="listener" interface="org.apache.felix.karaf.deployer.filemonitor.DeploymentListener" />
 
     <osgi:service ref="endpointListener">
         <osgi:interfaces>

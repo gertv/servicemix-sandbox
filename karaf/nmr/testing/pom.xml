@@ -26,18 +26,13 @@
         <version>1.1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>org.apache.servicemix.jbi</groupId>
-    <artifactId>jbi</artifactId>
+    <groupId>org.apache.servicemix.testing</groupId>
+    <artifactId>testing</artifactId>
     <packaging>pom</packaging>
-    <name>Apache ServiceMix JBI</name>
+    <name>Apache ServiceMix Testing</name>
 
     <modules>
-        <module>runtime</module>
-        <module>cluster</module>
-        <module>deployer</module>
-        <module>osgi</module>
-        <module>commands</module>
-        <module>itests</module>
+        <module>support</module>
     </modules>
 
 </project>

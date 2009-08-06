@@ -14,19 +14,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.servicemix.nmr.commands;
+package org.apache.servicemix.platform.testing.support;
 
-import java.util.List;
-import org.apache.servicemix.nmr.api.Endpoint;
-import org.apache.felix.karaf.gshell.console.OsgiCommandSupport;
+import org.apache.felix.framework.FilterImpl;
+import org.osgi.framework.Filter;
+import org.osgi.framework.InvalidSyntaxException;
 
 /**
- * Base class for NMR related commands
  */
-public abstract class NmrCommandSupport extends OsgiCommandSupport {
+public class FrameworkUtil {
 
-    protected List<Endpoint> getEndpoints() throws Exception {
-        return getAllServices(Endpoint.class, null);
+    public static Filter createFilter(String f) throws InvalidSyntaxException {
+        return new FilterImpl(f);
     }
 
 }

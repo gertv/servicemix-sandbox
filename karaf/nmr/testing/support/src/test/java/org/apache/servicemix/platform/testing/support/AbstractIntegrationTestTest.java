@@ -14,19 +14,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.servicemix.nmr.commands;
+package org.apache.servicemix.platform.testing.support;
 
-import java.util.List;
-import org.apache.servicemix.nmr.api.Endpoint;
-import org.apache.felix.karaf.gshell.console.OsgiCommandSupport;
+import junit.framework.TestCase;
 
-/**
- * Base class for NMR related commands
- */
-public abstract class NmrCommandSupport extends OsgiCommandSupport {
 
-    protected List<Endpoint> getEndpoints() throws Exception {
-        return getAllServices(Endpoint.class, null);
+public class AbstractIntegrationTestTest extends TestCase {
+
+    public void testSnapshotVersion() {
+        assertTrue(AbstractIntegrationTest.isTimestamped("0.9.0-20070713.230317-1"));
+        assertTrue(AbstractIntegrationTest.isSnapshot("0.9.0-SNAPSHOT"));
+        assertFalse(AbstractIntegrationTest.isSnapshot("0.9.0"));
+        assertEquals("0.9.0-SNAPSHOT", AbstractIntegrationTest.getSnapshot("0.9.0-20070713.230317-1"));
+        assertEquals("0.9.0", "0.9.0");
     }
 
 }

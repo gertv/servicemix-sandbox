@@ -34,13 +34,13 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.apache.servicemix.kernel</groupId>
-            <artifactId>apache-servicemix-kernel</artifactId>
+            <groupId>org.apache.felix.karaf</groupId>
+            <artifactId>apache-felix-karaf</artifactId>
             <type>zip</type>
         </dependency>
         <dependency>
-            <groupId>org.apache.servicemix.kernel</groupId>
-            <artifactId>apache-servicemix-kernel</artifactId>
+            <groupId>org.apache.felix.karaf</groupId>
+            <artifactId>apache-felix-karaf</artifactId>
             <type>tar.gz</type>
         </dependency>
         <dependency>
@@ -193,8 +193,8 @@
                         <configuration>
                             <artifactItems>
                                 <artifactItem>
-                                    <groupId>org.apache.servicemix.kernel</groupId>
-                                    <artifactId>apache-servicemix-kernel</artifactId>
+                                    <groupId>org.apache.felix.karaf</groupId>
+                                    <artifactId>apache-felix-karaf</artifactId>
                                     <type>tar.gz</type>
                                     <outputDirectory>target/dependencies/unix</outputDirectory>
                                 </artifactItem>
@@ -210,8 +210,8 @@
                         <configuration>
                             <artifactItems>
                                 <artifactItem>
-                                    <groupId>org.apache.servicemix.kernel</groupId>
-                                    <artifactId>apache-servicemix-kernel</artifactId>
+                                    <groupId>org.apache.felix.karaf</groupId>
+                                    <artifactId>apache-felix-karaf</artifactId>
                                     <type>zip</type>
                                     <outputDirectory>target/dependencies/win</outputDirectory>
                                 </artifactItem>

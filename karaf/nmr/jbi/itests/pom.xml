@@ -31,20 +31,27 @@
     <packaging>jar</packaging>
     <name>Apache ServiceMix JBI Integration Tests</name>
 
+    <properties>
+        <ant.version>1.7.0_1</ant.version>
+        <geronimo.blueprint.version>1.0.0-SNAPSHOT</geronimo.blueprint.version>
+    </properties>
+
     <dependencies>
         <dependency>
-            <groupId>org.apache.servicemix.kernel</groupId>
-            <artifactId>org.apache.servicemix.kernel.main</artifactId>
+            <groupId>org.apache.servicemix.bundles</groupId>
+            <artifactId>org.apache.servicemix.bundles.ant</artifactId>
+            <version>${ant.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix.platform.testing</groupId>
+            <artifactId>org.apache.servicemix.platform.testing.support</artifactId>
+            <version>${pom.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.apache.servicemix.kernel.testing</groupId>
-            <artifactId>org.apache.servicemix.kernel.testing.support</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.servicemix.kernel</groupId>
-            <artifactId>org.apache.servicemix.kernel.filemonitor</artifactId>
+            <groupId>org.apache.felix.karaf.deployer</groupId>
+            <artifactId>org.apache.felix.karaf.deployer.filemonitor</artifactId>
+            <version>${felix.karaf.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -98,11 +105,6 @@
         <dependency>
             <groupId>org.apache.servicemix.jbi</groupId>
             <artifactId>org.apache.servicemix.jbi.deployer</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.servicemix.kernel</groupId>
-            <artifactId>org.apache.servicemix.kernel.management</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>

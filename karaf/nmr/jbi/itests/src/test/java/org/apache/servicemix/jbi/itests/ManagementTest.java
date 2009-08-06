@@ -16,7 +16,7 @@
  */
 package org.apache.servicemix.jbi.itests;
 
-import org.apache.servicemix.kernel.testing.support.AbstractIntegrationTest;
+import org.apache.servicemix.platform.testing.support.AbstractIntegrationTest;
 import org.apache.servicemix.jbi.deployer.AdminCommandsService;
 
 public class ManagementTest extends AbstractIntegrationTest {
@@ -56,8 +56,7 @@ public class ManagementTest extends AbstractIntegrationTest {
             getBundle("org.apache.geronimo.specs", "geronimo-jta_1.1_spec"),
             getBundle("org.apache.felix", "org.apache.felix.prefs"),
             getBundle("org.apache.xbean", "xbean-classloader"),
-            getBundle("org.apache.servicemix.kernel", "org.apache.servicemix.kernel.filemonitor"),
-            getBundle("org.apache.servicemix.kernel", "org.apache.servicemix.kernel.management"),
+            getBundle("org.apache.felix.karaf.deployer", "org.apache.felix.karaf.deployer.filemonitor"),
             getBundle("org.apache.servicemix", "servicemix-utils"),
             getBundle("org.apache.servicemix.nmr", "org.apache.servicemix.nmr.api"),
             getBundle("org.apache.servicemix.nmr", "org.apache.servicemix.nmr.core"),
