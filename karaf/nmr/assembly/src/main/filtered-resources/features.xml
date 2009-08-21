@@ -18,10 +18,12 @@
 -->
 <features>
     <feature name="naming" version="${version}">
+        <feature>spring-dm</feature>
         <bundle>mvn:org.apache.xbean/xbean-naming/${xbean.version}</bundle>
         <bundle>mvn:org.apache.servicemix.naming/org.apache.servicemix.naming/${pom.version}</bundle>
     </feature>
     <feature name="transaction" version="${version}">
+        <feature>spring-dm</feature>
         <bundle>mvn:org.apache.geronimo.specs/geronimo-jta_1.1_spec/${geronimo.jta.version}</bundle>
         <bundle>mvn:org.apache.geronimo.specs/geronimo-j2ee-connector_1.5_spec/${geronimo.j2ee.connector.version}</bundle>
         <bundle>mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.howl/${howl.version}</bundle>
@@ -30,6 +32,7 @@
         <bundle>mvn:org.apache.servicemix.transaction/org.apache.servicemix.transaction/${version}</bundle>
     </feature>
     <feature name="nmr" version="${version}">
+        <feature>spring-dm</feature>
         <!-- those two bundles are currently required for servicemix-utils to resolve -->
         <bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.activation-api-1.1/${servicemix.specs.version}</bundle>
         <bundle>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jbi-api-1.0/${servicemix.specs.version}</bundle>
