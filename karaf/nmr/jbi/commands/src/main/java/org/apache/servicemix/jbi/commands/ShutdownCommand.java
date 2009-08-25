@@ -20,12 +20,14 @@ import javax.jbi.JBIException;
 import javax.jbi.management.LifeCycleMBean;
 
 import org.apache.felix.gogo.commands.Option;
+import org.apache.felix.gogo.commands.Command;
 import org.apache.servicemix.jbi.deployer.ServiceAssembly;
 import org.apache.servicemix.jbi.deployer.Component;
 
 /**
  * Shutdown a JBI artifact
  */
+@Command(scope = "jbi", name = "shutdown", description = "Shutdown a JBI artifact")
 public class ShutdownCommand extends JbiLifeCycleCommandSupport {
 
     @Option(name = "--force")

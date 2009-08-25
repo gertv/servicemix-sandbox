@@ -52,13 +52,12 @@
                     <instructions>
                         <Bundle-SymbolicName>${pom.artifactId}</Bundle-SymbolicName>
                         <Import-Package>
-                              org.apache.geronimo.gshell.wisdom.command,
-                              org.apache.geronimo.gshell.wisdom.registry,
-                              org.apache.felix.karaf.gshell.console,
-                              *
+                            org.osgi.service.command,
+                            org.apache.felix.gogo.commands,
+                            org.apache.felix.karaf.gshell.console,
+                            *
                         </Import-Package>
-                        <Export-Package>${pom.artifactId}*</Export-Package>
-                        <Spring-Context>*;publish-context:=false;create-asynchronously:=false</Spring-Context>
+                        <Export-Package>${pom.artifactId}*;version=${project.version}</Export-Package>
                     </instructions>
                 </configuration>
             </plugin>

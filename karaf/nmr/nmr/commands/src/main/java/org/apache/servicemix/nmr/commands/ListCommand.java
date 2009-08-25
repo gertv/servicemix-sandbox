@@ -17,11 +17,13 @@
 package org.apache.servicemix.nmr.commands;
 
 import org.apache.servicemix.nmr.api.Endpoint;
+import org.apache.felix.gogo.commands.Command;
 import org.osgi.framework.ServiceReference;
 
 /**
  * Displays the name of existing NMR endpoints
  */
+@Command(scope = "nmr", name = "list", description = "List NMR endpoints")
 public class ListCommand extends NmrCommandSupport {
 
     protected Object doExecute() throws Exception {

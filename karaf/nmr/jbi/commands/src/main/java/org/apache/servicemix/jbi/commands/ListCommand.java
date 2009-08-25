@@ -23,10 +23,12 @@ import javax.jbi.management.LifeCycleMBean;
 import org.apache.servicemix.jbi.deployer.Component;
 import org.apache.servicemix.jbi.deployer.ServiceAssembly;
 import org.apache.servicemix.jbi.deployer.SharedLibrary;
+import org.apache.felix.gogo.commands.Command;
 
 /**
  * List JBI artifacts
  */
+@Command(scope = "jbi", name = "list", description = "List JBI endpoints")
 public class ListCommand extends JbiCommandSupport {
     
     private static final int NAME_COL_LENGTH = 30; 
