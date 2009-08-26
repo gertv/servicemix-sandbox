@@ -32,6 +32,7 @@
               <exclude>bin/**</exclude>
               <exclude>demos/**</exclude>
               <exclude>etc/org.apache.felix.karaf.features.cfg</exclude>
+              <exclude>etc/config.properties</exclude>
               <exclude>LICENSE.txt</exclude>
               <exclude>NOTICE.txt</exclude>
               <exclude>README.txt</exclude>

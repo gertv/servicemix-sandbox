@@ -70,6 +70,7 @@
                             org.apache.geronimo.transaction.manager;resolution:=optional,
                             org.apache.servicemix.document,
                             org.apache.servicemix.nmr.api,
+                            org.apache.servicemix.nmr.api.service,
                             org.apache.servicemix.nmr.osgi,
                             org.apache.servicemix.jbi.runtime,
                             org.apache.servicemix.jbi.runtime.impl,
@@ -78,7 +79,6 @@
                             org.osgi.service.url,
                             *
                         </Import-Package>
-                        <Spring-Context>*;publish-context:=false;create-asynchronously:=true</Spring-Context>
                     </instructions>
                 </configuration>
             </plugin>

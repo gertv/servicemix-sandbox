@@ -14,26 +14,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.servicemix.naming;
+package org.apache.servicemix.nmr.osgi;
 
-import java.util.Hashtable;
-
-import javax.naming.NamingException;
-import javax.naming.spi.InitialContextFactory;
-import javax.naming.spi.InitialContextFactoryBuilder;
-
-import org.apache.xbean.naming.global.GlobalContextManager;
+import org.osgi.service.blueprint.container.Converter;
+import org.osgi.service.blueprint.container.ReifiedType;
 
 /**
- * An InitialContextFactoryBuilder used to return an XBean Naming context.
+ * A simple converter to convert generics
  */
-public class GlobalInitialContextFactoryBuilder implements InitialContextFactoryBuilder {
+public class PassThroughConverter implements Converter {
 
-    public GlobalInitialContextFactoryBuilder() {
+    private Class target;
+
+    public void setTarget(Class target) {
+        this.target = target;
     }
 
-    public InitialContextFactory createInitialContextFactory(Hashtable<?, ?> environment) throws NamingException {
-        return new GlobalContextManager();
+    public boolean canConvert(Object sourceObject, ReifiedType targetType) {
+        return target.isInstance(sourceObject) &&
+               targetType.getRawClass().equals(target);
     }
 
+    public Object convert(Object sourceObject, ReifiedType targetType) throws Exception {
+        return sourceObject;
+    }
 }

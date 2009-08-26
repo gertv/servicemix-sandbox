@@ -17,17 +17,15 @@
     limitations under the License.
 
 -->
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:osgi="http://www.springframework.org/schema/osgi"
-       xmlns:util="http://www.springframework.org/schema/util"
-       xsi:schemaLocation="
-  http://www.springframework.org/schema/beans
-  http://www.springframework.org/schema/beans/spring-beans.xsd
-  http://www.springframework.org/schema/util
-  http://www.springframework.org/schema/util/spring-util.xsd
-  http://www.springframework.org/schema/osgi
-  http://www.springframework.org/schema/osgi/spring-osgi.xsd">
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xmlns:cm="http://www.osgi.org/xmlns/blueprint-cm/v1.0.0"
+           xmlns:ext="http://geronimo.apache.org/blueprint/xmlns/blueprint-ext/v1.0.0">
+
+    <type-converters>
+        <bean class="org.apache.servicemix.nmr.osgi.PassThroughConverter">
+            <property name="target" value="org.apache.servicemix.nmr.api.service.ServiceRegistry"/>
+        </bean>
+    </type-converters>
 
     <!-- JBI Component Registry -->
     <bean id="componentRegistry" class="org.apache.servicemix.jbi.runtime.impl.ComponentRegistryImpl">
@@ -61,35 +59,34 @@
     </bean>
 
     <!-- Reference to the ServiceMix NMR -->
-    <osgi:reference id="nmr"
+    <reference id="nmr"
                     interface="org.apache.servicemix.nmr.api.NMR" />
 
     <!-- Reference to the DocumentRepository -->
-    <osgi:reference id="documentRepository"
+    <reference id="documentRepository"
                     interface="org.apache.servicemix.document.DocumentRepository" />
 
     <!-- Reference to the Transaction Manager -->
-    <osgi:list id="transactionManagers"
-               interface="javax.transaction.TransactionManager"
-               cardinality="0..N"
-               greedy-proxying="true"
-               context-class-loader="unmanaged" />
+    <reference-list id="transactionManagers"
+                    interface="javax.transaction.TransactionManager"
+                    availability="optional"
+                    ext:proxy-method="greedy"/>
 
     <!-- Reference to the JMX server -->
-    <osgi:list id="mbeanServers"
-               interface="javax.management.MBeanServer"
-               cardinality="0..N" />
+    <reference-list id="mbeanServers"
+                    interface="javax.management.MBeanServer"
+                    availability="optional"/>
 
     <!-- The InitialContext -->
     <bean id="namingContext" class="javax.naming.InitialContext">
-        <constructor-arg><null/></constructor-arg>
+        <argument><null/></argument>
     </bean>
 
     <!-- Expose the JBI components registry in OSGi -->
-    <osgi:service ref="componentRegistry">
-        <osgi:interfaces>
+    <service ref="componentRegistry">
+        <interfaces>
             <value>org.apache.servicemix.jbi.runtime.ComponentRegistry</value>
-        </osgi:interfaces>
-    </osgi:service>
+        </interfaces>
+    </service>
 
-</beans>
+</blueprint>
