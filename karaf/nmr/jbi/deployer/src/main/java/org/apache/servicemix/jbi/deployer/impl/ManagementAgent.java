@@ -37,7 +37,7 @@ import org.springframework.jmx.export.assembler.MetadataMBeanInfoAssembler;
 
 /**
  */
-public class ManagementAgent implements DisposableBean {
+public class ManagementAgent {
 
     private static final transient Log LOG = LogFactory.getLog(ManagementAgent.class);
 

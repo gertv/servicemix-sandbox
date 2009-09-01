@@ -48,14 +48,17 @@
         <property name="namingContext" ref="namingContext" />
     </bean>
 
-    <bean id="nmrWrapper" class="org.apache.servicemix.jbi.osgi.NMRWrapper">
+    <bean id="nmrWrapper" class="org.apache.servicemix.jbi.osgi.NMRWrapper" init-method="init">
         <property name="nmr" ref="nmr" />
+        <property name="bundleContext" ref="blueprintBundleContext"/>
     </bean>
 
     <!-- Service tracker for JBI components -->
-    <bean class="org.apache.servicemix.nmr.osgi.OsgiServiceRegistryTracker">
+    <bean id="componentWrapperTracker" class="org.apache.servicemix.nmr.osgi.OsgiServiceRegistryTracker"
+          init-method="init" destroy-method="destroy">
         <property name="interface" value="org.apache.servicemix.jbi.runtime.ComponentWrapper" />
         <property name="registry" ref="componentRegistry" />
+        <property name="bundleContext" ref="blueprintBundleContext"/>
     </bean>
 
     <!-- Reference to the ServiceMix NMR -->

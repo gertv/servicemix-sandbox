@@ -27,7 +27,7 @@
     </type-converters>
 
     <!-- ServiceMix NMR -->
-    <bean id="servicemix" class="org.apache.servicemix.nmr.core.ServiceMix">
+    <bean id="servicemix" class="org.apache.servicemix.nmr.core.ServiceMix" init-method="init">
         <property name="endpointRegistry" ref="endpointRegistry" />
         <property name="listenerRegistry" ref="listenerRegistry" />
         <property name="flowRegistry" ref="flowRegistry" />
@@ -46,16 +46,18 @@
             </list>
         </property>
     </bean>
-    <bean class="org.apache.servicemix.nmr.osgi.OsgiServiceRegistryTracker">
+    <bean id="endpointTracker" class="org.apache.servicemix.nmr.osgi.OsgiServiceRegistryTracker" init-method="init" destroy-method="destroy">
         <property name="interface" value="org.apache.servicemix.nmr.api.internal.Flow" />
         <property name="registry" ref="listenerRegistry" />
+        <property name="bundleContext" ref="blueprintBundleContext" />
     </bean>
 
     <!-- Listener registry and service tracker -->
     <bean id="listenerRegistry" class="org.apache.servicemix.nmr.core.ListenerRegistryImpl" />
-    <bean class="org.apache.servicemix.nmr.osgi.OsgiServiceRegistryTracker">
+    <bean class="org.apache.servicemix.nmr.osgi.OsgiServiceRegistryTracker" init-method="init" destroy-method="destroy">
         <property name="interface" value="org.apache.servicemix.nmr.api.event.Listener" />
         <property name="registry" ref="listenerRegistry" />
+        <property name="bundleContext" ref="blueprintBundleContext" />
     </bean>
 
     <!-- Endpoint registry and service tracker -->
@@ -64,17 +66,21 @@
         <property name="registry" ref="internalEndpointRegistry" />
         <property name="executorFactory" ref="executorFactory" />
     </bean>
-    <bean id="internalEndpointRegistry" class="org.apache.servicemix.nmr.osgi.InternalRegistryWrapper" />
-    <bean class="org.apache.servicemix.nmr.osgi.OsgiServiceRegistryTracker">
+    <bean id="internalEndpointRegistry" class="org.apache.servicemix.nmr.osgi.InternalRegistryWrapper">
+        <property name="bundleContext" ref="blueprintBundleContext"/>
+    </bean>
+    <bean class="org.apache.servicemix.nmr.osgi.OsgiServiceRegistryTracker" init-method="init" destroy-method="destroy">
         <property name="interface" value="org.apache.servicemix.nmr.api.Endpoint" />
         <property name="registry" ref="endpointRegistry" />
+        <property name="bundleContext" ref="blueprintBundleContext"/>
     </bean>
 
     <!-- Wire registry and service tracker -->
     <bean id="wireRegistry" class="org.apache.servicemix.nmr.core.WireRegistryImpl"/>
-    <bean class="org.apache.servicemix.nmr.osgi.OsgiServiceRegistryTracker">
+    <bean class="org.apache.servicemix.nmr.osgi.OsgiServiceRegistryTracker" init-method="init" destroy-method="destroy">
         <property name="interface" value="org.apache.servicemix.nmr.api.Wire" />
         <property name="registry" ref="wireRegistry" />
+        <property name="bundleContext" ref="blueprintBundleContext"/>
     </bean>
 
     <!-- AuthorizationService -->

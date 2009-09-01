@@ -17,26 +17,12 @@
     limitations under the License.
 
 -->
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:ctx="http://www.springframework.org/schema/context"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:osgi="http://www.springframework.org/schema/osgi"
-       xmlns:osgix="http://www.springframework.org/schema/osgi-compendium"
-       xmlns:util="http://www.springframework.org/schema/util"
-       xsi:schemaLocation="
-  http://www.springframework.org/schema/beans
-  http://www.springframework.org/schema/beans/spring-beans.xsd
-  http://www.springframework.org/schema/context
-  http://www.springframework.org/schema/context/spring-context.xsd
-  http://www.springframework.org/schema/util
-  http://www.springframework.org/schema/util/spring-util.xsd
-  http://www.springframework.org/schema/osgi
-  http://www.springframework.org/schema/osgi/spring-osgi.xsd
-  http://www.springframework.org/schema/osgi-compendium
-  http://www.springframework.org/schema/osgi-compendium/spring-osgi-compendium.xsd">
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xmlns:cm="http://www.osgi.org/xmlns/blueprint-cm/v1.0.0"
+           xmlns:ext="http://geronimo.apache.org/blueprint/xmlns/blueprint-ext/v1.0.0">
 
     <!-- JBI Deployer -->
-    <bean id="deployer" class="org.apache.servicemix.jbi.deployer.impl.Deployer">
+    <bean id="deployer" class="org.apache.servicemix.jbi.deployer.impl.Deployer" init-method="init" destroy-method="destroy">
         <property name="autoStart" value="true" />
         <property name="endpointListener" ref="endpointListener" />
         <property name="environment" ref="environment" />
@@ -44,6 +30,7 @@
         <property name="managementAgent" ref="managementAgent" />
         <property name="preferencesService" ref="preferencesService" />
         <property name="shutdownTimeout" value="${shutdownTimeout}" />
+        <property name="bundleContext" ref="blueprintBundleContext"/>
     </bean>
 
     <!-- Endpoint listener -->
@@ -55,27 +42,27 @@
     <!-- JBI Handler -->
     <bean id="jbiHandler" class="org.apache.servicemix.jbi.deployer.handler.URLHandler" />
 
-    <osgi:service ref="jbiHandler" interface="org.osgi.service.url.URLStreamHandlerService">
-    	<osgi:service-properties>
+    <service ref="jbiHandler" interface="org.osgi.service.url.URLStreamHandlerService">
+    	<service-properties>
             <entry key="url.handler.protocol" value="jbi"/>
-        </osgi:service-properties>
-    </osgi:service>
+        </service-properties>
+    </service>
 
-    <osgi:service ref="listener" interface="org.apache.felix.karaf.deployer.filemonitor.DeploymentListener" />
+    <service ref="listener" interface="org.apache.felix.fileinstall.listener.ArtifactTransformer" />
 
-    <osgi:service ref="endpointListener">
-        <osgi:interfaces>
+    <service ref="endpointListener">
+        <interfaces>
             <value>org.apache.servicemix.nmr.api.event.Listener</value>
             <value>org.apache.servicemix.nmr.api.event.EndpointListener</value>
             <value>org.apache.servicemix.nmr.api.event.ExchangeListener</value>
-        </osgi:interfaces>
-    </osgi:service>
+        </interfaces>
+    </service>
 
     <!-- Utilities -->
     <bean id="namingStrategy" class="org.apache.servicemix.jbi.deployer.impl.DefaultNamingStrategy">
         <property name="jmxDomainName" value="org.apache.servicemix" />
     </bean>
-    <bean id="managementAgent" class="org.apache.servicemix.jbi.deployer.impl.ManagementAgent">
+    <bean id="managementAgent" class="org.apache.servicemix.jbi.deployer.impl.ManagementAgent" destroy-method="destroy">
         <property name="mbeanServer" ref="mbeanServer" />
     </bean>
 
@@ -83,7 +70,7 @@
     <bean id="adminService" class="org.apache.servicemix.jbi.deployer.impl.AdminService">
         <property name="namingStrategy" ref="namingStrategy" />
     </bean>
-    <bean id="adminCommandsService" class="org.apache.servicemix.jbi.deployer.impl.AdminCommandsImpl">
+    <bean id="adminCommandsService" class="org.apache.servicemix.jbi.deployer.impl.AdminCommandsImpl" init-method="init" destroy-method="destroy">
         <property name="deployer" ref="deployer" />
         <property name="deploymentService" ref="deploymentService" />
         <property name="installationService" ref="installationService" />
@@ -93,11 +80,12 @@
     </bean>
     <bean id="deploymentService" class="org.apache.servicemix.jbi.deployer.impl.DeploymentService">
         <property name="deployer" ref="deployer" />
+        <property name="bundleContext" ref="blueprintBundleContext"/>
     </bean>
 
 
     <!-- Expose management service in OSGi -->
-    <osgi:service ref="adminCommandsService" interface="org.apache.servicemix.jbi.deployer.AdminCommandsService" />
+    <service ref="adminCommandsService" interface="org.apache.servicemix.jbi.deployer.AdminCommandsService" />
 
     <!-- Environment -->
     <bean id="environment" class="org.apache.servicemix.jbi.runtime.impl.EnvironmentImpl">
@@ -107,30 +95,29 @@
     </bean>
 
     <!-- Reference to the Transaction Manager -->
-    <osgi:list id="transactionManagers"
-               interface="javax.transaction.TransactionManager"
-               cardinality="0..N"
-               greedy-proxying="true"
-               context-class-loader="unmanaged" />
+    <reference-list id="transactionManagers"
+                    interface="javax.transaction.TransactionManager"
+                    availability="optional"
+                    ext:proxy-method="greedy"/>
 
     <!-- The InitialContext -->
     <bean id="namingContext" class="javax.naming.InitialContext">
-        <constructor-arg><null/></constructor-arg>
+        <argument><null/></argument>
     </bean>
 
     <!-- MBeanServer -->
-    <osgi:reference id="mbeanServer"
-                    interface="javax.management.MBeanServer"
-                    cardinality="1..1" />
+    <reference id="mbeanServer"
+               interface="javax.management.MBeanServer"
+               availability="mandatory" />
 
     <!-- Preferences Service -->
-    <osgi:reference id="preferencesService"
-                    interface="org.osgi.service.prefs.PreferencesService" />
-                    
-    <osgix:cm-properties id="cmProps" persistent-id="org.apache.servicemix.jbi">
-        <prop key="shutdownTimeout">0</prop>
-    </osgix:cm-properties>
+    <reference id="preferencesService"
+               interface="org.osgi.service.prefs.PreferencesService" />
 
-    <ctx:property-placeholder properties-ref="cmProps" />
+    <cm:property-placeholder persistent-id="org.apache.servicemix.jbi">
+        <cm:default-properties>
+            <cm:property name="shutdownTimeout" value="0"/>
+        </cm:default-properties>
+    </cm:property-placeholder>
 
-</beans>
+</blueprint>
