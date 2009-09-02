@@ -65,6 +65,7 @@
                         <Import-Package>
                             javax.jbi.component,
                             javax.management,
+                            javax.management.loading,
                             javax.naming,
                             javax.transaction,
                             org.apache.geronimo.transaction.manager;resolution:=optional,

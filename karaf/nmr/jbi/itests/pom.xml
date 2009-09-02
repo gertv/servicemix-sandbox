@@ -37,6 +37,34 @@
     </properties>
 
     <dependencies>
+        <!-- Pax EXAM -->
+        <dependency>
+            <groupId>org.ops4j.pax.exam</groupId>
+            <artifactId>pax-exam</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.ops4j.pax.exam</groupId>
+            <artifactId>pax-exam-junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.ops4j.pax.exam</groupId>
+            <artifactId>pax-exam-container-default</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.ops4j.pax.exam</groupId>
+            <artifactId>pax-exam-junit-extender-impl</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.5</version>
+            <scope>test</scope>
+        </dependency>
+
         <dependency>
             <groupId>org.apache.servicemix.bundles</groupId>
             <artifactId>org.apache.servicemix.bundles.ant</artifactId>
@@ -53,6 +81,20 @@
             <artifactId>org.apache.felix.fileinstall</artifactId>
             <version>${felix.fileinstall.version}</version>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.felix</groupId>
+                    <artifactId>org.osgi.core</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix.bundles</groupId>
+            <artifactId>org.apache.servicemix.bundles.aopalliance</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix.bundles</groupId>
+            <artifactId>org.apache.servicemix.bundles.cglib</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.servicemix.bundles</groupId>
@@ -101,6 +143,12 @@
             <groupId>org.apache.servicemix.jbi</groupId>
             <artifactId>org.apache.servicemix.jbi.osgi</artifactId>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.felix</groupId>
+                    <artifactId>org.osgi.core</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apache.servicemix.jbi</groupId>
@@ -111,6 +159,12 @@
             <groupId>org.apache.felix</groupId>
             <artifactId>org.apache.felix.prefs</artifactId>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.felix</groupId>
+                    <artifactId>org.osgi.core</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 	    <dependency>
             <groupId>org.apache.xbean</groupId>
@@ -168,6 +222,56 @@
             <artifactId>spring-test</artifactId>
             <version>${spring.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.felix.karaf</groupId>
+            <artifactId>org.apache.felix.karaf.management</artifactId>
+            <version>${felix.karaf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.felix.karaf.jaas</groupId>
+            <artifactId>org.apache.felix.karaf.jaas.boot</artifactId>
+            <version>${felix.karaf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.felix.karaf.jaas</groupId>
+            <artifactId>org.apache.felix.karaf.jaas.config</artifactId>
+            <version>${felix.karaf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.felix.karaf.gshell</groupId>
+            <artifactId>org.apache.felix.karaf.gshell.console</artifactId>
+            <version>${felix.karaf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.felix.karaf.gshell</groupId>
+            <artifactId>org.apache.felix.karaf.gshell.osgi</artifactId>
+            <version>${felix.karaf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.felix.karaf.gshell</groupId>
+            <artifactId>org.apache.felix.karaf.gshell.log</artifactId>
+            <version>${felix.karaf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.felix.karaf</groupId>
+            <artifactId>org.apache.felix.karaf.main</artifactId>
+            <version>${felix.karaf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.mina</groupId>
+            <artifactId>mina-core</artifactId>
+            <version>${mina.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.sshd</groupId>
+            <artifactId>sshd-core</artifactId>
+            <version>${sshd.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.felix.gogo</groupId>
+            <artifactId>org.apache.felix.gogo.runtime</artifactId>
+            <version>${felix.gogo.version}</version>
         </dependency>
     </dependencies>
 

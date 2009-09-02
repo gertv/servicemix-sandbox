@@ -88,6 +88,7 @@
                         <Bundle-SymbolicName>${pom.artifactId}</Bundle-SymbolicName>
                         <Import-Package>
                             javax.transaction,
+                            javax.management.loading,
                             org.apache.geronimo.transaction.manager;resolution:=optional,
                             *
                         </Import-Package>

@@ -90,6 +90,7 @@
                             org.apache.servicemix.nmr.core,
                             org.apache.servicemix.nmr.core.security,
                             org.apache.servicemix.nmr.osgi,
+                            javax.xml.namespace,
                             *
                         </Import-Package>
                     </instructions>
