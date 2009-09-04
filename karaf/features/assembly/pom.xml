@@ -847,9 +847,9 @@
         </resources>
         <plugins>
             <plugin>
-                <groupId>org.apache.servicemix.tooling</groupId>
+                <groupId>org.apache.felix.karaf.tooling</groupId>
                 <artifactId>features-maven-plugin</artifactId>
-                <version>1.0</version>
+                <version>${felix.karaf.version}</version>
                 <executions>
                     <execution>
                         <id>add-features-to-repo</id>
@@ -859,6 +859,7 @@
                         </goals>
                         <configuration>
                             <descriptors>
+                                <descriptor>mvn:org.apache.felix.karaf/apache-felix-karaf/${felix.karaf.version}/xml/features</descriptor>
                                 <descriptor>mvn:org.apache.servicemix.nmr/apache-servicemix-nmr/${servicemix.nmr.version}/xml/features</descriptor>
                                 <descriptor>file:${basedir}/target/classes/features.xml</descriptor>
                             </descriptors>
