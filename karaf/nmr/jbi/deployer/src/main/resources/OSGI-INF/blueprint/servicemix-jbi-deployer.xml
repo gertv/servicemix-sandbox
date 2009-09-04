@@ -48,7 +48,7 @@
         </service-properties>
     </service>
 
-    <service ref="listener" interface="org.apache.felix.fileinstall.listener.ArtifactTransformer" />
+    <service ref="listener" interface="org.apache.felix.fileinstall.ArtifactTransformer" />
 
     <service ref="endpointListener">
         <interfaces>

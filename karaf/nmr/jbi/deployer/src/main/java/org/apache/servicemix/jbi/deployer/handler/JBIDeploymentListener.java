@@ -25,7 +25,7 @@ import java.util.jar.Manifest;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.servicemix.jbi.deployer.descriptor.DescriptorFactory;
-import org.apache.felix.fileinstall.listener.ArtifactTransformer;
+import org.apache.felix.fileinstall.ArtifactTransformer;
 
 /**
  * A JBI DeploymentListener which transforms plain JBI artifacts to OSGi bundles.
