@@ -31,15 +31,12 @@
     <bean id="componentRegistry" class="org.apache.servicemix.jbi.runtime.impl.ComponentRegistryImpl">
         <property name="nmr" ref="nmrWrapper" />
         <property name="documentRepository" ref="documentRepository" />
-        <property name="managementContext" ref="managementContext" />
+        <property name="managementStrategy" ref="managementStrategy" />
         <property name="environment" ref="environment" />
     </bean>
 
     <!-- Management context -->
-    <bean id="managementContext" class="org.apache.servicemix.jbi.runtime.impl.ManagementContext">
-        <property name="jmxDomainName" value="org.apache.servicemix" />
-        <property name="environment" ref="environment" />
-    </bean>
+    <reference id="managementStrategy" interface="org.fusesource.commons.management.ManagementStrategy" />
 
     <!-- Environment -->
     <bean id="environment" class="org.apache.servicemix.jbi.runtime.impl.EnvironmentImpl">
