@@ -274,6 +274,9 @@ public class IntegrationTest extends AbstractIntegrationTest {
             mavenBundle("org.springframework.osgi", "spring-osgi-extender"),
 
             // Bundles for NMR + JBI
+            mavenBundle("org.fusesource.commonman", "commons-management"),
+            mavenBundle("org.apache.xbean", "xbean-naming"),
+            mavenBundle("org.apache.servicemix.naming", "org.apache.servicemix.naming"),
             mavenBundle("org.apache.servicemix.bundles", "org.apache.servicemix.bundles.ant"),
             mavenBundle("org.apache.servicemix.bundles", "org.apache.servicemix.bundles.woodstox"),
             mavenBundle("org.apache.servicemix.bundles", "org.apache.servicemix.bundles.wsdl4j"),
@@ -291,6 +294,7 @@ public class IntegrationTest extends AbstractIntegrationTest {
             mavenBundle("org.apache.servicemix.nmr", "org.apache.servicemix.nmr.core"),
             mavenBundle("org.apache.servicemix.nmr", "org.apache.servicemix.nmr.spring"),
             mavenBundle("org.apache.servicemix.nmr", "org.apache.servicemix.nmr.osgi"),
+			mavenBundle("org.apache.servicemix.nmr", "org.apache.servicemix.nmr.management"),
             mavenBundle("org.apache.servicemix.jbi", "org.apache.servicemix.jbi.runtime"),
             mavenBundle("org.apache.servicemix.jbi", "org.apache.servicemix.jbi.deployer"),
             mavenBundle("org.apache.servicemix.jbi", "org.apache.servicemix.jbi.osgi")

@@ -125,6 +125,11 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.apache.servicemix.nmr</groupId>
+            <artifactId>org.apache.servicemix.nmr.management</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>org.apache.servicemix.document</groupId>
             <artifactId>org.apache.servicemix.document</artifactId>
             <scope>test</scope>
@@ -166,7 +171,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
-	    <dependency>
+        <dependency>
             <groupId>org.apache.xbean</groupId>
             <artifactId>xbean-classloader</artifactId>
             <scope>test</scope>
@@ -272,6 +277,20 @@
             <groupId>org.apache.felix.gogo</groupId>
             <artifactId>org.apache.felix.gogo.runtime</artifactId>
             <version>${felix.gogo.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.fusesource.commonman</groupId>
+            <artifactId>commons-management</artifactId>
+            <version>${commons.management.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.xbean</groupId>
+            <artifactId>xbean-naming</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.servicemix.naming</groupId>
+            <artifactId>org.apache.servicemix.naming</artifactId>
         </dependency>
     </dependencies>
 

@@ -76,5 +76,7 @@ public class NMRWrapper implements NMR {
         return nmr.createChannel();
     }
 
-
+    public String getId() {
+        return nmr.getId();
+    }
 }

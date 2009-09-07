@@ -88,6 +88,11 @@
             <groupId>org.springframework.osgi</groupId>
             <artifactId>spring-osgi-test</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.fusesource.commonman</groupId>
+            <artifactId>commons-management</artifactId>
+            <version>${commons.management.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
