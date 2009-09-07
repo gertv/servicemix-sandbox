@@ -78,10 +78,8 @@
                 <configuration>
                     <instructions>
                         <Bundle-SymbolicName>${pom.artifactId}</Bundle-SymbolicName>
-                        <Export-Package>org.apache.felix.karaf.gshell.activemq;version=${project.version};-split-package:=merge-first</Export-Package>
+                        <Export-Package>org.apache.servicemix.kernel.gshell.activemq;version=${project.version};-split-package:=merge-first</Export-Package>
                         <Import-Package>
-                          org.apache.geronimo.gshell.wisdom.command,
-                          org.apache.geronimo.gshell.wisdom.registry,
                           org.apache.felix.gogo.commands,
                           *
                         </Import-Package>

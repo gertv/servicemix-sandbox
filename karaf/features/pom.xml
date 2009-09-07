@@ -83,6 +83,7 @@
       <commons.logging.version>1.1.1</commons.logging.version>
       <commons.net.version>1.4.1_1</commons.net.version>
       <commons.pool.version>1.4</commons.pool.version>
+      <commons.vfs.version>1.0_1</commons.vfs.version>
       <cxf.version>2.2.2</cxf.version>
       <dom4j.version>1.6_1</dom4j.version>
       <drools.version>4.0.7_1</drools.version>
@@ -134,7 +135,7 @@
       <jcr-api.version>1.0_1</jcr-api.version>
       <jdt.core.version>3.2.3_1</jdt.core.version>
       <jdom.version>1.1_1</jdom.version>
-      <jencks.version>2.1_1</jencks.version>
+      <jencks.version>2.2</jencks.version>
       <jetty.version>6.1.14</jetty.version>
       <jetty.bundle.version>6.1.14_1</jetty.bundle.version>
       <jexcelapi.version>2.4.2_1</jexcelapi.version>

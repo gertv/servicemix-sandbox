@@ -19,12 +19,13 @@ package org.apache.servicemix.kernel.gshell.activemq;
 import java.io.File;
 
 import org.apache.felix.gogo.commands.Option;
+import org.apache.felix.gogo.commands.Command;
 import org.apache.felix.karaf.gshell.console.OsgiCommandSupport;
 
 /**
  * @version $Rev$ $Date$
  */
-// @CommandComponent(id="activemq:destroy-broker", description="Destroys a broker instance.")
+@Command(scope="activemq", name="destroy-broker", description="Creates a broker instance.")
 public class DestroyBrokerCommand extends OsgiCommandSupport {
 
     @Option(name = "-n", aliases = {"--name"}, description = "The name of the broker (defaults to localhost).")

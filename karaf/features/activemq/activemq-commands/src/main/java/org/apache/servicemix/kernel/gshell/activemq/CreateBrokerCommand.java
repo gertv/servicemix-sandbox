@@ -27,12 +27,13 @@ import java.util.Map;
 import java.util.Scanner;
 
 import org.apache.felix.gogo.commands.Option;
+import org.apache.felix.gogo.commands.Command;
 import org.apache.felix.karaf.gshell.console.OsgiCommandSupport;
 
 /**
  * @version $Rev$ $Date$
  */
-// @Command(id="activemq:create-broker", description="Creates a broker instance.")
+ @Command(scope="activemq", name="create-broker", description="Creates a broker instance.")
 public class CreateBrokerCommand extends OsgiCommandSupport {
     
     @Option(name = "-n", aliases = {"--name"}, description = "The name of the broker (defaults to localhost).")

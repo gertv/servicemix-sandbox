@@ -259,8 +259,8 @@
             <version>${fastinfoset.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.servicemix.bundles</groupId>
-            <artifactId>org.apache.servicemix.bundles.jencks</artifactId>
+            <groupId>org.jencks</groupId>
+            <artifactId>jencks</artifactId>
             <version>${jencks.version}</version>
         </dependency>
         <dependency>
@@ -442,11 +442,6 @@
             <groupId>org.apache.servicemix.bundles</groupId>
             <artifactId>org.apache.servicemix.bundles.geronimo-javamail_1.4_provider</artifactId>
             <version>${geronimo.javamail.provider.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.servicemix.bundles</groupId>
-            <artifactId>org.apache.servicemix.bundles.jencks</artifactId>
-            <version>${jencks.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.servicemix.bundles</groupId>
