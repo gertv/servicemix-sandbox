@@ -65,7 +65,29 @@
                     </dependency>
                 </dependencies>
                 <configuration>
-                    <includes>${basedir}/src/docbook/*.xml</includes>
+                    <!-- Property to be used to generate one HTML page or several -->
+                    <chunkedOutput>false</chunkedOutput>
+
+                    <highlightSource>1</highlightSource>
+
+                    <entities>
+                        <entity>
+                           <name>version</name>
+                           <value>${version}</value>
+                        </entity>
+                    </entities>
+
+                    <!-- Add images in the target output folder -->
+                    <postProcess>
+                        <copy todir="target/docbkx/html/images">
+                           <fileset dir="src/docbkx/images">
+                              <include name="**/*.jpg"/>
+                              <include name="**/*.png"/>
+                              <include name="**/*.gif"/>
+                           </fileset>
+                        </copy>
+                    </postProcess>
+
                 </configuration>
             </plugin>
         </plugins>
