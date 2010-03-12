@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <!--
+
+      Licensed to the Apache Software Foundation (ASF) under one or more
+      contributor license agreements.  See the NOTICE file distributed with
+      this work for additional information regarding copyright ownership.
+      The ASF licenses this file to You under the Apache License, Version 2.0
+      (the "License"); you may not use this file except in compliance with
+      the License.  You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+      Unless required by applicable law or agreed to in writing, software
+      distributed under the License is distributed on an "AS IS" BASIS,
+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+      See the License for the specific language governing permissions and
+      limitations under the License.
+  -->
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.apache</groupId>
+    <artifactId>apache</artifactId>
+    <version>6</version>
+  </parent>
+
+  <groupId>org.apache.servicemix</groupId>
+  <artifactId>all-components</artifactId>
+  <packaging>pom</packaging>
+  
+  <version>1.0-SNAPSHOT</version>
+  <name>Apache ServiceMix All Components POM</name>
+  <inceptionYear>2007</inceptionYear>
+
+  <modules>
+    <module>components-pom</module>
+
+    <module>shared-libraries</module>
+
+    <module>engines/servicemix-bean</module>
+    <module>engines/servicemix-camel</module>
+    <module>engines/servicemix-cxf-se</module>
+    <module>engines/servicemix-drools</module>
+    <module>engines/servicemix-eip</module>
+    <module>engines/servicemix-exec</module>
+    <module>engines/servicemix-jsr181</module>
+    <module>engines/servicemix-osworkflow</module>
+    <module>engines/servicemix-quartz</module>
+    <module>engines/servicemix-saxon</module>
+    <module>engines/servicemix-script</module>
+    <module>engines/servicemix-scripting</module>
+    <module>engines/servicemix-validation</module>
+    <module>engines/servicemix-wsn2005</module>
+    
+    <module>bindings/servicemix-cxf-bc</module>
+    <module>bindings/servicemix-file</module>
+    <module>bindings/servicemix-ftp</module>
+    <module>bindings/servicemix-http</module>
+    <module>bindings/servicemix-jms</module>
+    <module>bindings/servicemix-mail</module>
+    <module>bindings/servicemix-smpp</module>
+    <module>bindings/servicemix-snmp</module>
+    <module>bindings/servicemix-truezip</module>
+    <module>bindings/servicemix-vfs</module>
+    <module>bindings/servicemix-xmpp</module>
+  </modules>
+
+  <prerequisites>
+      <maven>2.0.7</maven>
+  </prerequisites>
+
+  <profiles>
+      <profile>
+          <id>setup.eclipse</id>
+          <!--modules>
+              <module>assembly</module>
+          </modules-->
+          <properties>
+              <eclipse.workspace.dir>${basedir}/../workspace</eclipse.workspace.dir>
+          </properties>
+          <build>
+              <defaultGoal>eclipse:eclipse</defaultGoal>
+              <plugins>
+                  <plugin>
+                      <groupId>org.apache.maven.plugins</groupId>
+                      <artifactId>maven-eclipse-plugin</artifactId>
+                      <version>2.5.1</version>
+                      <inherited>false</inherited>
+                      <executions>
+                          <execution>
+                              <id>setup.eclipse.workspace</id>
+                              <phase>process-test-sources</phase>
+                              <goals>
+                                  <goal>add-maven-repo</goal>
+                              </goals>
+                              <configuration>
+                                  <workspace>${eclipse.workspace.dir}</workspace>
+                              </configuration>
+                          </execution>
+                      </executions>
+                  </plugin>
+              </plugins>
+          </build>
+      </profile>
+  </profiles>
+
+</project>
