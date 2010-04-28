@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+#if ( $page.title.equals("Index") )
+    #set ($title = "Home")
+#else
+    #set ($title = $page.title)
+#end
+##
+#macro (renderPage $title)
+    #set($globalHelper = $action.getGlobalHelper())
+    #set($renderer = $globalHelper.getWikiStyleRenderer())
+
+    ##
+    ## FIXME: Must be a more efficent way to find a page...
+    ##
+
+    #foreach ($child in $page.space.pages)
+        #if ($child.title.equals($title))
+            #set ($content = $renderer.convertWikiToXHtml($child.toPageContext(), $child.content).trim())
+
+            ##
+            ## HACK: Remove the leading <P> and trailing </P>
+            ##
+
+            #set ($content = $content.replaceAll("^<[pP]>|</[pP]>$", "") )
+            #set ($content = $content.replaceAll("apos", "#39") )
+            ##set ($content = $content.substring(3, $content.length()))
+            ##set ($end = $content.length() - 4)
+            ##set ($content = $content.substring(0, $end))
+
+            $content
+        #end
+    #end
+#end
+##
+
+
+<html>
+  <head>
+    <link type="text/css" rel="stylesheet" href="$stylesheet">
+    <style type="text/css">
+      .footer {
+        padding-top:           4px;
+        color:                 #666;
+        clear: both;
+      }
+      .left {
+        padding-top: 5px;
+     float : left;
+        width : 15em;
+      }
+.pagecontent {
+ float: left;
+ width: 70%;
+}
+    </style>
+    <script type="text/javascript" language="javascript">
+      var hide = null;
+      var show = null;
+      var children = null;
+
+      function init() {
+        /* Search form initialization */
+        var form = document.forms['search'];
+        if (form != null) {
+          form.elements['domains'].value = location.hostname;
+          form.elements['sitesearch'].value = location.hostname;
+        }
+
+        /* Children initialization */
+        hide = document.getElementById('hide');
+        show = document.getElementById('show');
+        children = document.all != null ?
+                   document.all['children'] :
+                   document.getElementById('children');
+        if (children != null) {
+          children.style.display = 'none';
+          show.style.display = 'inline';
+          hide.style.display = 'none';
+        }
+      }
+
+      function showChildren() {
+        children.style.display = 'block';
+        show.style.display = 'none';
+        hide.style.display = 'inline';
+      }
+
+      function hideChildren() {
+        children.style.display = 'none';
+        show.style.display = 'inline';
+        hide.style.display = 'none';
+      }
+    </script>
+    <title>$title</title>
+  </head>
+  <body onload="init()">
+
+    <div id="PageContent">
+      <div class="pageheader" style="padding: 2px 0px 0px 0px;">
+        <div style="margin: 2px 10px 6px 6px;" ><img src="http://hivemind.apache.org/images/hivemind_banner.png" border="0"></div>
+
+        <DIV class="greynavbar" style="padding: 5px 10px 14px 20px; margin: 0px; height: 10px;">
+          <div style="float:left" >
+            $autoexport.breadcrumbs($page)
+          </div>
+          <div style="float:right" >
+            <a href="$confluenceUri/pages/editpage.action?pageId=$page.id">
+            <img src="http://geronimo.apache.org/images/icons/notep_16.gif"
+                 height="16" width="16" border="0" align="absmiddle" title="Edit Page"></a>
+            <a href="$confluenceUri/pages/editpage.action?pageId=$page.id">Edit Page</a>
+            &nbsp;
+            <a href="$confluenceUri/pages/listpages.action?key=$page.spaceKey">
+            <img src="http://geronimo.apache.org/images/icons/browse_space.gif"
+                 height="16" width="16" border="0" align="absmiddle" title="Browse Space"></a>
+            <a href="$confluenceUri/pages/listpages.action?key=$page.spaceKey">Browse Space</a>
+          </div>
+        </DIV>
+      </div>
+
+      <div class="left">
+          #renderPage("Navigation")
+        </div>
+
+      <div class="pagecontent">
+        <div class="wiki-content">
+          $body
+        </div>
+
+      </div>
+    <div class="footer">
+      Copyright Â© 2004-2007, The Apache Software Foundation
+    </div>
+
+    </div>
+    
+  </body>
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+##
+
+#set ($pageContentHeaderEnabled = false)
+
+##
+
+#macro (spacer $width $height)
+
+    ##
+
+    ## Note: Replaced the spacer.gif with a table because IE wont honor the image height
+
+    ## 
+
+    ## <img src="$images/spacer.gif" width="$width" height="$height" border="0">
+
+    ##
+
+    <table> <!-- spacer -->
+
+        <tr>
+
+            <td width="$width" height="$height"></td>
+
+        </tr>
+
+    </table>
+
+#end
+
+##
+
+#macro (renderPage $title)
+
+    #set($globalHelper = $action.getGlobalHelper())
+
+    #set($renderer = $globalHelper.getWikiStyleRenderer())
+
+    
+
+    ##
+
+    ## FIXME: Must be a more efficient way to find a page...
+
+    ##
+
+    
+
+    #foreach ($child in $page.space.pages)
+
+        #if ($child.title.equals($title))
+
+            #set ($content = $renderer.convertWikiToXHtml($child.toPageContext(), $child.content).trim())
+
+            
+
+            ##
+
+            ## HACK: Remove the leading <P> and trailing </P>
+
+            ##
+
+            
+
+            #set ($content = $content.substring(3, $content.length()))
+
+            #set ($end = $content.length() - 4)
+
+            #set ($content = $content.substring(0, $end))
+
+            
+
+            $content
+
+        #end
+
+    #end
+
+#end
+##
+#macro (generateKeywords)
+   <META name="description" content="Apache Tuscany"/>
+   <META name="keywords" content="apache, apache tuscany, tuscany, service, services, fabric, soa, service oriented architecture,  sca, service component architecture, das, sdo, csa, ruby, opensource"/>
+
+#end
+##
+
+#macro (topNav)
+
+    <table valign="top" border="0" cellspacing="0" cellpadding="0" width="100%" background="http://tuscany.apache.org/images/TuscanyLogoNEW_Text_120px_bg.jpg">
+
+        <tr>
+
+            <td valing="top" align="left">
+
+			    <a href="$siteroot"><img src="http://tuscany.apache.org/images/TuscanyLogoNEW_Text_120px_bg.jpg" height="91" width="25" border="0"></a>
+
+			</td>
+
+			<td>
+
+                <a href="http://tuscany.apache.org/"><img src="http://tuscany.apache.org/images/TuscanyLogo.jpg" border="0"></a>
+
+            </td>
+
+            
+
+            <td width="100%">
+
+                &nbsp;
+
+            </td>
+
+            <!--td align="right">
+
+                <img src="http://incubator.apache.org/tuscany/images/apache-incubator-logo.png" border="0">
+
+            </td-->
+
+
+
+            <!-- Adds the edit page link to the top banner-->
+
+            <td valign="bottom">
+
+                <div style="padding: 2px 10px; margin: 0px;">
+
+                    <a href="$confluenceUri/pages/editpage.action?pageId=$page.id">
+
+                    <img src="http://tuscany.apache.org/images/notep_16.gif" height="16" width="16" border="0" align="absmiddle" title="Edit Page"></a>
+
+                </div>
+
+            </td>
+
+
+
+        </tr>
+
+    </table>
+
+#end
+
+##
+
+#macro (pageControls)
+
+   <div align="right" style="padding: 2px 10px; margin: 0px;">
+
+        <a href="$confluenceUri/pages/editpage.action?pageId=$page.id">
+
+            <img src="http://tuscany.apache.org/images/notep_16.gif" height="16" width="16" border="0" align="absmiddle" title="Edit Page"></a>    
+
+   </div>
+
+#end
+
+##
+
+#macro (breadCrumbs)
+
+    <table border="0" cellpadding="2" cellspacing="0" width="100%">
+
+        <tr class="topBar">
+
+            <td align="left" valign="middle" class="topBarDiv" nowrap="true" width="100%">
+
+                &nbsp;$autoexport.breadcrumbs($page)
+
+            </td>
+
+            
+
+            <td align="right" valign="middle" class="topBarDiv" align="left" nowrap="true">
+
+            <a href="http://mail-archives.apache.org/mod_mbox/tuscany-user">User List</a> | <a href="http://mail-archives.apache.org/mod_mbox/tuscany-dev">Dev List</a> | <a href="http://issues.apache.org/jira/browse/Tuscany">Issue Tracker</a>&nbsp;&nbsp;
+
+            </td>
+
+        </tr>
+
+    </table>
+
+#end
+
+##
+
+#macro (pageContent)
+
+    <div id="PageContent">
+
+        #if ($pageContentHeaderEnabled)
+
+            <div class="pageheader" style="padding: 6px 0px 0px 0px;">
+
+                <div style="margin: 0px 10px 0px 10px" class="smalltext">$page.space.name</div>
+
+                <div style="margin: 0px 10px 8px 10px" class="pagetitle">$page.title</div>
+
+            </div>
+
+        #end
+
+        
+
+        <div class="pagecontent">
+
+            <div class="wiki-content">
+
+                $body
+
+            </div>
+
+        </div>
+
+    </div>
+
+#end
+
+##
+
+#macro (footer)
+
+    ## Google Analytics script
+
+    <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+
+    </script>
+
+    <script type="text/javascript">
+
+       _uacct = "UA-1174707-5";
+
+       urchinTracker();
+
+    </script>
+
+    
+
+    ## StatCounter script
+
+    <a href="http://www.statcounter.com/" target="_blank"><img src="http://c26.statcounter.com/counter.php?sc_project=2619156&java=0&security=94bd7e7d&invisible=0" alt="website stats" border="0"></a>    
+
+
+
+    <div class="footer">
+
+        Copyright Â© 2003-2008, The Apache Software Foundation&nbsp;&nbsp;
+
+    </div>
+
+#end
+
+##
+
+<html>
+
+    <head>
+        #generateKeywords()
+
+
+        <link type="text/css" rel="stylesheet" href="http://tuscany.apache.org/stylesheets/default.css">
+
+        <link rel="SHORTCUT ICON" href="$images/favicon.ico">   
+
+        <title>$page.title : Apache Tuscany</title>
+
+    </head>
+
+    
+
+    <body onload="init()">
+
+        
+
+        #topNav()
+
+
+
+        #breadCrumbs()
+
+
+
+        <table border="0" cellpadding="0" width="100%" bgcolor="#FFFFFF">
+
+            <tr>
+
+                <td align="left" valign="top">
+
+                    #pageContent()
+
+                </td>
+
+            </tr>
+
+        </table>
+
+
+
+        #footer()
+
+
+
+    </body>
+
+</html>

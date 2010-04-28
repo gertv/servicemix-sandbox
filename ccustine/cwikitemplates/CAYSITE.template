@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<title>Apache Cayenne &#187; $page.title</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="description" content="Apache Cayenne is a powerful, full-featured, open-source object relational mapping framework created for developers working with relational databases.">
+<meta name="robots" content="index,follow">
+<link rel="stylesheet" type="text/css" media="screen, projection" href="http://cayenne.apache.org/css/styles.css">
+<link rel="stylesheet" type="text/css" media="print" href="http://cayenne.apache.org/css/print.css">
+<link rel="shortcut icon" href="http://cayenne.apache.org/img/favicon.ico" type="image/ico">
+<script type="text/javascript" src="http://cayenne.apache.org/js/scripts.js"></script>
+</head>
+<body>
+<div id="wrap"><div id="wrap-inner">
+
+<div id="header">
+	<h1><a href="http://cayenne.apache.org" title="Return to Apache Cayenne home"><span>The Apache Cayenne Project</span></a></h1>
+	<h2><a href="http://www.apache.org" title="The Apache Software Foundation"><span>The Apache Software Foundation</span></a></h2>
+</div>
+
+<div id="container">
+
+<div id="sidebar">
+<ul id="nav">
+	<li><a href="http://cayenne.apache.org/about.html">About</a>
+		<ul>
+			<li><a href="http://cayenne.apache.org/why-cayenne.html">Why Cayenne?</a></li>
+		<!--	<li><a href="http://cayenne.apache.org/features.html">Features</a></li> -->
+			<li><a href="http://cayenne.apache.org/download.html">Download</a></li>
+			<li><a href="http://cayenne.apache.org/success-stories.html">Success Stories</a></li>
+			<li><a href="http://cayenne.apache.org/commercial-support.html">Commercial Support</a></li>
+		</ul>
+	</li>
+	<li><a href="http://cayenne.apache.org/documentation.html">Documentation</a>
+		<ul>
+			<li><a href="http://cayenne.apache.org/doc30/tutorial.html">Getting Started</a></li>
+			<li class="trigger"><a href="http://cayenne.apache.org/doc30/documentation.html">Version 3.0 (beta)</a>
+				<ul>
+					<li><a href="http://cayenne.apache.org/doc30/overview.html">Overview</a></li>
+					<li><a href="http://cayenne.apache.org/doc30/cayenne-guide.html">Cayenne Guide</a></li>
+					<li><a href="http://cayenne.apache.org/doc30/remote-object-persistence-guide.html">Remote Client Guide</a></li>
+					<li><a href="http://cayenne.apache.org/doc30/modeler-guide.html">Modeler Guide</a></li>
+					<li><a href="http://cayenne.apache.org/doc30/api/index.html">JavaDoc</a></li>
+				</ul>
+			</li>
+			<li class="trigger"><a href="http://cayenne.apache.org/doc20/documentation.html">Version 2.0 (released)</a>
+				<ul>
+					<li><a href="http://cayenne.apache.org/doc20/user-guide.html">User Guide</a></li>
+					<li><a href="http://cayenne.apache.org/doc20/remote-object-persistence-guide.html">Remote Client Guide</a></li>
+					<li><a href="http://cayenne.apache.org/doc20/modeler-guide.html">Modeler Guide</a></li>
+					<li><a href="http://cayenne.apache.org/doc20/api/cayenne/index.html">JavaDoc</a></li>
+				</ul>
+			</li>
+			<li class="trigger"><a href="http://cayenne.apache.org/doc12/documentation.html">Version 1.2 (archived)</a>
+				<ul>
+					<li><a href="http://cayenne.apache.org/doc12/user-guide.html">User Guide</a></li>
+					<li><a href="http://cayenne.apache.org/doc12/remote-object-persistence-guide.html">Remote Client Guide</a></li>
+					<li><a href="http://cayenne.apache.org/doc12/modeler-guide.html">Modeler Guide</a></li>
+					<li><a href="http://cayenne.apache.org/doc12/api/cayenne/index.html">JavaDoc</a></li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	<li><a href="http://cayenne.apache.org/collaboration.html">Collaboration</a>
+		<ul>
+			<li><a href="http://issues.apache.org/jira/browse/CAY">Bug/Feature Tracker</a></li>
+			<li><a href="http://cayenne.apache.org/mailing-lists.html">Mailing Lists</a></li>
+			<li><a href="http://cwiki.apache.org/CAY">Wiki</a></li>
+			<li><a href="http://cayenne.apache.org/code-repository.html">Code Repository</a></li>
+			<li><a href="http://cayenne.apache.org/developer-guide.html">Developer Guide</a></li>
+			<li><a href="http://cayenne.apache.org/how-can-i-help.html">How Can I Help</a></li>
+			<li><a href="http://cayenne.apache.org/contributors.html">Contributors</a></li>
+		</ul>
+	</li>
+</ul>
+</div>
+
+<hr>
+
+<div id="content">
+        <div id="bread">
+	  <span>$autoexport.breadcrumbs($page)</span>
+          <ul>
+             <li><a href="$confluenceUri/pages/editpage.action?pageId=$page.id">edit page</a></li>
+             <li><a href="$confluenceUri/pages/createpage.action?spaceKey=$page.spaceKey&fromPageId=$page.id">new page</a></li>
+          </ul>
+        </div>
+	$body
+	<hr>
+	<p id="footer">Copyright &#169; 2001-2010 Apache Software Foundation. <a href="http://cayenne.apache.org/privacy-policy.html">Privacy policy.</a></p>
+</div>
+
+</div>
+
+</div></div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-7036673-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

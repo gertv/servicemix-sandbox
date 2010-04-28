@@ -1,0 +1,34 @@
+#set($sling = "http://sling.apache.org/site")
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Apache Sling - $page.title</title>
+    <link rel="stylesheet" href="${sling}/media.data/site.css" type="text/css" media="all">
+    <link rel="icon" href="${sling}/media.data/favicon.ico">
+    <meta http-equiv="Content-Type" content="text/html">
+  </head>
+  <body>
+    <div class="title">
+      <div class="logo">
+        <a href="${sling}/index.html">
+          <img border="0" alt="Apache Sling" src="${sling}/media.data/logo.png">
+        </a>
+      </div>
+    </div>
+    <div class="menu">
+#set($navPage = $pageManager.getPage($page.spaceKey, "Navigation"))
+$autoexport.render($navPage)
+    </div>
+    <div class="main">
+        <div class="breadcrump" style="font-size: 80%;">
+$autoexport.breadcrumbs($page)
+        </div>
+$body
+        <div class="timestamp" style="margin-top: 30px; font-size: 80%; text-align: right;">
+Last modified by $page.lastModifierName on $page.lastModificationDate
+        </div>
+    </div>
+  </body>
+</html>
+
+

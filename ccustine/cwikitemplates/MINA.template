@@ -1,0 +1,241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+ 
+        http://www.apache.org/licenses/LICENSE-2.0
+ 
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+#if ( $page.title.equals("Index") )
+  #set ($heading_title = "Welcome to Apache MINA Project!")
+#else
+  #set ($heading_title = $page.title)
+#end
+
+##
+#macro (renderPage $title)
+  #set($globalHelper = $action.getGlobalHelper())
+  #set($renderer = $globalHelper.getWikiStyleRenderer())
+
+  #foreach ($child in $page.space.pages)
+    #if ( ($child.title.equals($title)) && ( $child.contentStatus.equals("current") ) )
+      #set ($content = $renderer.convertWikiToXHtml($child.toPageContext(), $child.content).trim())
+      #set ($content = $content.replaceAll("^<[pP]>|</[pP]>$", "") )
+      ##set ($content = $content.substring(3, $content.length()))
+      ##set ($end = $content.length() - 4)
+      ##set ($content = $content.substring(0, $end))
+      $content
+    #end
+  #end
+#end
+##
+
+<html>
+  <head>
+    <title>Apache MINA - $page.title</title>
+    <meta name="keywords" content="network framework, network library, NIO framework, NIO library, server framework, server library, client framework, client library, protocol framework, protocol library">
+    <META http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="alternate" type="application/rss+xml" title="Apache MINA News" href="http://feeds.feedburner.com/asf/mina">
+    <link type="text/css" rel="stylesheet" href="http://cwiki.apache.org/confluence/download/attachments/27044/style.css">
+
+    <script type="text/javascript" language="javascript">
+      var hide = null;
+      var show = null;
+      var children = null;
+
+      function init() {
+        /* Search form initialization */
+        var form = document.forms['googleSearch'];
+        if (form != null) {
+          form.elements['domains'].value = location.hostname;
+          form.elements['sitesearch'].value = location.hostname;
+        }
+
+        /* Children initialization */
+        hide = document.getElementById('hide');
+        show = document.getElementById('show');
+        children = document.all != null ?
+                   document.all['children'] :
+                   document.getElementById('children');
+        if (children != null) {
+          children.style.display = 'inline';
+          show.style.display = 'none';
+          hide.style.display = 'inline';
+        }
+      }
+
+      function showChildren() {
+        children.style.display = 'block';
+        show.style.display = 'none';
+        hide.style.display = 'inline';
+      }
+
+      function hideChildren() {
+        children.style.display = 'none';
+        show.style.display = 'inline';
+        hide.style.display = 'none';
+      }
+    </script>
+    <!--[if lt IE 7.]>
+    <script defer type="text/javascript">
+      var arVersion = navigator.appVersion.split("MSIE")
+      var version = parseFloat(arVersion[1])
+
+      if ((version >= 5.5) && (document.body.filters)) 
+      {
+         for(var i=0; i<document.images.length; i++)
+         {
+            var img = document.images[i]
+            var imgName = img.src.toUpperCase()
+            if (imgName.substring(imgName.length-3, imgName.length) == "PNG")
+            {
+               var imgID = (img.id) ? "id='" + img.id + "' " : ""
+               var imgClass = (img.className) ? "class='" + img.className + "' " : ""
+               var imgTitle = (img.title) ? "title='" + img.title + "' " : "title='" + img.alt + "' "
+               var imgStyle = "display:inline-block;" + img.style.cssText 
+               if (img.align == "left") imgStyle = "float:left;" + imgStyle
+               if (img.align == "right") imgStyle = "float:right;" + imgStyle
+               if (img.parentElement.href) imgStyle = "cursor:hand;" + imgStyle
+               var strNewHTML = "<span " + imgID + imgClass + imgTitle
+               + " style=\"" + "width:" + img.width + "px; height:" + img.height + "px;" + imgStyle + ";"
+               + "filter:progid:DXImageTransform.Microsoft.AlphaImageLoader"
+               + "(src=\'" + img.src + "\', sizingMethod='scale');\"></span>" 
+               img.outerHTML = strNewHTML
+               i = i-1
+            }
+         }
+      }
+    </script>
+    <![endif]-->
+  </head>
+  <body onload="init()">
+    <div id="PageContent" style="padding-bottom: 0px;">
+      <div class="pageheader" style="padding: 6px 0px 0px 0px;">
+        <div id="apacheLogo" style="width: 100%; text-align: right; position: absolute; top: 33px;">
+          <a href="http://www.apache.org/"><img src="http://www.apache.org/images/asf-logo.gif" border="0" alt="The Apache Software Foundation" title="The Apache Software Foundation" hspace="12"></a>
+        </div>
+        <div id="minaLogo" style="position: absolute; top: -24px; left: 16px;">
+          <a href="http://mina.apache.org/"><img src="http://mina.apache.org/artwork.data/logo.png" border="0" alt="Apache MINA" title="Apache MINA"></a>
+        </div>
+        <div class="greynavbar" style="margin: 156px 0px 0px 0px;">
+          <table border="0" cellpadding="2" cellspacing="0" width="100%" style="position: relative; z-index: 10;">
+            <tr>
+              <td align="left" valign="middle" align="left" style="padding-left: 17px;" width="100%" nowrap>
+                &nbsp;$autoexport.breadcrumbs($page)
+              </td>
+              <td align="right" valign="middle" nowrap>
+                <form name="googleSearch" action="http://www.google.com/search" method="get" style="margin: 0px; padding: 0px;">
+                  <input type="hidden" name="ie" value="UTF-8" />
+                  <input type="hidden" name="oe" value="UTF-8" />
+                  <input type="hidden" name="domains" value="" />
+                  <input type="hidden" name="sitesearch" value="" />
+                  <input type="text" name="q" maxlength="255" value="" />        
+                  <input type="submit" name="btnG" value="Google Search" />
+                </form>
+              </td>
+              <td align="right" valign="middle" style="padding-right: 8px;" nowrap>
+                <form name="listSearch" action="http://mina.markmail.org/search/" method="get" style="margin: 0px; padding: 0px;">
+                  <input type="text" name="q" maxlength="255" value="" />        
+                  <input type="submit" value="Mailing List Search" />
+                </form>
+              </td>
+            </tr> 
+          </table>
+        </div>
+      </div>
+      <div id="pageBody" style="clear: both;">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+          <tr>
+            <td width="192" valign="top" nowrap>
+              <div style="padding: 0px 8px 16px 20px;">
+                #renderPage("Navigation")
+              </div>
+             <div align="center"><iframe src="http://www.apache.org/ads/buttonbar.html" style="border-width:0" frameborder="0" scrolling="no" width="135" height="265"></iframe></div>
+            </td>
+            <td width="100%" valign="top">
+              <div class="pagecontent">
+                <h1 style="margin-top: 0px;">
+                  $heading_title
+                </h1>
+                <div class="wiki-content">
+                  $body
+                </div>
+  
+                #if ($page.hasChildren())
+                <div class="tabletitle">
+                  Children
+                  <span class="smalltext" id="show" style="display: none;">
+                    <a href="javascript:showChildren()">Show Children</a>
+                  </span>
+                  <span class="smalltext" id="hide" style="display: inline;">
+                    <a href="javascript:hideChildren()">Hide Children</a>
+                  </span>
+                </div>
+                <div id="children" style="display: inline;">
+                #set ($children = $page.children)
+                  <ul>
+                  #foreach ($child in $children)
+                    <li>$autoexport.link($child)</li>
+                  #end
+                  </ul>
+                </div>
+                #end
+              </div>
+            </td>
+          </tr>
+        </table>
+        <div class="pagesubheading" style="margin: 0px 10px 0px 10px; text-align:right; clear: both;">
+          #editReport()
+        </div>
+        <div class="greynavbar" align="right" style="padding: 2px 10px;">
+          <a href="$confluenceUri/pages/editpage.action?pageId=$page.id">
+            <img src="$confluenceUri/images/icons/notep_16.gif"
+                 height="16" width="16" border="0" align="absmiddle" title="Edit Page"></a>
+          <a href="$confluenceUri/pages/editpage.action?pageId=$page.id">Edit Page</a>
+          &nbsp;
+          <a href="$confluenceUri/pages/listpages.action?key=$page.spaceKey">
+            <img src="$confluenceUri/images/icons/browse_space.gif"
+                 height="16" width="16" border="0" align="absmiddle" title="Browse Space"></a>
+          <a href="$confluenceUri/pages/listpages.action?key=$page.spaceKey">Browse Space</a>
+          &nbsp;
+          <a href="$confluenceUri/pages/createpage.action?spaceKey=$page.spaceKey&fromPageId=$page.id">
+            <img src="$confluenceUri/images/icons/add_page_16.gif"
+                 height="16" width="16" border="0" align="absmiddle" title="Add Page"></a>
+          <a href="$confluenceUri/pages/createpage.action?spaceKey=$page.spaceKey&fromPageId=$page.id">Add Page</a>
+          &nbsp;
+          <a href="$confluenceUri/pages/createblogpost.action?spaceKey=$page.spaceKey&fromPageId=$page.id">
+            <img src="$confluenceUri/images/icons/add_blogentry_16.gif"
+                 height="16" width="16" border="0" align="absmiddle" title="Add News"></a>
+          <a href="$confluenceUri/pages/createblogpost.action?spaceKey=$page.spaceKey&fromPageId=$page.id">Add News</a>
+          &nbsp;
+          <a href="$confluenceUri/pages/createblogpost.action?spaceKey=$page.spaceKey&fromPageId=$page.id">
+            <img src="$confluenceUri/download/resources/com.gliffy.integration.confluence:gliffy-macro-key/resources/icons/add_diagram_16.gif"
+                 height="16" width="16" border="0" align="absmiddle" title="Add Diagram"></a>
+          <a href="$confluenceUri/spaces/gliffy/adddiagram.action?pageId=$page.id">Add Diagram</a>
+        </div>
+        <div class="footer" style="text-align: center">
+          Copyright &#169; 2004-2010, <a href="http://www.apache.org/">The Apache Software Foundation</a>
+          (stats: <a href="http://people.apache.org/~coar/mlists.html#mina.apache.org">mail</a> &middot; <a href="http://people.apache.org/~vgritsenko/stats/projects/mina.html">site</a>)
+        </div>
+      </div>
+    </div>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-11074178-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+  </body>
+</html>

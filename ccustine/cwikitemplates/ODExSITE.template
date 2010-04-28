@@ -1,0 +1,101 @@
+##
+#macro (renderPage $title)
+    #set($globalHelper = $action.getGlobalHelper())
+    #set($renderer = $globalHelper.getWikiStyleRenderer())
+    #foreach ($child in $page.space.pages)
+        #if ($child.title.equals($title))
+            #set ($content = $renderer.convertWikiToXHtml($child.toPageContext(), $child.content).trim())
+            $content
+        #end
+    #end
+#end
+##
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<html>
+<head>
+    <link href="http://people.apache.org/~mriou/ode/site/default.css" rel="stylesheet" type="text/css"/>
+    <link href="http://people.apache.org/~mriou/ode/site/type-settings.css" rel="stylesheet" type="text/css"/>
+    <title>
+    Apache ODE -- $page.title
+    </title>
+</head>
+
+<body>
+
+<!-- Start Border -->
+<div id="border">
+<img src="http://people.apache.org/~mriou/ode/site/images/border-top.jpg" alt="" class="block" />
+
+   <!-- Start Main Wrapper -->
+  	<div id="wrapper">
+
+      	<!-- Start Header -->
+      	<div id="header">
+         	<img src="http://people.apache.org/~mriou/ode/site/images/top-banner.gif" alt="Welcome to Apache ODE" class="block" />
+      	</div>
+	  	<!-- End Header -->
+
+	  	<!-- Start Navigation Bar -->
+	  	<div id="navbar">$autoexport.breadcrumbs($page)</div>
+	    <!--`End Navigation Bar -->
+	  	
+		<!-- Start Left Column -->
+		
+		<div id="leftcolumn">
+			<div class="mainnav">
+				#renderPage("SideNav Main")
+      		</div>
+	  		<br />
+			<div class="mainnav">
+				#renderPage("SideNav Documentation")
+    		</div>
+			<br />
+			<div class="mainnav">
+				#renderPage("SideNav Contributing")
+			</div>
+			
+		</div>
+	<!-- End Left Column -->
+
+<!-- Start Center Column -->
+	<div id="centercolumn">
+
+	$body
+
+	<br />
+    </div>
+	<!-- End Center Column -->
+
+<div id="footer">
+<em><a href="$confluenceUri/pages/editpage.action?pageId=$page.id">Edit page</a></em><br/>
+<em>Design and artwork by <a href="mailto:thompson.kelly@gmail.com">Kelly Thompson</a></em>
+</div>
+
+</div>
+<!-- End Main Wrapper -->
+
+
+<div id="bottomborder"><img src="http://people.apache.org/~mriou/ode/site/images/border-bottom.jpg" class="block" /><br /><br /></div>
+</div>
+<!-- End Border -->
+
+</body>
+</html>
+

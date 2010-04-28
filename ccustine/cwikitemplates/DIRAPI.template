@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+ 
+        http://www.apache.org/licenses/LICENSE-2.0
+ 
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+##
+#set ($images = "http://directory.apache.org/staticresources/images")
+#set ($siteroot = "http://directory.apache.org")
+#set ($pageContentHeaderEnabled = false)
+##
+#if ( $page.title.equals("Index") )
+    #set ($title = "Java and Groovy based LDAP APIs for accessing Directory Servers")
+#else
+    #set ($title = $page.title)
+#end
+##
+#macro (renderPage $title)
+    #set($globalHelper = $action.getGlobalHelper())
+    #set($renderer = $globalHelper.getWikiStyleRenderer())
+ 
+    ##
+    ## FIXME: Must be a more efficent way to find a page...
+    ##
+ 
+    #foreach ($child in $page.space.pages)
+        #if ( ($child.title.equals($title)) && ( $child.contentStatus.equals("current") ) )
+            #set ($content = $renderer.convertWikiToXHtml($child.toPageContext(), $child.content).trim())
+ 
+            ##
+            ## HACK: Remove the leading <P> and trailing </P>
+            ##
+ 
+            #set ($content = $content.replaceAll("^<[pP]>|</[pP]>$", "") )
+            ##set ($content = $content.substring(3, $content.length()))
+            ##set ($end = $content.length() - 4)
+            ##set ($content = $content.substring(0, $end))
+ 
+            $content
+        #end
+    #end
+#end
+##
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <title>Apache Directory LDAP API - $title</title>
+        <link href="http://directory.apache.org/staticresources/common_20091029.css" rel="stylesheet" type="text/css">
+        <link href="http://directory.apache.org/staticresources/brown.css" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="http://directory.apache.org/staticresources/images/api-icon_16x16.png">
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="http://cwiki.apache.org/confluence/createrssfeed.action?types=blogpost&statuses=created&statuses=modified&spaces=DIRxAPI&labelString=&rssType=rss2&maxResults=5&timeSpan=99&publicFeed=true&title=Apache+Directory+Api+News+RSS+Feed">
+        <!-- Google Analytics -->
+        <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>  
+        <script type="text/javascript">
+            _uacct = "UA-1358462-1";
+            urchinTracker();
+        </script>
+        <!-- JQuery inclusion -->
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+        <!-- Loading the script for the edit button -->
+        <script>
+            $(document).ready( function()
+            {
+                $("#editZone").hover( function()
+                {
+                    $("#editZoneLink").stop().animate({opacity: 1}, 1000, function()
+                    {
+                        $("#editZoneLink").fadeIn();
+                    });
+                }
+                , function ()
+                {
+                    $("#editZoneLink").stop().fadeOut();
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <div id="editZone">
+            <div id="editZoneLink" style="display: none; height: 60px; width: 60px;">
+                <a href="$confluenceUri/pages/editpage.action?pageId=$page.id" title="Edit this page" alt="Edit this page"><img style="position: absolute; right:5px; top:5px;" src="http://directory.apache.org/staticresources/images/edit_20091029.png" height="52" width="39" border="0"/></a>
+            </div>
+        </div>
+        <a name="top"></a>
+        <div id="container">
+            <div id="header">
+                <div id="subProjectsNavBar">
+                    <a href="http://directory.apache.org/">Apache Directory Project</a>
+                    &nbsp;|&nbsp;
+                    <a href="http://directory.apache.org/apacheds/1.5/">ApacheDS</a>
+                    &nbsp;|&nbsp;
+                    <a href="http://directory.apache.org/studio/">Apache Directory Studio</a>
+                    &nbsp;|&nbsp;
+                    <a href="http://directory.apache.org/api/"><strong>Apache LDAP API</strong></a>
+                </div><!-- subProjectsNavBar -->
+            </div><!-- header -->
+            <div id="content">
+                <div id="leftColumn">
+                    <div id="navigation">
+                        #renderPage("Navigation")
+                    </div><!-- navigation -->
+                </div><!-- leftColumn -->
+                <div id="rightColumn">
+                    $body
+                </div><!-- rightColumn -->
+                <div id="endContent"></div>
+            </div><!-- content -->
+            <div id="footer">&copy; 2003-2009, <a href="http://www.apache.org">The Apache Software Foundation</a>&nbsp;-&nbsp;<a href="http://directory.apache.org/privacy-policy.html">Privacy Policy</a></div>
+        </div><!-- container -->
+    </body>
+</html>

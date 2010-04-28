@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+ 
+        http://www.apache.org/licenses/LICENSE-2.0
+ 
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+#if ( $page.title.equals("Index") )
+  #set ($heading_title = "Welcome to Apache FtpServer")
+#else
+  #set ($heading_title = $page.title)
+#end
+
+##
+#macro (renderPage $title)
+  #set($globalHelper = $action.getGlobalHelper())
+  #set($renderer = $globalHelper.getWikiStyleRenderer())
+
+  #foreach ($child in $page.space.pages)
+    #if ( ($child.title.equals($title)) && ( $child.contentStatus.equals("current") ) )
+      #set ($content = $renderer.convertWikiToXHtml($child.toPageContext(), $child.content).trim())
+      #set ($content = $content.replaceAll("^<[pP]>|</[pP]>$", "") )
+      ##set ($content = $content.substring(3, $content.length()))
+      ##set ($end = $content.length() - 4)
+      ##set ($content = $content.substring(0, $end))
+      $content
+    #end
+  #end
+#end
+##
+
+<html>
+  <head>
+    <title>Apache FtpServer - $page.title</title>
+    <META http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link type="text/css" rel="stylesheet" href="http://mina.apache.org/index.data/style.css">
+    <script type="text/javascript" language="javascript">
+      function init() {
+        /* Search form initialization */
+        var form = document.forms['googleSearch'];
+        if (form != null) {
+          form.elements['domains'].value = location.hostname;
+          form.elements['sitesearch'].value = location.hostname;
+        }
+
+      }
+    </script>
+  </head>
+  <body onload="init()">
+    <div id="PageContent" style="padding-bottom: 0px;">
+      <div class="pageheader" style="padding: 6px 0px 0px 0px;">
+        <div id="apacheLogo" style="width: 100%; text-align: right; position: absolute; top: 33px;">
+          <a href="http://www.apache.org/"><img src="http://www.apache.org/images/asf-logo.gif" border="0" alt="The Apache Software Foundation" title="The Apache Software Foundation" hspace="12"></a>
+        </div>
+        <div id="minaLogo" style="position: absolute; top: 24px; left: 16px;">
+          <a href="http://mina.apache.org/ftpserver"><img src="http://mina.apache.org/ftpserver/index.data/logo-300x95.png" border="0" alt="Apache FtpServer" title="Apache FtpServer"></a>
+        </div>
+        <div class="greynavbar" style="margin: 156px 0px 0px 0px;">
+          <table border="0" cellpadding="2" cellspacing="0" width="100%" style="position: relative; z-index: 10;">
+            <tr>
+              <td align="left" valign="middle" align="left" style="padding-left: 17px;" width="100%" nowrap>
+                &nbsp;$autoexport.breadcrumbs($page)
+              </td>
+              <td align="right" valign="middle" nowrap>
+                <form name="googleSearch" action="http://www.google.com/search" method="get" style="margin: 0px; padding: 0px;">
+                  <input type="hidden" name="ie" value="UTF-8" />
+                  <input type="hidden" name="oe" value="UTF-8" />
+                  <input type="hidden" name="domains" value="" />
+                  <input type="hidden" name="sitesearch" value="" />
+                  <input type="text" name="q" maxlength="255" value="" />        
+                  <input type="submit" name="btnG" value="Google Search" />
+                </form>
+              </td>
+              <td align="right" valign="middle" style="padding-right: 8px;" nowrap>
+                <form name="listSearch" action="http://mina.markmail.org/search/" method="get" style="margin: 0px; padding: 0px;">
+                  <input type="text" name="q" maxlength="255" value="" />        
+                  <input type="submit" value="Mailing List Search" />
+                </form>
+              </td>
+            </tr> 
+          </table>
+        </div>
+      </div>
+      <div id="pageBody" style="clear: both;">
+        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+          <tr>
+            <td width="192" valign="top" nowrap>
+              <div style="padding: 0px 8px 16px 20px;">
+                #renderPage("Navigation")
+              </div>
+             <div align="center"><iframe src="http://www.apache.org/ads/buttonbar.html" style="border-width:0" frameborder="0" scrolling="no" width="135" height="265"></iframe></div>
+            </td>
+            <td width="100%" valign="top">
+              <div class="pagecontent">
+                <h1 style="margin-top: 0px;">
+                  $heading_title
+                </h1>
+                <div class="wiki-content">
+                  $body
+                </div>
+  
+              </div>
+            </td>
+          </tr>
+        </table>
+        <div class="footer" style="text-align: center">
+          Copyright &#169; 2004-2008, <a href="http://www.apache.org/">The Apache Software Foundation</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

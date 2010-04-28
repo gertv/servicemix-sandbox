@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+##
+##
+#set ($images = "http://openjpa.apache.org/images")
+#set ($siteroot = "http://openjpa.apache.org")
+#set ($pageContentHeaderEnabled = false)
+##
+#macro (renderPage $title)
+    #set($globalHelper = $action.getGlobalHelper())
+    #set($renderer = $globalHelper.getWikiStyleRenderer())
+    #foreach ($child in $page.space.pages)
+        #if ($child.title.equals($title))
+            #set ($content = $renderer.convertWikiToXHtml($child.toPageContext(), $child.content).trim())
+            $content
+        #end
+    #end
+#end
+##
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<html lang="en">
+<head>
+    <META http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <link href="http://openjpa.apache.org/styles/site.css" rel="stylesheet" type="text/css"/>
+    <link href="http://openjpa.apache.org/styles/type-settings.css" rel="stylesheet" type="text/css"/>
+    <LINK rel="schema.DC" href="http://purl.org/DC/elements/1.0/">
+    <META name="Description" content="Apache OpenJPA -- $page.title" />
+    <META name="Keywords" content="Apache OpenJPA, JPA, JSR-220, JPA 2.0, JSR-317, $page.title" />
+    <META name="Owner" content="dev@openjpa.apache.org" />
+    <META name="Robots" content="index, follow" />
+    <META name="Security" content="Public" />
+    <META name="Source" content="wiki template" />
+    <META name="DC.Date" scheme="iso8601" content="2010-01-25" />
+    <META name="DC.Language" scheme="rfc1766" content="en" />
+    <META name="DC.Rights" content="Copyright Â© 2006,2010 The Apache Software Foundation" />
+    <META http-equiv="PICS-Label" content='(PICS-1.1 "http://www.icra.org/ratingsv02.html" l gen true r (cz 1 lz 1 nz 1 oz 1 vz 1) "http://www.rsac.org/ratingsv01.html" l gen true r (n 0 s 0 v 0 l 0) "http://www.classify.org/safesurf/" l gen true r (SS~~000 1))'/>
+
+    <title>
+    Apache OpenJPA -- $page.title
+    </title>
+</head>
+<body>
+<div class="white_box">
+<div class="header">
+  <div class="header_l">
+    <div class="header_r">
+    </div>
+  </div>
+</div>
+<div class="content">
+  <div class="content_l">
+    <div class="content_r">
+      <div>
+
+        <!-- Old Banner
+        ##renderPage("Banner")
+        <div id="header_background">
+          <div id="openjpa_logo">
+            <a style="float: left; width: 280px; display: block; text-indent:-5000px; text-decoration: none;line-height: 60px; margin-top: 10px; margin-left: 100px;" href="http://openjpa.apache.org/">OpenJPA</a>
+            <div id="asf_logo">
+              <a style="float:right; width:210px;display:block;text-indent:-5000px;text-decoration:none;line-height:60px; margin-top:15px; margin-right:10px;" href="http://www.apache.org/" title="The Apache Software Foundation">ASF</A>
+            </div>
+          </div>
+        </div>
+        -->
+        <!-- Banner -->
+        <TABLE valign="top" border="0" cellspacing="0" cellpadding="5" width="100%" background="images/header-bg3.png">
+          <TR>
+            <TD valing="top" align="left">
+                <A href="http://openjpa.apache.org/"><IMG src="$images/openjpa-logo.png" border="0" alt="OpenJPA Logo"></A>
+            </TD>
+            <TD width="100%">
+                &nbsp;
+            </TD>
+            <TD valing="top" align="right">
+                <A href="http://www.apache.org/"><IMG src="$images/asf_logo_wide2.png" border="0" alt="ASF Logo"></A>
+            </TD>
+          </TR>
+        </TABLE>
+
+        <!-- Navigation Bar -->
+        <div class="top_red_bar">
+          <div id="site-breadcrumbs">
+$autoexport.breadcrumbs($page)
+          </div>
+          <div id="site-quicklinks">
+#renderPage("Top Navigation Bar")
+          </div>
+        </div>
+
+    <!-- Content -->
+    <table border="0">
+    <tbody>
+        <tr>
+        <td valign="top" width="100%" style="overflow:hidden;">
+          <div class="wiki-content">
+          $body
+          </div>
+        </td>
+        <td valign="top">
+          <div class="navigation">
+            <div class="navigation_top">
+              <div class="navigation_bottom">
+                #renderPage("SideNav")
+              </div>
+            </div>
+          </div>
+        </td>
+        </tr>
+    </tbody>
+        </table>
+
+
+        <div class="bottom_red_bar"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="black_box">
+<div class="footer">
+  <div class="footer_l">
+    <div class="footer_r">
+      <div>
+        #editReport() 
+        (<a href="$confluenceUri/pages/editpage.action?pageId=$page.id">edit page</a>)
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<div class="design_attribution">
+Copyright (C) 2006,2010 The Apache Software Foundation. Licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>.<br />
+Apache, the Apache feather logo and OpenJPA are trademarks of The Apache Software Foundation.<br />
+Other names may be trademarks of their respective owners.<br />
+</div>
+
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-1940143-1";
+urchinTracker();
+</script>
+
+</body>
+</html>
+
+

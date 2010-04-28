@@ -1,0 +1,19 @@
+#set($felix = "http://felix.apache.org/site")
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Apache Felix - $page.title</title>
+    <link rel="stylesheet" href="${felix}/media.data/site.css" type="text/css" media="all">
+    <meta http-equiv="Content-Type" content="text/html">
+  </head>
+  <body>
+    <div class="title"><div class="logo"><a href="${felix}/index.html"><img border="0" alt="Apache Felix" src="${felix}/media.data/logo.png"></a></div><div class="header"><a href="http://www.apache.org/"><img border="0" alt="Apache" src="${felix}/media.data/apache.png"></a></div></div>
+    <div class="menu">
+#renderPage("Navigation")
+    </div>
+    <div class="main">
+$body
+    </div>
+  </body>
+</html>
+
