@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.4//EN" "http://www.oasis-open.org/docbook/xml/4.4/docbookx.dtd">
-
+<?xml version="1.0" encoding="utf-8"?>
 <!--
 
     Licensed to the Apache Software Foundation (ASF) under one or more
@@ -18,9 +16,20 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-
-<book id="book" label="Apache ServiceMix Manual Guide" status="draft" lang="en" xmlns:xi="http://www.w3.org/2001/XInclude">
+<!DOCTYPE book [
+	<!ENTITY version "4.2">
+]>
+<book id="book" label="Apache ServiceMix Manual Guide" status="draft" lang="en"
+         xmlns="http://docbook.org/ns/docbook"
+         xmlns:xi="http://www.w3.org/2001/XInclude"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="
+               http://docbook.org/ns/docbook
+               http://www.docbook.org/xml/5.0/xsd/docbook.xsd"
+         version="5.0" xml:lang="en">
+              
     <title>Apache ServiceMix &version; Manual Guide</title>
+    
     <bookinfo>
         <authorgroup>
             <author>
@@ -55,10 +64,10 @@
             </author>
         </authorgroup>
         <copyright>
-            <year>2009</year>
+            <year>2010</year>
             <holder>Apache Software Foundation</holder>
         </copyright>
-        <date>2009-07-20</date>
+        <date>2010-04-28</date>
         <revhistory>
             <revision>
                 <revnumber>001</revnumber>
@@ -72,324 +81,28 @@
                 <authorinitials>cmoulliard</authorinitials>
                 <revremark>Update table of content, add directory for images</revremark>
             </revision>
+            <revision>
+                <revnumber>003</revnumber>
+                <date>2010-04-28</date>
+                <authorinitials>cmoulliard</authorinitials>
+                <revremark>Split structure in several documents, add section numbering</revremark>
+            </revision>
         </revhistory>
         <corpname>Apache Software Foundation</corpname>
     </bookinfo>
     
     <toc />
     
-    <chapter id="what is servicemix 4">
-    	<title>What is ServiceMix 4 ?</title>
-        <para>
-            Apache ServiceMix is an open source ESB (Enterprise Service Bus) that combines the functionality of a Service Oriented Architecture (SOA)
-            and an Event Driven Architecture (EDA) to create an agile, enterprise ESB.
-        </para>
-        <para>
-            Apache ServiceMix is an distributed ESB built from the ground up on the Java Business Integration (JBI) specification JSR 208 and released
-            under the Apache license. The goal of JBI is to allow components and services to be integrated in a vendor independent way, allowing users 
-            and vendors to plug and play.
-        </para>
-        <para>
-            ServiceMix is lightweight and easily embeddable, has integrated Spring support and can be run at the edge of the network (inside a client
-            or server), as a standalone ESB provider or as a service within another ESB. You can use ServiceMix in Java SE or Java EE application server.
-        </para>
-        <para>
-            ServiceMix uses ActiveMQ to provide remoting, clustering, reliability and distributed failover.
-        </para>
-        <para>
-            ServiceMix is completely integrated into Apache Geronimo, which allows you to deploy JBI components and services directly into Geronimo.
-            ServiceMix is being JBI certified as part of the Geronimo project.
-        </para>
-        <para>
-            ServiceMix can be embedded into a JEE application server such as JBoss, Oracle Weblogic or IBM Websphere.
-        </para>
-        <para>
-            ServiceMix includes a complete JBI container supporting all parts of the JBI specification including:
-            <itemizedlist>
-                <listitem><para>NMR (Normalized Message Router)</para></listitem>
-                <listitem><para>JBI Management MBeans</para></listitem>
-                <listitem><para>full support for the JBI deployment units with hot-deployment of JBI components.</para></listitem>
-            </itemizedlist>
-        </para>
-        <para>
-            ServiceMix also provides a simple to use client API for working with JBI components and services.
-        </para>
-        <para>
-            ServiceMix includes many JBI components including HTTP, JMX, CXF, BPEL, etc.
-        </para>
-    	
-	    <sect1 id="Platform presentation">
-	    	<title>Platform presentation</title>
-	    	<para>TODO</para>
-	    </sect1>
-        
-	    <sect1 id="Osgi for the dummies">
-	    	<title>Osgi for the dummies</title>
-	    	<para>TODO</para>
-	    </sect1>
-	        
-	    <sect1 id="Kernel of ServiceMix">
-	    	<title>Kernel of ServiceMix</title>
-	    	<para>TODO</para>
-	    </sect1>    
-	        
-	    <sect1 id="JBI container &amp; integration with OSGI">
-	    	<title>JBI container &amp; integration with OSGI</title>
-	    	<para>TODO</para>
-	    </sect1>
-	    
-	    <sect1 id="Messaging bus">
-	    	<title>Messaging bus</title>
-	    	<para>TODO</para>
-	    	
-	    	<sect2 id="Normalized Message Router">
-	    		<title>Normalized Message Router</title>
-	    		<para>TODO</para>
-	    	</sect2>
-	    	
-	    	<sect2 id="Camel">
-	    		<title>Camel</title>
-	    		<para>TODO</para>
-	    	</sect2>
-	    </sect1>
-	    
-	    <sect1 id="Services proposed">
-	    	<title>Services proposed</title>
-	    	<para>TODO</para>
-	    	
-	    	<sect2 id="Queuing engine : Apache ActiveMq">
-		    	<title>Queuing engine : Apache ActiveMq</title>
-		    	<para>TODO</para>
-		    </sect2>
+    <!-- Chapter on What is ServiceMix 4 -->
+    <xi:include href="whatissmx4.xml"/>
+    
+    <!-- Chapter on installation and build -->
+    <xi:include href="installation.xml"/>
+    
+	<!-- Chapter on clustering and high-availability -->
+    <xi:include href="clustering.xml"/>    
 
-	    	<sect2 id="Transaction : Geronimo Transaction Manager">
-		    	<title>Transaction : Geronimo Transaction Manager</title>
-		    	<para>TODO</para>
-		    </sect2>
-		    
-		    <sect2 id="Routing and Mediation : Apache Camel">
-		    	<title>Routing and Mediation : Apache Camel</title>
-		    	<para>TODO</para>
-		    </sect2>
-		    
-		    <sect2 id="Web Services : Apache CXF">
-		    	<title>Web Services : Apache CXF</title>
-		    	<para>TODO</para>
-		    </sect2>
-		    
-		    <sect2 id="Web Container">
-		    	<title>Web Container</title>
-		    	<para>TODO</para>
-		    </sect2>
-		    
-		    <sect2 id="SOA platform">
-		    	<title>SOA platform</title>
-		    	<para>TODO</para>
-		    	
-			    <sect3 id="Spring DM container">
-			    	<title>Spring DM container</title>
-			    	<para>TODO</para>
-			    </sect3>			    	
-
-			    <sect3 id="Blueprint OSGI container">
-			    	<title>Blueprint OSGI container</title>
-			    	<para>TODO</para>
-			    </sect3>	
-			    
-			    <sect3 id="EJB container">
-			    	<title>EJB Container</title>
-			    	<para>TODO</para>
-			    </sect3>
-			    		    	
-		    </sect2>		    	    	
-		    
-    	</sect1>
-    </chapter>
-    
-    <!--     <xi:include href="introduction.xml"/> -->
-    
-    <chapter id="Installation and build">
-    	<title>Installation and build</title>
-        <figure>
-		  <mediaobject>
-		    <imageobject>
-		      <imagedata fileref="images/smx4-start.jpg" format="jpg" width="18cm" depth="9cm" />
-		    </imageobject>
-		    <textobject>
-		      <phrase>Screen shot of SMX4 start</phrase>
-		    </textobject>
-	  		</mediaobject>
-	   </figure>
-	   
-	   <sect1 id="requirement">
-	        <title>Installation Requirements</title>
-	        <section id="hardware">
-	            <title>Hardware</title>
-	            <para>
-	                <itemizedlist>
-	                    <listitem><para>100 MB of disk space for the ServiceMix &version; binary distribution.</para></listitem>
-	                </itemizedlist>
-	            </para>
-	        </section>
-	        <section id="OS">
-	            <title>Operating Systems</title>
-	            <para>
-	                <itemizedlist>
-	                    <listitem><para><emphasis>Microsoft Windows</emphasis>: XP SP2, 2000, 2003, Vista, 7</para></listitem>
-	                    <listitem><para><emphasis>Unix</emphasis>: any Unix/Linux platform that supports Java.</para></listitem>
-	                </itemizedlist>
-	            </para>
-	        </section>
-	        <section id="environment">
-	            <title>Environment</title>
-	            <para>
-	                <itemizedlist>
-	                    <listitem><para>Java Developer Kit (JDK) 1.5.x (Java 5) for both deployment and compiling.</para></listitem>
-	                </itemizedlist>
-	            </para>
-	        </section>
-	        <section id="download">
-	            <title>Get Apache ServiceMix &version;</title>
-	            <para>
-	                You can download Apache ServiceMix &version; here: <ulink>http://servicemix.apache.org/download.html</ulink>.
-	            </para>
-	            <para>
-	                Apache ServiceMix is provided in two formats:
-	                <itemizedlist>
-	                    <listitem><para>tarball for Unix platform</para></listitem>
-	                    <listitem><para>zip for Windows platform</para></listitem>
-	                </itemizedlist>
-	            </para>
-	        </section>
-	    </sect1>
-	    
-	    <sect1 id="install_standalone">
-	        <title>Standalone Binary Distribution Installation Procedure</title>
-	        <section id="uncompress">
-	            <title>Uncompress</title>
-	            <para>
-	                Frist you need to uncompress the downloaded archive (tarball or zip) in the directory of your choice (where you have write permissions).
-	                Define the SERVICEMIX_HOME variable:
-	                <example><title>Windows</title>
-	                    <programlisting>
-	                    > set SERVICEMIX_HOME=C:\apache-servicemix-&version;
-	                    </programlisting>
-	                </example>
-	                <example><title>Linux/Unix</title>
-	                    <programlisting>
-	                    $ export SERVICEMIX_HOME=/apache-servicemix-&version;
-	                    </programlisting>
-	                </example>
-	            </para>
-	        </section>
-	        <section id="start">
-	            <title>Starting ServiceMix</title>
-	            <example><title>Windows</title>
-	                <programlisting>
-	                > cd %SERVICEMIX_HOME%
-	                > .\bin\servicemix
-	                </programlisting>
-	            </example>
-	            <example><title>Linux/Unix</title>
-	                <programlisting>
-	                $ cd $SERVICEMIX_HOME
-	                $ ./bin/servicemix
-	                </programlisting>
-	            </example>
-	        </section>
-	        <section id="stop">
-	            <title>Stopping ServiceMix</title>
-	            <para>
-	                For both Windows and Unix installations, terminate ServiceMix by typing "CTRL-C" on the command line where ServiceMix is running. ServiceMix uses the Java shutdown hook to cleanly shut down the container. 
-	            </para>
-	        </section>
-	    </sect1>
-	    
-	    <sect1 id="install_embedded">
-	        <title>ServiceMix Into A JEE Application Server Installation Procedure</title>
-	        
-	    </sect1>
-	    
-	    <sect1 id="configuration">
-	        <title>ServiceMix Configuration</title>
-	                <para>
-	            This section contains description of main ServiceMix directories and files :
-	            <itemizedlist>
-	                <listitem><para><emphasis>activemq-data</emphasis> - this directory is created by the ServiceMix at startup time. It contains the messages and transactions repository of the embedded Apache ActiveMQ.</para></listitem>
-	                <listitem><para><emphasis>bin/servicemix</emphasis> - contains the main startup script of Apache ServiceMix.</para></listitem>
-	                <listitem><para><emphasis>conf/activemq.xml</emphasis> - contains the embedded Apache ActiveMQ configuration. This file shouldn't be modified as it's managed by internal ServiceMix processes.</para></listitem>
-	                <listitem><para><emphasis>conf/components.properties</emphasis> - contains the tuning of embedded JBI components. See the tuning section for more informations.</para></listitem>
-	                <listitem><para><emphasis>conf/servicemix.conf</emphasis> - contains the ServiceMix launcher classloading definition. This file shouldn't be modified.</para></listitem>
-	                <listitem><para><emphasis>conf/servicemix.properties</emphasis> - it's the main ServiceMix configuration file. It defines the port numbers used by the ServiceMix. You can change this file if one of the port number is already bound on your system.
-	                    By default, ServiceMix uses the following ports :
-	                    <itemizedlist>
-	                        <listitem><para>1099 (rmi.port) - the core RMI port used by the ServiceMix.</para></listitem>
-	                        <listitem><para>61616 (activemq.port) - the embedded Apache ActiveMQ port.</para></listitem>
-	                    </itemizedlist>
-	                  </para></listitem>
-	                <listitem><para><emphasis>conf/servicemix.xml</emphasis> - contains the main ServiceMix Spring application context. This file mustn't be modified.</para></listitem>
-	                <listitem><para><emphasis>conf/groups.properties</emphasis> - contains ServiceMix JAAS security group definition. You can define group security to access to ServiceMix via JMX.</para></listitem>
-	                <listitem><para><emphasis>conf/jmx.xml</emphasis> - contains ServiceMix JMX layer application context. This file mustn't be modified.</para></listitem>
-	                <listitem><para><emphasis>conf/jndi.properties</emphasis> - contains the default ServiceMix JNDI definition. This file shouldn't be modified as it's managed by ServiceMix internal processes.</para></listitem>
-	                <listitem><para><emphasis>conf/keystore.jks</emphasis> - contains the security keys and certificates used by ServiceMix security layer. This file mustn't be modified.</para></listitem>
-	                <listitem><para><emphasis>conf/log4j.xml</emphasis> - contains ServiceMix logging definition. You can change this file to change the default log level of ServiceMix components. You can add new loggers if required.</para></listitem>
-	                <listitem><para><emphasis>conf/login.properties</emphasis> - contains ServiceMix JAAS security definition. This file mustn't be changed.</para></listitem>
-	                <listitem><para><emphasis>conf/security.xml</emphasis> - contains ServiceMix Security layer application context. This file mustn't be modified.</para></listitem>
-	                <listitem><para><emphasis>conf/tx.xml</emphasis> - contains ServiceMix Transaction layer application context. This file mustn't be modified.</para></listitem>
-	                <listitem><para><emphasis>conf/users-credentials.properties</emphasis> - contains ServiceMix JAAS security users and credentials (in case of external security module). You can define users allowed to administrate ServiceMix via JMX.</para></listitem>
-	                <listitem><para><emphasis>conf/users-passwords.properties</emphasis> - contains basic ServiceMix JAAS seucrity users and passwords (internal). You can add users allowed to administrate ServiceMix via JMX.</para></listitem>
-	                <listitem><para><emphasis>data/log/servicemix.log</emphasis> - this file is created by ServiceMix at startup time. It contains main ServiceMix log file.</para></listitem>
-	                <listitem><para><emphasis>data</emphasis> - this directory is created by ServiceMix at startup time. It contains all required file (storage) required by ServiceMix internal components.</para></listitem>
-	                <listitem><para><emphasis>extras</emphasis> - this directory contains extras JAR files required by JBI components deployed in ServiceMix. If you want to add JAR files in ServiceMix classloader, use <command>lib</command> directory.</para></listitem>
-	                <listitem><para><emphasis>hotdeploy</emphasis> - this directory contains JBI components (services) automatically deployed by ServiceMix.</para></listitem>
-	                <listitem><para><emphasis>lib</emphasis> - this directory contains all required JAR files for ServiceMix. You can add new JAR file in this directory if required.</para></listitem>
-	            </itemizedlist>
-	        </para>
-	    </sect1>
-	    
-	    <sect1 id="deploy">
-	        <title>Deploying components and services into ServiceMix</title>
-	    </sect1>
-	    
-	    <sect1 id="tuning">
-	        <title>Tuning ServiceMix</title>
-	                <para>
-	            You can tune ServiceMix at three basic levels :
-	            <itemizedlist>
-	                <listitem><para><emphasis>Underlying JVM</emphasis> - ServiceMix uses an underlying JVM to run. By default, the JVM configuration is set to 512MB of maximum memory usage (that is enough for most of usage). Anyway if you encounter OutOfMemory problem and bad performances, you can define JVM parameters.
-	                    To do it, create a <command>conf/servicemix.rc</command> file. In this file, you can define JAVA_MIN_MEM and JAVA_MAX_MEM variables.
-	                </para></listitem>
-	                <listitem><para><emphasis>Core Engine Tuning</emphasis> - in the <command>conf/servicemix.properties</command> file, you can see three properties :
-	                        <itemizedlist>
-	                            <listitem><para><emphasis>smx.corePoolSize</emphasis> - define the startup number of ServiceMix threads. By default, 16 threads are started.</para></listitem>
-	                            <listitem><para><emphasis>smx.maximumPoolSize</emphasis> - define the maximum number of ServiceMix threads. If you see some bottlenecks around thread waits, you can increase this value. By default, 32 threads maximum are allowed.</para></listitem>
-	                            <listitem><para><emphasis>smx.queueSize</emphasis> - define the maximum of messages store in the embedded Apache ActiveMQ. If you see some bottlenecks around message waits, you can increase this value. By default, ServiceMix can store 256 messages.</para></listitem>
-	                        </itemizedlist>
-	                    </para></listitem>
-	                <listitem><para><emphasis>Components Tuning</emphasis> - You can tune ServiceMix embedded JBI components using the <command>conf/components.properties</command>.
-	                    By default, this file contains the basic tuning for the HTTP components.
-	                </para></listitem>
-	            </itemizedlist>
-	        </para>
-	    </sect1>
-    </chapter>
-    
-    <chapter id="Discover servicemix 4 (through simple examples)">
-    	<title>Discover servicemix 4 (through simple examples)</title>
-    	<para>TODO</para>
-    </chapter>
-    
-    <chapter id="Clustering and High-Availability">
-    	<title>Clustering and High-Availability</title>
-    	<para>TODO</para>
-    </chapter>
-    
-    <chapter id="Migrate from ServiceMix3 to ServiceMix 4">
-    	<title>Migrate from ServiceMix3 to ServiceMix 4</title>
-    	<para>TODO</para>
-    </chapter>
-
-    
-
+ 	<!-- Chapter on ServiceMix migration 3 to 4 -->
+    <xi:include href="migrate.xml"/>   
     
 </book>

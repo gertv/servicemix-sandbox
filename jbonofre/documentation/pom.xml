@@ -87,6 +87,21 @@
                            </fileset>
                         </copy>
                     </postProcess>
+                    
+                    <!-- Allow to include xml doc using xinclude -->
+			        <xincludeSupported>true</xincludeSupported>
+					
+					<!-- Enable section numbering -->
+					<sectionAutolabel>true</sectionAutolabel>
+					
+					<!-- Section will follow chapter numbering-->
+					<sectionLabelIncludesComponentLabel>true</sectionLabelIncludesComponentLabel>
+					
+					<!-- Draft picture location -->
+					<draftWatermarkImage>src/docbkx/images/draft.png</draftWatermarkImage>
+					
+					<!-- CopyRight -->
+					<userFooterContent>Copyright &#169; 2010 Apache Software Foundation</userFooterContent>
 
                 </configuration>
             </plugin>
