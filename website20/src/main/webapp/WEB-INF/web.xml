@@ -24,11 +24,9 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
 
-  <display-name>Scalate Sample Local Wiki</display-name>
+  <display-name>Apache ServiceMix</display-name>
 
-  <description>
-    Scalate Sample Local Wiki
-  </description>
+  <description>Apache ServiceMix static web site.</description>
 
   <filter>
     <filter-name>TemplateEngineFilter</filter-name>
