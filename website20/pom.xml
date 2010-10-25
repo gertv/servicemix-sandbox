@@ -19,85 +19,63 @@
 
 -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <parent>
-    <groupId>org.fusesource.scalate</groupId>
-    <artifactId>scalate-project</artifactId>
-    <version>1.3</version>
-  </parent>
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  
-  <artifactId>scalate-sample-sitegen</artifactId>
-  <name>Scalate :: Sample Site Generation</name>
-  <description>Scalate Sample Site Generation Web Application</description>
-  <packaging>war</packaging>
 
+  <groupId>org.apache.servicemix</groupId>
+  <artifactId>static-website</artifactId>
+  <name>Apache ServiceMix :: Site Generation</name>
+  <description>Apache ServiceMix Site Generation Web Application</description>
+  <packaging>war</packaging>
+  <version>1.0</version>
+  
   <properties>
     <netbeans.hint.deploy.server>Tomcat60</netbeans.hint.deploy.server>
+    <scalate.version>1.4-SNAPSHOT</scalate.version>
   </properties>
-
+  
   <dependencies>
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>servlet-api</artifactId>
+      <version>2.5</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.fusesource.scalate</groupId>
       <artifactId>scalate-wikitext</artifactId>
-      <version>${project.version}</version>
+      <version>${scalate.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.fusesource.scalate</groupId>
+      <artifactId>scalate-page</artifactId>
+      <version>${scalate.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.fusesource.scalamd</groupId>
+      <artifactId>scalamd</artifactId>
+      <version>1.2</version>
     </dependency>
     <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
+      <version>0.9.24</version>
     </dependency>
-
-
-    <!-- testing -->
     <dependency>
-      <groupId>org.fusesource.scalate</groupId>
-      <artifactId>scalate-test</artifactId>
-      <version>${project.version}</version>
-      <scope>test</scope>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.6.0</version>
     </dependency>
   </dependencies>
 
   <build>
     <plugins>
       <plugin>
-        <inherited>true</inherited>
-        <artifactId>maven-source-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>attach-sources</id>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-
-      <plugin>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>${surefire-version}</version>
-        <configuration>
-          <forkMode>once</forkMode>
-          <!-- these settings are mandatory to avoid SureFire giving a bogus system property to the web container -->
-          <useSystemClassLoader>false</useSystemClassLoader>
-          <useManifestOnlyJar>false</useManifestOnlyJar>
-          <includes>
-            <include>**/*Test.*</include>
-          </includes>
-          <excludes>
-            <exclude>**/SomeFailingTest.*</exclude>
-          </excludes>
-        </configuration>
-      </plugin>
-
-      <plugin>
         <groupId>org.fusesource.scalate</groupId>
         <artifactId>maven-scalate-plugin</artifactId>
-        <version>${project.version}</version>
+        <version>${scalate.version}</version>
         <executions>
           <execution>
             <goals>
@@ -107,7 +85,6 @@
         </executions>
       </plugin>
       
-
       <plugin>
         <artifactId>maven-war-plugin</artifactId>
       </plugin>
@@ -115,8 +92,56 @@
       <plugin>
         <groupId>org.mortbay.jetty</groupId>
         <artifactId>jetty-maven-plugin</artifactId>
+        <version>7.1.5.v20100705</version>
       </plugin>
     </plugins>
   </build>
-</project>
 
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.fusesource.scalate</groupId>
+        <artifactId>maven-linkchecker-plugin</artifactId>
+        <version>${project.version}</version>
+        <configuration>
+          <excludedLinks>
+            <value>http://github.com/</value>
+            <value>http://git.or.cz/</value>
+            <value>http://localhost:8080/</value>
+            <value>http://repo.fusesource.com/</value>
+            <value>http://search.twitter.com/</value>
+            <value>http://www.chengin.com/</value>
+          </excludedLinks>
+        </configuration>
+      </plugin>
+    </plugins>
+  </reporting>
+  
+  <!-- Scalate snapshots -->
+  <repositories>
+    <repository>
+      <id>fusesource.snapshots</id>
+      <url>http://repo.fusesource.com/nexus/content/groups/public-snapshots</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+
+  <!-- Scalate snapshots -->
+  <pluginRepositories>
+    <pluginRepository>
+      <id>fusesource.snapshots</id>
+      <url>http://repo.fusesource.com/nexus/content/groups/public-snapshots</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>      
+    </pluginRepository>
+  </pluginRepositories>
+</project>

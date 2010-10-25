@@ -16,7 +16,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 --%>
 <%@ var body: String %>
-<%@ var title: String = "Apache ServiceMix ${servicemix.version}" %>
+<%@ var title: String = "Apache ServiceMix" %>
 <%@ var navigation: Boolean = true %>
 <% escapeMarkup = false %>
 <% import org.fusesource.scalate.servlet.ServletRenderContext._ %>
@@ -30,14 +30,14 @@ limitations under the License.
 
 </head>
 <body>
-    <div id="siteHeader">
-      <table width="100%">
-        <tr>
-          <td>
-            <a href="http://servicemix.apache.org/" title="An open source ESB">
-              <img border="0" src="/images/new-logo.png" />
-            </a>
-          </td>
+  <div id="siteHeader">
+    <table width="100%">
+      <tr>
+        <td>
+          <a href="http://servicemix.apache.org/" title="An open source ESB">
+            <img border="0" src="/images/new-logo.png" />
+          </a>
+        </td>
           <td align="right">
             <a href="http://www.apache.org/" title="The Apache Sofware Foundation">
               <img border="0" src="http://activemq.apache.org/images/asf-logo.png">
@@ -75,11 +75,11 @@ limitations under the License.
         </tr>
       </table>
     </div>
-      <div id="content">
-        <%= body %>
-      </div>
-      <div id="siteFooter">
-        <p>Thanks for using Apache ServiceMix!</p>
+  <div id="content">
+    <%= body %>
+  </div>
+  <div id="siteFooter">
+    <p>Thanks for using Apache ServiceMix!</p>
   </div>
 </body>
 </html>

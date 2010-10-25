@@ -24,9 +24,9 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
 
-  <display-name>Apache ServiceMix</display-name>
+  <display-name>The Apache ServiceMix Project</display-name>
 
-  <description>Apache ServiceMix static web site.</description>
+  <description>The Apache ServiceMix Web site</description>
 
   <filter>
     <filter-name>TemplateEngineFilter</filter-name>
@@ -38,11 +38,11 @@
   </filter-mapping>
 
   <welcome-file-list>
-    <welcome-file>index.conf</welcome-file>
+    <welcome-file>index.page</welcome-file>
   </welcome-file-list>
 
   <error-page>
     <error-code>500</error-code>
-    <location>/WEB-INF/scalate/errors/500.scaml</location>
+    <location>/WEB-INF/scalate/errors/500.page</location>
   </error-page>
 </web-app>

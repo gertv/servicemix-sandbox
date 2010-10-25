@@ -119,6 +119,7 @@ div#siteFooter {
 
 div#content {
    clear: both;
+  margin: 30px;
 }
 
 div#body {
