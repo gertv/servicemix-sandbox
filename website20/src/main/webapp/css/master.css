@@ -71,7 +71,7 @@ ul.siteNav li ul li {
 clear: both;
 }
 
-div#docHeader {
+div#sectHeader {
   background: #909090;
   height: 50px;
   color: #ffffff;
@@ -81,25 +81,25 @@ div#docHeader {
   clear: both;
   }
 
-div#docHeader a:link {
+div#sectHeader a:link {
   color: #ffffff;
   text-decoration: none;
 }
 
-div#docHeader a:visited {
+div#sectHeader a:visited {
   color: #ffffff;
   text-decoration: none;
 }
 
-div#docHeader a:hover {
+div#sectHeader a:hover {
   color: #ffffff;
 }
 
-ul.docNav {
+ul.sectNav {
   list-style-type: none;
   }
   
-ul.docNav li {
+ul.sectNav li {
   display: inline;
   font-size: large;
   padding: 0 40px;
@@ -176,4 +176,8 @@ div.right {
 div.pdf {
   padding-left: 20px;
   background: url('images/pdf.png') no-repeat left center;
+}
+
+div#title {
+  padding-bottom: 20px;
 }

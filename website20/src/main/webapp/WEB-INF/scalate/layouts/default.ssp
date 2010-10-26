@@ -16,17 +16,18 @@ See the License for the specific language governing permissions and
 limitations under the License.
 --%>
 <%@ var body: String %>
-<%@ var title: String = "Apache ServiceMix" %>
-<%@ var navigation: Boolean = true %>
+<%@ var title : String = "The Apache ServiceMix Project" %>
+<%@ var style : String = "foo.css" %>
 <% escapeMarkup = false %>
 <% import org.fusesource.scalate.servlet.ServletRenderContext._ %>
 <!DOCTYPE html>
 <html>
 <head>
-  <title>${title}</title>
+  <title>Apache ServiceMix, the Agile Open Source ESB -- ${title}</title>
 
-  <link href="${uri("/theme/master.css")}" rel="Stylesheet" type="text/css" />
-  <link href="${uri("/theme/pygmentize.css")}" rel="stylesheet" type="text/css" />
+  <link href="${uri("/css/master.css")}" rel="Stylesheet" type="text/css" />
+  <link href="${uri("/css/pygmentize.css")}" rel="stylesheet" type="text/css" />
+  <link href="${style}" rel="stylesheet" type="text/css" />
 
 </head>
 <body>
@@ -34,7 +35,7 @@ limitations under the License.
     <table width="100%">
       <tr>
         <td>
-          <a href="http://servicemix.apache.org/" title="An open source ESB">
+          <a href="/index.html" title="An open source ESB">
             <img border="0" src="/images/new-logo.png" />
           </a>
         </td>
@@ -48,26 +49,26 @@ limitations under the License.
           <td />
           <td>
             <ul class="siteNav">
-              <li ><a href="http://servicemix.apache.org/" title="Overview">Overview</a></li>
-              <li><a href="http://servicemix.apache.org/download.html" title="Download">Download</a></li>
-              <li><a href="http://servicemix.apache.org/documentation/index.html" title="Documentation">Documentation</a></li>
+              <li ><a href="/index.html" title="Overview">Overview</a></li>
+              <li><a href="/download.html" title="Download">Download</a></li>
+              <li><a href="/documentation/index.html" title="Documentation">Documentation</a></li>
               <li>
-                <a href="http://servicemix.apache.org/support.html" title="Support">Support</a>
+                <a href="/support/index.html" title="Support">Support</a>
                 <ul>
-                  <li><a href="http://servicemix.apache.org/mailing-lists.html" title="Mailing Lists">Mailing Lists</a></li>
-                  <li><a href="http://servicemix.apache.org/discussion-forums.html" title="Discussion Forums">Forums</a></li>
-                  <li><a href="http://servicemix.apache.org/irc.html" title="IRC">IRC</a></li>
-                  <li><a href="http://servicemix.apache.org/presentations.html" title="Presentations">Presentations</a></li>
+                  <li><a href="/support/mailing-lists.html" title="Mailing Lists">Mailing Lists</a></li>
+                  <li><a href="/support/discussion-forums.html" title="Discussion Forums">Forums</a></li>
+                  <li><a href="/support/irc.html" title="IRC">IRC</a></li>
+                  <li><a href="/support/presentations.html" title="Presentations">Presentations</a></li>
                 </ul>
               </li>
               <li>
-                <a href="http://servicemix.apache.org/contrib.html" title="Contributing">Contributing</a>
+                <a href="/contrib/index.html" title="Contributing">Contributing</a>
                 <ul>
-                  <li><a href="http://servicemix.apache.org/becoming-a-committer.html" title="Committing">Become a committer</a></li>
-                  <li><a href="http://servicemix.apache.org/committers-guide.html" title="Committing Guide">Committer Guide</a></li>
-                  <li><a href="http://servicemix.apache.org/source.html" title="Source">Source</a></li>
+                  <li><a href="/contrib/becoming-a-committer.html" title="Committing">Become a committer</a></li>
+                  <li><a href="/contrib/committers-guide.html" title="Committing Guide">Committer Guide</a></li>
+                  <li><a href="/contrib/source.html" title="Source">Source</a></li>
                   <li><a href="http://issues.apache.org/activemq/browse/SM" title="JIRA">JIRA</a></li>
-                  <li><a href="http://servicemix.apache.org/developers.html" title="Developers">Developer Resources</a></li>
+                  <li><a href="/contrib/developers.html" title="Developers">Developer Resources</a></li>
                 </ul>
               </li>
             </ul>

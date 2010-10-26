@@ -1,0 +1,66 @@
+div#overview {
+  width: 70%;
+  float: left;
+}
+
+div#boxes {
+  width: 30%;
+  float: right;
+}
+
+div#boxes div {
+  padding: 10px;
+  margin: 5px;
+  min-height: 5em;
+}
+
+div#boxes h1 {
+  font-size: medium;
+  color: #383838;
+  padding-left: 35px;
+}
+
+div#boxes a {
+  text-decoration: none;
+  color: #383838;
+}
+
+div#boxes a:hover {
+  color: blue;
+}
+
+div#boxes ul {
+  list-style-image: url("/images/collapsed.gif");
+  list-style-type: square;
+  padding-left: 45px;
+}
+
+div#getit_box {
+  background-color: #33CC99;
+}
+
+div#useit_box {
+  background-color: #6699FF;
+}
+
+div#makeit_box {
+  background-color: #CC99CC;
+}
+
+div#news {
+  clear: both;
+}
+
+div#twitter {
+  clear: both;
+}
+
+span.bignum {
+  color: white;
+  font-size: 5em;
+  float:left;
+}
+
+div#box_content {
+  float: right;
+}

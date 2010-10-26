@@ -1,0 +1,8 @@
+---
+<% attributes("title") = "Support" %>
+title: Support
+--- name:content pipeline:jade
+
+#overview
+  :markdown
+    Add support info here.

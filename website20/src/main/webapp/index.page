@@ -1,24 +1,63 @@
 ---
-title: The Apache ServiceMix Project
---- name:overview pipeline:scaml
+<% attributes("title") = "Home" %>
+<% attributes("style") = "/css/home.css" %>
+title: Home
+--- name:content pipeline:jade
 
-%h1 The Apache ServiceMix Project
-
---- name:content pipeline:markdown 
-
-# The Apache ServiceMix Project
-
-Apache ServiceMix is a powerful open source Enterprise Service Bus (ESB). It combines the functionality of a Service Oriented Architecture (SOA) and an Event Driven Architecture (EDA) to create an agile, enterprise and powerful ESB.
-
-Built from the ground up on the Java Business Integration (JBI) specification, OSGi and released under the Apache License, Apache ServiceMix is an Java based, open source enterprise service bus (ESB) that provides a platform for service oriented integration.
-
-ServiceMix includes a complete JBI container supporting all parts of the JBI specification including:
-
-* Normalized Message Service and Router
-* JBI Management MBeans
-* Ant Tasks for management and installation of components
-* Full support for the JBI deployment units with hot-deployment of JBI components
-* Large set of JBI Components and OSGi bundles
-* Tools to easily use, deploy and develop on ServiceMix
-
-ServiceMix also provides a simple to use Client API for sending messages to JBI components and services
+#title
+  :markdown
+    # Apache ServiceMix
+#overview
+  :markdown
+    Apache ServiceMix is a powerful open source Enterprise Service Bus (ESB). It combines the functionality of a Service Oriented Architecture (SOA) and an Event Driven Architecture (EDA) to create an agile, enterprise and powerful ESB.
+    
+    Built from the ground up on the [Java Business Integration (JBI) specification](http://www.jcp.org/en/jsr/detail?id=208), [OSGi](http://www.osgi.org/) and released under the [Apache License](http://www.apache.org/licenses/LICENSE-2.0.html), Apache ServiceMix is an Java based, open source enterprise service bus (ESB) that provides a platform for service oriented integration.
+    
+    ServiceMix includes a complete JBI container supporting all parts of the JBI specification including:
+    
+    * Normalized Message Service and Router
+    * JBI Management MBeans
+    * Ant Tasks for management and installation of components
+    * Full support for the JBI deployment units with hot-deployment of JBI components
+    * Large set of JBI Components and OSGi bundles
+    * Tools to easily use, deploy and develop on ServiceMix
+    
+    ServiceMix also provides a simple to use Client API for sending messages to JBI components and services.
+    
+#boxes
+  #getit_box
+    :markdown
+      <span class="bignum">1</span>
+      <div class="box_content">
+        <h1><a href="/downloads/index.html">Get it</a></h1>
+        <ul>
+        <li>Download the <a href="/downloads/latest.html">latest</a> release.</li>
+        <li>Download <a href="/downloads/index.html">older</a> releases.</li>
+        </ul>
+      </div>
+  #useit_box
+    :markdown
+      <span class="bignum">2</span>
+      <div class="box_content">
+        <h1><a href="/support/index.html">Use it</a></h1>
+        <ul>
+        <li>Get started using the <a href="/documentaiton/quick_start/index.html">Quick Start Guide</a>.</li>
+        <li>Read the full set of <a href="/documentation/index.html">documentation</a>.</li>
+        <li>Find community and commercial <a href="/support/index.html">support resources</a>.</li>
+      </div>
+  #makeit_box
+    :markdown
+      <span class="bignum">3</span>
+      <div class="box_content">
+      <h1><a href="/contribute/index.html">Make it</a></h1>
+      </div>
+      
+#news
+  :markdown
+    # News
+    Put news feed code in here.
+    
+#twitter
+  :markdown
+    # Twitter
+    Put Twitter feed code in here.

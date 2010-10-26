@@ -1,0 +1,8 @@
+---
+<% attributes("title") = "Contributing" %>
+title: Contributing
+--- name:content pipeline:jade
+
+#overview
+  :markdown
+    Add contrib content here
