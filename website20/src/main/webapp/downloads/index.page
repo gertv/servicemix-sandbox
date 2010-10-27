@@ -1,8 +1,76 @@
 ---
 <% attributes("title") = "Downloading" %>
 title: Downloading
---- name:content pipeline:jade
+--- name:content pipeline:markdown
 
-#overview
-  :markdown
-    Add download content here
+# Choosing the Right Distribution
+
+There are currently two versions of ServiceMix in production:
+
+* ServiceMix 3 is a JBI-based ESB that includes a number of JBI components for accessing data and routing data.
+* ServiceMix 4 is an OSGi-based ESB that includes:
+    * the JBI components from ServiceMix 3
+    * Apache ActiveMQ
+    * Apache Camel
+    * Apache CFX
+    * a runtime console for managing the ESB
+
+Choose ServiceMix 3 if you are required to use JBI or have a number of JBI components that you must use. For all other applications, ServiceMix 4 is preferred.    
+
+# Latest Releases
+
+## ServiceMix 4
+<h5>Linux/Mac OS X/Unix Downloads</h5>
+<P><IMG src="/images/tux.png" style="border: 0px solid black"><IMG src="/images/freebsd.png" style="border: 0px solid black"><IMG src="/images/mac_logo.png" style="border: 0px solid black"></P>
+<ul style="list-style-image: url('/images/tarsm.png')">
+  <li><a href="http://www.apache.org/dyn/closer.cgi?path=/servicemix/servicemix-4/4.2.0/apache-servicemix-4.2.0.tar.gz" class="external-link" rel="nofollow">Apache ServiceMix 4.2.0 (.tar.gz)</a> <a href="http://www.apache.org/dist/servicemix/servicemix-4/4.2.0/apache-servicemix-4.2.0.tar.gz.asc" class="external-link" rel="nofollow">PGP</a> <a href="http://www.apache.org/dist/servicemix/servicemix-4/4.2.0/apache-servicemix-4.2.0.tar.gz.sha1" class="external-link" rel="nofollow">SHA</A> <a href="http://www.apache.org/dist/servicemix/servicemix-4/4.2.0/apache-servicemix-4.2.0.tar.gz.md5" class="external-link" rel="nofollow">MD5</a></li>
+  <li><a href="http://www.apache.org/dyn/closer.cgi?path=/servicemix/servicemix-4/4.2.0/apache-servicemix-4.2.0-src.tar.gz" class="external-link" rel="nofollow">Apache ServiceMix 4.2.0 Sources (.tar.gz)</a> <a href="http://www.apache.org/dist/servicemix/servicemix-4/4.2.0/apache-servicemix-4.2.0-src.tar.gz.asc" class="external-link" rel="nofollow">PGP</a> <a href="http://www.apache.org/dist/servicemix/servicemix-4/4.2.0/apache-servicemix-3.3.2-src.tar.gz.sha1" class="external-link" rel="nofollow">SHA</a> <a href="http://www.apache.org/dist/servicemix/servicemix-4/4.2.0/apache-servicemix-4.2.0-src.tar.gz.md5" class="external-link" rel="nofollow">MD5</a></li>
+</ul>
+<H5>Windows Downloads</H5>
+<P><IMG src="/images/xp.png" style="border: 0px solid black"></P>
+<ul style="list-style-image: url('/images/zipsm.png')">
+<li><a href="http://www.apache.org/dyn/closer.cgi?path=%2Fservicemix%2Fservicemix-4%2F4.2.0%2Fapache-servicemix-4.2.0.zip" class="external-link" rel="nofollow">Apache ServiceMix 4.2.0 (.zip)</a> <a href="http://www.apache.org/dist/servicemix/servicemix-4/4.2.0/apache-servicemix-4.2.0.zip.asc" class="external-link" rel="nofollow">PGP</a> <a href="http://www.apache.org/dist/servicemix/servicemix-4/4.2.0/apache-servicemix-4.2.0.zip.sha1" class="external-link" rel="nofollow">SHA</a> <a href="http://www.apache.org/dist/servicemix/servicemix-4/4.2.0/apache-servicemix-4.2.0.zip.md5" class="external-link" rel="nofollow">MD5</a></li>
+<li><a href="http://www.apache.org/dyn/closer.cgi?path=%2Fservicemix%2Fservicemix-4%2F4.2.0%2Fapache-servicemix-4.2.0-src.zip" class="external-link" rel="nofollow">Apache ServiceMix 4.2.0 Sources (.zip)</a> <a href="http://www.apache.org/dist/servicemix/servicemix-4/4.2.0/apache-servicemix-4.2.0-src.zip.asc" class="external-link" rel="nofollow">PGP</a> <a href="http://www.apache.org/dist/servicemix/servicemix-4/4.2.0/apache-servicemix-4.2.0-src.zip.sha1" class="external-link" rel="nofollow">SHA</a> <a href="http://www.apache.org/dist/servicemix/servicemix-4/4.2.0/apache-servicemix-4.2.0-src.zip.md5" class="external-link" rel="nofollow">MD5</a></li>
+</ul>
+
+## ServiceMix 3
+<H5>Linux/Mac OS X/Unix Downloads</H5>
+<P><IMG src="/images/tux.png" style="border: 0px solid black"><IMG src="/images/freebsd.png" style="border: 0px solid black"><IMG src="/images/mac_logo.png" style="border: 0px solid black"></P>
+
+<ul style="list-style-image: url('/images/tarsm.png')">
+  <li><a href="http://www.apache.org/dyn/closer.cgi?path=%2Fservicemix%2Fservicemix-3%2F3.3.2%2Fapache-servicemix-3.3.2.tar.gz" class="external-link" rel="nofollow">Apache ServiceMix 3.3.2 (.tar.gz)</a> <a href="http://www.apache.org/dist/servicemix/servicemix-3/3.3.2/apache-servicemix-3.3.2.tar.gz.asc" class="external-link" rel="nofollow">PGP</a> <a href="http://www.apache.org/dist/servicemix/servicemix-3/3.3.2/apache-servicemix-3.3.2.tar.gz.sha1" class="external-link" rel="nofollow">SHA</A> <a href="http://www.apache.org/dist/servicemix/servicemix-3/3.3.2/apache-servicemix-3.3.2.tar.gz.md5" class="external-link" rel="nofollow">MD5</a></li>
+  <li><a href="http://www.apache.org/dyn/closer.cgi?path=%2Fservicemix%2Fservicemix-3%2F3.3.2%2Fapache-servicemix-3.3.2-src.tar.gz" class="external-link" rel="nofollow">Apache ServiceMix 3.3.2 Sources (.tar.gz)</a> <a href="http://www.apache.org/dist/servicemix/servicemix-3/3.3.2/apache-servicemix-3.3.2-src.tar.gz.asc" class="external-link" rel="nofollow">PGP</a> <a href="http://www.apache.org/dist/servicemix/servicemix-3/3.3.2/apache-servicemix-3.3.2-src.tar.gz.sha1" class="external-link" rel="nofollow">SHA</a> <a href="http://www.apache.org/dist/servicemix/servicemix-3/3.3.2/apache-servicemix-3.3.2-src.tar.gz.md5" class="external-link" rel="nofollow">MD5</a></li>
+</ul>
+<H5>Windows Downloads</H5>
+<P><IMG src="/images/xp.png" style="border: 0px solid black"></P>
+<ul style="list-style-image: url('/images/zipsm.png')">
+<li><a href="http://www.apache.org/dyn/closer.cgi?path=%2Fservicemix%2Fservicemix-3%2F3.3.2%2Fapache-servicemix-3.3.2.zip" class="external-link" rel="nofollow">Apache ServiceMix 3.3.2 (.zip)</a> <a href="http://www.apache.org/dist/servicemix/servicemix-3/3.3.2/apache-servicemix-3.3.2.zip.asc" class="external-link" rel="nofollow">PGP</a> <a href="http://www.apache.org/dist/servicemix/servicemix-3/3.3.2/apache-servicemix-3.3.2.zip.sha1" class="external-link" rel="nofollow">SHA</a> <a href="http://www.apache.org/dist/servicemix/servicemix-3/3.3.2/apache-servicemix-3.3.2.zip.md5" class="external-link" rel="nofollow">MD5</a></li>
+<li><a href="http://www.apache.org/dyn/closer.cgi?path=%2Fservicemix%2Fservicemix-3%2F3.3.2%2Fapache-servicemix-3.3.2-src.zip" class="external-link" rel="nofollow">Apache ServiceMix 3.3.2 Sources (.zip)</a> <a href="http://www.apache.org/dist/servicemix/servicemix-3/3.3.2/apache-servicemix-3.3.2-src.zip.asc" class="external-link" rel="nofollow">PGP</a> <a href="http://www.apache.org/dist/servicemix/servicemix-3/3.3.2/apache-servicemix-3.3.2-src.zip.sha1" class="external-link" rel="nofollow">SHA</a> <a href="http://www.apache.org/dist/servicemix/servicemix-3/3.3.2/apache-servicemix-3.3.2-src.zip.md5" class="external-link" rel="nofollow">MD5</a></li>
+</ul>
+<h5>Web Application</h5>
+<p><a href="http://www.apache.org/dyn/closer.cgi?path=%2Fservicemix%2Fservicemix-3%2F3.3.2%2Fapache-servicemix-web-3.3.2.war" class="external-link" rel="nofollow">Apache ServiceMix Web Application 3.3.2  (.war)</a> <a href="http://www.apache.org/dist/servicemix/servicemix-3/3.3.2/apache-servicemix-web-3.3.2.war.asc" class="external-link" rel="nofollow">PGP</a> <a href="http://www.apache.org/dist/servicemix/servicemix-3/3.3.2/apache-servicemix-web-3.3.2.war.sha1" class="external-link" rel="nofollow">SHA</a> <a href="http://www.apache.org/dist/servicemix/servicemix-3/3.3.2/apache-servicemix-web-3.3.2.war.md5" class="external-link" rel="nofollow">MD5</a></p>
+
+
+
+# Development SNAPSHOTS
+
+You can find development snapshots [here](https://repository.apache.org/content/groups/snapshots-group/org/apache/servicemix/apache-servicemix/).
+
+# Previous Releases
+<p>An archive of previous releases can be found <a href="http://archive.apache.org/dist/servicemix/" class="external-link" rel="nofollow">here</a>.</p>
+<ul>
+<LI><A href="servicemix-10-release.html" title="ServiceMix 1.0 Release">ServiceMix 1.0 Release</A></LI>
+<LI><A href="servicemix-11-release.html" title="ServiceMix 1.1 Release">ServiceMix 1.1 Release</A></LI>
+<LI><A href="servicemix-20-release.html" title="ServiceMix 2.0 Release">ServiceMix 2.0 Release</A></LI>
+<LI><A href="servicemix-30.html" title="ServiceMix 3.0">ServiceMix 3.0</A></LI>
+<LI><A href="servicemix-301.html" title="ServiceMix 3.0.1">ServiceMix 3.0.1</A></LI>
+<li><A href="servicemix-31.html" title="ServiceMix 3.1">ServiceMix 3.1</A></LI>
+<LI><A href="servicemix-311.html" title="ServiceMix 3.1.1">ServiceMix 3.1.1</A></LI>
+<LI><A href="servicemix-312.html" title="ServiceMix 3.1.2">ServiceMix 3.1.2</A></LI>
+<LI><A href="servicemix-32.html" title="ServiceMix 3.2">ServiceMix 3.2</A></LI>
+<LI><A href="servicemix-321.html" title="ServiceMix 3.2.1">ServiceMix 3.2.1</A></LI>
+<LI><A href="servicemix-322.html" title="ServiceMix 3.2.2">ServiceMix 3.2.2</A></LI>
+<LI><A href="servicemix-323.html" title="Servicemix 3.2.3">Servicemix 3.2.3</A></LI>
+<LI><A href="servicemix-33.html" title="Servicemix 3.3">Servicemix 3.3</A></LI>
+<LI><A href="servicemix-331.html" title="ServiceMix 3.3.1">ServiceMix 3.3.1</A></LI>
+</UL>

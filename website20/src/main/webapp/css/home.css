@@ -48,11 +48,16 @@ div#makeit_box {
 }
 
 div#news {
-  clear: both;
+  float: left;
+  width: 70%;
 }
 
 div#twitter {
-  clear: both;
+  float: right;
+  width: 30%;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  clear: right;
 }
 
 span.bignum {
