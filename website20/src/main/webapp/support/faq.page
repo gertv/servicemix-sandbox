@@ -1,0 +1,49 @@
+---
+<% attributes("title") = "User FAQ" %>
+title: User FAQ
+--- name:content pipeline:markdown
+
+# FAQ
+
+<P>Here are a list of commonly asked questions and answers. If you have any questions which are not on this list, please talk to us on the <A href="discussion-forums.html" title="Discussion Forums">forums</A>. </P>
+
+We [welcome contributions](/contrib/index.html) and the documentation is [editable](/documentation/contrib/index.html) so please join in and help us make the documentation better!
+
+### General
+
+<P>General questions on the ServiceMix project.</P>
+
+<UL>
+	<LI><A href="how-to-evaluate-an-esb.html" title="How to Evaluate an ESB">How do I choose an ESB?</A></LI>
+
+	<LI><A href="is-servicemix-the-right-esb-for-me.html" title="Is ServiceMix the Right ESB for Me">Is ServiceMix the Right ESB For Me?</A></LI>
+</UL>
+
+
+<UL><LI><A href="can-i-get-commercial-support.html" title="Can I get commercial support">Can I get commercial support</A></LI><LI><A href="how-can-i-get-help.html" title="How can I get help">How can I get help</A></LI><LI><A href="how-can-i-get-the-source-code-from-subversion.html" title="How can I get the source code from subversion">How can I get the source code from subversion</A></LI><LI><A href="how-does-servicemix-compare-to-celtix.html" title="How does ServiceMix compare to Celtix">How does ServiceMix compare to Celtix</A></LI><LI><A href="how-does-servicemix-compare-to-mule.html" title="How does ServiceMix compare to Mule">How does ServiceMix compare to Mule</A></LI><LI><A href="how-does-servicemix-compare-to-synapse.html" title="How does ServiceMix compare to Synapse">How does ServiceMix compare to Synapse</A></LI><LI><A href="how-does-servicemix-compare-to-tuscany-or-sca.html" title="How does ServiceMix compare to Tuscany or SCA">How does ServiceMix compare to Tuscany or SCA</A></LI><LI><A href="how-does-the-website-work.html" title="How does the website work">How does the website work</A></LI><LI><A href="how-do-i-build-but-disable-the-unit-tests.html" title="How do I build but disable the unit tests">How do I build but disable the unit tests</A></LI><LI><A href="how-do-i-compile-from-the-source.html" title="How do I compile from the source">How do I compile from the source</A></LI><LI><A href="how-do-i-edit-the-website.html" title="How do I edit the website">How do I edit the website</A></LI><LI><A href="i-can-not-create-a-jira-issue.html" title="I can not create a JIRA issue">I can not create a JIRA issue</A></LI><LI><A href="whats-the-difference-between-servicemix-and-fuse.html" title="What's the difference between ServiceMix and FUSE?">What's the difference between ServiceMix and FUSE?</A></LI><LI><A href="what-is-servicemix.html" title="What is ServiceMix">What is ServiceMix</A></LI><LI><A href="what-is-the-license.html" title="What is the license">What is the license</A></LI><LI><A href="what-platforms-does-servicemix-support.html" title="What platforms does ServiceMix support">What platforms does ServiceMix support</A></LI></UL>
+
+### JBI Questions
+
+<P>Questions on JBI</P>
+
+<UL><LI><A href="does-jbi-depend-on-xml-and-wsdl.html" title="Does JBI depend on XML and WSDL">Does JBI depend on XML and WSDL</A></LI><LI><A href="how-can-i-work-with-binary-messages.html" title="How can I work with binary messages">How can I work with binary messages</A></LI><LI><A href="how-does-jbi-compare-to-jms.html" title="How does JBI compare to JMS">How does JBI compare to JMS</A></LI><LI><A href="how-does-routing-work-in-jbi.html" title="How does routing work in JBI">How does routing work in JBI</A></LI><LI><A href="is-jbi-relevant-in-a-heterogeneous-environment.html" title="Is JBI relevant in a heterogeneous environment">Is JBI relevant in a heterogeneous environment</A></LI><LI><A href="what-is-jbi.html" title="What is JBI">What is JBI</A></LI></UL>
+
+### Using ServiceMix
+
+<P>Questions on using ServiceMix, JBI and ESB techologies. </P>
+
+<UL><LI><A href="how-can-i-access-the-jbicontainer-from-inside-a-component-.html" title="How can I access the JBIContainer from inside a component ?">How can I access the JBIContainer from inside a component ?</A></LI><LI><A href="how-does-a-provider-web-service-expose-itself-or-registers-itself-on-the-bus.html" title="How does a provider web service expose itself or registers itself on the bus">How does a provider web service expose itself or registers itself on the bus</A></LI><LI><A href="how-does-routing-work-in-servicemix.html" title="How does routing work in ServiceMix">How does routing work in ServiceMix</A></LI><LI><A href="how-does-servicemix-interact-with-a-uddi-repository.html" title="How does ServiceMix interact with a UDDI repository">How does ServiceMix interact with a UDDI repository</A></LI><LI><A href="how-do-i-bridge-different-jms-providers.html" title="How do I bridge different JMS providers">How do I bridge different JMS providers</A></LI><LI><A href="how-do-i-change-the-logging.html" title="How do I change the logging">How do I change the logging</A></LI><LI><A href="how-do-i-change-the-servicemix-rmi-port-number.html" title="How do I change the ServiceMix RMI port number?">How do I change the ServiceMix RMI port number?</A></LI><LI><A href="how-do-i-configure-an-endpoint-resolver-policy.html" title="How do I configure an endpoint resolver policy">How do I configure an endpoint resolver policy</A></LI><LI><A href="how-do-i-integrate-the-servicemix-jms-component-with-webspheremq.html" title="How do I integrate the servicemix-jms component with WebsphereMQ?">How do I integrate the servicemix-jms component with WebsphereMQ?</A></LI><LI><A href="how-do-i-share-a-single-object-between-different-service-units.html" title="How do I share a single object between different service units">How do I share a single object between different service units</A></LI><LI><A href="how-do-you-invoke-an-endpoint-through-the-esb.html" title="How do you invoke an endpoint through the ESB">How do you invoke an endpoint through the ESB</A></LI><LI><A href="should-i-create-my-own-jbi-components.html" title="Should I Create My Own JBI Components?">Should I Create My Own JBI Components?</A></LI><LI><A href="what-is-a-jbi-sa-and-how-do-i-create-one.html" title="What is a JBI SA and how do I create one?">What is a JBI SA and how do I create one?</A></LI><LI><A href="what-is-a-jbi-su-and-how-do-i-create-one.html" title="What is a JBI SU and how do I create one?">What is a JBI SU and how do I create one?</A></LI><LI><A href="what-is-a-lightweight-component.html" title="What is a lightweight component">What is a lightweight component</A></LI><LI><A href="why-does-my-sender-not-send.html" title="Why does my sender not send">Why does my sender not send</A></LI><LI><A href="why-does-servicemix-seems-to-hang-after-some-processing.html" title="Why does ServiceMix seems to hang after some processing">Why does ServiceMix seems to hang after some processing</A><UL><LI><A href="writing-lighweight-components.html" title="Writing lighweight components">Writing lighweight components</A></LI></UL></LI></UL>
+
+### JBI Component Questions
+
+<P>Frequently asked questions about the standard set of JBI components shipped with ServiceMix</P>
+
+<UL><LI><A href="servicemix-saxon-orgw3cdomdomexception-hierarchyrequesterr.html" title="servicemix-saxon - org.w3c.dom.DOMException - HIERARCHY_REQUEST_ERR">servicemix-saxon - org.w3c.dom.DOMException - HIERARCHY_REQUEST_ERR</A></LI></UL>
+
+### Errors
+
+<UL><LI><A href="exception-in-thread-main-javaioioexception.html" title="Exception in thread &quot;main&quot; java.io.IOException">Exception in thread &quot;main&quot; java.io.IOException</A></LI><LI><A href="javaioioexception-stream-closed.html" title="java.io.IOException - Stream closed">java.io.IOException - Stream closed</A></LI><LI><A href="javanetbindexception-address-already-in-use.html" title="java.net.BindException - Address already in use">java.net.BindException - Address already in use</A></LI><LI><A href="javanetsocketexception-error-setting-options.html" title="java.net.SocketException -- error setting options">java.net.SocketException &ndash; error setting options</A></LI><LI><A href="javaneturisyntaxexception-illegal-character-in-hostname.html" title="java.net.URISyntaxException -- Illegal character in hostname">java.net.URISyntaxException &ndash; Illegal character in hostname</A></LI><LI><A href="lifecycleexecutionexception-the-service-unit-xyz-does-not-have-a-dependency-which-is-packaged-as-a-jbi-component.html" title="LifecycleExecutionException - The service unit xyz does not have a dependency which is packaged as a jbi-component">LifecycleExecutionException - The service unit xyz does not have a dependency which is packaged as a jbi-component</A></LI><LI><A href="mx4jremoteresolverrmirmiresolverbindserver-exception.html" title="mx4j.remote.resolver.rmi.RMIResolver.bindServer exception">mx4j.remote.resolver.rmi.RMIResolver.bindServer exception</A></LI><LI><A href="no-transactioncontextmanager-is-set.html" title="No TransactionContextManager is set">No TransactionContextManager is set</A></LI><LI><A href="unable-to-find-suitable-deployer-for-service-unit.html" title="Unable to find suitable deployer for Service Unit">Unable to find suitable deployer for Service Unit</A></LI><LI><A href="unrecognized-xbean-namespace-mapping.html" title="Unrecognized xbean namespace mapping">Unrecognized xbean namespace mapping</A></LI></UL>
+
+### Terminology
+
+A list of the various messaging related terms and acronyms.

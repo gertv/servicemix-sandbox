@@ -1,0 +1,35 @@
+---
+<% attributes("title") = "IRC" %>
+title: Discussion IRC
+--- name:content pipeline:markdown
+
+# IRC
+
+<P>Although the preferred means of communication regarding ServiceMix is always the <A href="/support/mailing-lists.html" title="Mailing Lists">mailing lists</A>, you can also find most of us hanging out on the <A href="irc://irc.codehaus.org/servicemix" class="external-link" rel="nofollow">#servicemix channel</A> on the Codehaus IRC server. Many of us hang out there while we're working because it's a good place to have quick chats.</P>
+
+### Connecting to IRC
+
+Below is the connection information:
+
+> **server:** irc.codehaus.org
+>
+> **port:** 6667
+>
+> **channel:** #servicemix
+
+## Use the Mibbit IRC Client
+
+<P>If you aren't a habitual IRC user, feel free to take a hit off the Mibbit IRC client by entering an optional nick and clicking the connect button below, or you can <A href="#servicemix" onclick="window.open(&quot;http://embed.mibbit.com/?server=irc.codehaus.org&channel=%23servicemix&nick=smx_user&chatOutputShowTimes=true&quot;,&quot;&quot;,&quot;width=640,height=480&quot;)">
+open a popout IRC client</A></P>
+
+<iframe width="600" height="380" scrolling="no" frameborder="0" src="http://embed.mibbit.com/?server=irc.codehaus.org&channel=%23servicemix&nick=smx_user&chatOutputShowTimes=true">
+</iframe>
+
+
+## Other IRC Clients
+
+<P>To connect to the Codehaus IRC server, you'll need an IRC client. There's a decent <A href="http://en.wikipedia.org/wiki/List_of_IRC_clients" class="external-link" rel="nofollow">list of IRC clients on Wikipedia</A> along with some feature comparisons and other information. </P>
+
+## IRC Log
+
+<P>The IRC log is <A href="http://irc.rectang.com/logs/codehaus/%23servicemix/" class="external-link" rel="nofollow">publicly available for browsing</A>.</P>

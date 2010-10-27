@@ -1,0 +1,54 @@
+---
+<% attributes("title") = "Mailing Lists" %>
+title: Support
+--- name:content pipeline:markdown
+
+# Mailing Lists
+
+<div class="tip">
+<h1>Tips For Getting Help</h1>
+<p>Before posting your questions to the mailing lists, we encourage you to read the tips on <a href="index.html#How_to_Get_Help">how to get help</a>.</p>
+</div>
+
+The following mailing lists are available for getting help with Apache ServiceMix:
+
+<table>
+<tbody>
+<tr>
+<th>List Name</th>
+<th>Subscribe</th>
+<th>Unsubscribe</th>
+<th>Archive</th>
+<th>Nabble (Online Forums)</th>
+<th>MarkMail (Archive)</th>
+</tr>
+<tr>
+<td>servicemix User List</td>
+<td><A href="mailto:users-subscribe@servicemix.apache.org">Subscribe</A></td>
+<td><A href="mailto:users-unsubscribe@servicemix.apache.org">Unsubscribe</A></td>
+<td><A href="http://mail-archives.apache.org/mod_mbox/servicemix-users/">Archive</A></td>
+<td><A href="http://servicemix.396122.n5.nabble.com/ServiceMix-User-f396123.html">Nabble</A></td>
+<td><A href="http://markmail.org/search/list:servicemix-users">MarkMail</A></td>
+</tr>
+<tr>
+<td>servicemix Developer List</td>
+<td><A href="mailto:dev-subscribe@servicemix.apache.org">Subscribe</A></td>
+<td><A href="mailto:dev-unsubscribe@servicemix.apache.org">Unsubscribe</A></td>
+<td><A href="http://mail-archives.apache.org/mod_mbox/servicemix-dev/">Archive</A></td>
+<td><A href="http://servicemix.396122.n5.nabble.com/ServiceMix-Dev-f421438.html">Nabble</A></td>
+<td><A href="http://markmail.org/search/list:servicemix-dev">MarkMail</A></td>
+</tr>
+<tr>
+<td>servicemix SCM List</td>
+<td><A href="mailto:commits-subscribe@servicemix.apache.org">Subscribe</A></td>
+<td><A href="mailto:commits-unsubscribe@servicemix.apache.org">Unsubscribe</A></td>
+<td><A href="http://mail-archives.apache.org/mod_mbox/servicemix-commits/">Archive</A></td>
+<td><A href="http://servicemix.396122.n5.nabble.com/ServiceMix-Commits-f449538.html">Nabble</A></td>
+<td><A href="http://markmail.org/search/list:servicemix-commits">MarkMail</A></td>
+</tr>
+</tbody>
+</table>
+
+## Discussion Forums
+
+If you prefer as web interface to the mailing lists instead of using a mail client, you could use the [discussion forums](discussion-forums.html). The discussion forums are provided by a third party and are sync'd with the mailing lists on a regular basis.

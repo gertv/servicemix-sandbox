@@ -181,3 +181,23 @@ div.pdf {
 div#title {
   padding-bottom: 20px;
 }
+
+div.tip {
+  background-color: #D3F8D3;
+  position: relative;
+  left: 20px;
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  width: 90%;
+}
+
+div.tip h1:before {
+  content:url(/images/check.gif);
+  padding-right: 10px;
+}
+
+div.tip h1 {
+  font-size: small;
+  padding-bottom: 5px;
+}
