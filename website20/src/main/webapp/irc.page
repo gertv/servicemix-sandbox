@@ -11,11 +11,11 @@ title: Discussion IRC
 
 Below is the connection information:
 
-> **server:** irc.codehaus.org
->
-> **port:** 6667
->
-> **channel:** #servicemix
+<div style="background-color: #F8F8F8; width: 50%; padding:10px">
+<b>server:</b> irc.codehaus.org<br/>
+<b>port:</b> 6667<br/>
+<b>channel:</b> #servicemix
+</div>
 
 ## Use the Mibbit IRC Client
 

@@ -1,0 +1,6 @@
+---
+<% attributes("title") = "Guidelines for Committers" %>
+title: Guidelines for Committers
+--- name:content pipeline:markdown
+
+# Guidelines for Committers

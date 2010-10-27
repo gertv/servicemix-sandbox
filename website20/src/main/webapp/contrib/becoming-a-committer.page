@@ -1,0 +1,6 @@
+---
+<% attributes("title") = "Becoming a Committer" %>
+title: Becoming a Committer
+--- name:content pipeline:markdown
+
+# Becoming a Committer

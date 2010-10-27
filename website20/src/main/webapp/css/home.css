@@ -18,6 +18,8 @@ div#boxes h1 {
   font-size: medium;
   color: #383838;
   padding-left: 35px;
+  margin: 0;
+  border-bottom: none;
 }
 
 div#boxes a {

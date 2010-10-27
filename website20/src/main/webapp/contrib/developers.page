@@ -1,0 +1,6 @@
+---
+<% attributes("title") = "Developer Resources" %>
+title: Developer Resources
+--- name:content pipeline:markdown
+
+# Developer Resources

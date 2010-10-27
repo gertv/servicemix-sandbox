@@ -1,0 +1,6 @@
+---
+<% attributes("title") = "Source" %>
+title: Source
+--- name:content pipeline:markdown
+
+Get the source
