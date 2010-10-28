@@ -33,7 +33,7 @@
   
   <properties>
     <netbeans.hint.deploy.server>Tomcat60</netbeans.hint.deploy.server>
-    <scalate.version>1.4-SNAPSHOT</scalate.version>
+    <scalate.version>1.3.1</scalate.version>
   </properties>
   
   <dependencies>
