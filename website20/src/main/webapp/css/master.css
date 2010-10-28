@@ -37,9 +37,9 @@ div#siteHeader table, div#siteHeader td {
 ul.siteNav {
   list-style-type: none;
   padding:0;
-	margin:0;
-	position: relative;
-	left: 60px;
+  margin:0;
+  position: relative;
+  left:40%;
   }
   
 ul.siteNav li {

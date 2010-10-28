@@ -35,21 +35,20 @@ limitations under the License.
 <body>
   <div id="siteHeader">
     <table width="100%">
-      <tr>
-        <td valign="middle">
+      <tr valign="middle">
+        <td align="left">
           <a href="/index.html" title="An open source ESB">
-            <img border="0" src="/images/logodesign.png" height="100"/>&nbsp;<img border="0" src="/images/new-logo.png" />
+            <img border="0" src="/images/logodesign.png" height="100"/><img border="0" src="/images/new-logo.png" />
           </a>
         </td>
         <td align="right">
           <a href="http://www.apache.org/" title="The Apache Sofware Foundation">
-            <img border="0" src="http://activemq.apache.org/images/asf-logo.png">
+            <img  border="0" src="http://activemq.apache.org/images/asf-logo.png">
           </a>
         </td>
       </tr>
       <tr>
-        <td />
-        <td align="right">
+        <td colspan="2">
           <ul class="siteNav">
             <li ><a href="/index.html" title="Overview">Overview</a></li>
             <li><a href="/downloads/index.html" title="Download">Download</a></li>
@@ -60,7 +59,7 @@ limitations under the License.
                 <li><a href="/support/mailing-lists.html" title="Mailing Lists">Mailing Lists</a></li>
                 <li><a href="/support/discussion-forums.html" title="Discussion Forums">Forums</a></li>
                 <li><a href="/irc.html" title="IRC">IRC</a></li>
-                <li><a href="/support/faq.html" title="IRC">FAQ</a></li>
+                <li><a href="/support/faq.html" title="FAQ">FAQ</a></li>
                 <li><a href="/support/presentations.html" title="Presentations">Presentations</a></li>
               </ul>
             </li>
