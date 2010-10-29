@@ -82,6 +82,13 @@
               <goal>sitegen</goal>
             </goals>
           </execution>
+          <execution>
+            <id>deploy</id>
+            <goals>
+              <goal>deploy</goal>
+            </goals>
+            <phase>deploy</phase>
+          </execution>
         </executions>
       </plugin>
       
