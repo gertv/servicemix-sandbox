@@ -46,16 +46,10 @@ title: Home
             os.indexOf('x11')!=-1 ||
             os.indexOf('linux')!=-1) {
           $('#dl_win').hide();
-          $('#dl_x_a').css('fontWeight', 'bold');
-          $('#dl_x_a').css('fontSize', 'medium');
-          $('#dl_x_a').css('color', 'blue');
-          $('#dl_x_a').css('text-decoration', 'underline');
+          $('#dl_x_a').show();
         } else {
           $('#dl_x').hide();
-          $('#dl_win_a').css('fontWeight', 'bold');
-          $('#dl_win_a').css('fontSize', 'medium');
-          $('#dl_win_a').css('color', 'blue');
-          $('#dl_win_a').css('text-decoration', 'underline');
+          $('#dl_win_a').show();
         }
       </script>
   #useit_box

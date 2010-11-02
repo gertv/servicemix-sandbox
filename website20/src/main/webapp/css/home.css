@@ -39,14 +39,29 @@ div#boxes ul {
 
 div#getit_box {
   background-color: #33CC99;
-}
+  border-radius: 1em;
+  -webkit-border-radius: 1em;
+  -moz-border-radius: 1em;
+  -webkit-box-shadow: 0.25em 0.25em 1em rgba(0,0,0,0.25);
+  -moz-box-shadow: rgba(0,0,0,0.25) 0.25em 0.25em 1em;
+  }
 
 div#useit_box {
   background-color: #6699FF;
+  border-radius: 1em;
+  -webkit-border-radius: 1em;
+  -moz-border-radius: 1em;
+  -webkit-box-shadow: 0.25em 0.25em 1em rgba(0,0,0,0.25);
+  -moz-box-shadow: rgba(0,0,0,0.25) 0.25em 0.25em 1em;
 }
 
 div#makeit_box {
   background-color: #CC99CC;
+  border-radius: 1em;
+  -webkit-border-radius: 1em;
+  -moz-border-radius: 1em;
+  -webkit-box-shadow: 0.25em 0.25em 1em rgba(0,0,0,0.25);
+  -moz-box-shadow: rgba(0,0,0,0.25) 0.25em 0.25em 1em;
 }
 
 div#news {
