@@ -16,18 +16,25 @@ See the License for the specific language governing permissions and
 limitations under the License.
 --%>
 <%@ var body: String %>
-<%@ var title : String = "The Apache ServiceMix Project" %>
-<%@ var style : String = "foo.css" %>
+<%@ var title : String = null %>
+<%@ var style : String = null %>
 <% escapeMarkup = false %>
 <% import org.fusesource.scalate.servlet.ServletRenderContext._ %>
 <!DOCTYPE html>
 <html>
 <head>
+  <% if (title != null) { %>
   <title>Apache ServiceMix, the Agile Open Source ESB -- ${title}</title>
-
+<% } %>  
+<% else { %>
+  <title>Apache ServiceMix, the Agile Open Source ESB</title>
+  <% } %>
+  
   <link href="${uri("/css/master.css")}" rel="Stylesheet" type="text/css" />
   <link href="${uri("/css/pygmentize.css")}" rel="stylesheet" type="text/css" />
-  <link href="${style}" rel="stylesheet" type="text/css" />
+  <% if (style != null) { %>
+    <link href="${style}" rel="stylesheet" type="text/css" />
+<% } %>  
 
   <script type="text/javascript" src="${uri("./scripts/jquery.js")}"></script>
   <script type="text/javascript" src="${uri("./scripts/jquery.browser.js")}"></script>
