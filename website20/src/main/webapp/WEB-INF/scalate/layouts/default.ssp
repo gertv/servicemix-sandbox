@@ -56,10 +56,11 @@ limitations under the License.
             <li>
               <a href="/support/index.html" title="Support">Support</a>
               <ul>
-                <li><a href="/support/mailing-lists.html" title="Mailing Lists">Mailing Lists</a></li>
-                <li><a href="/support/discussion-forums.html" title="Discussion Forums">Forums</a></li>
-                <li><a href="/irc.html" title="IRC">IRC</a></li>
+                <li><a href="/community/mailing-lists.html" title="Mailing Lists">Mailing Lists</a></li>
+                <li><a href="/community/discussion-forums.html" title="Discussion Forums">Forums</a></li>
+                <li><a href="/community/irc.html" title="IRC">IRC</a></li>
                 <li><a href="/support/faq.html" title="FAQ">FAQ</a></li>
+                <li><a href="/community/users.html" title="Users">Users</a></li>
                 <li><a href="/support/presentations.html" title="Presentations">Presentations</a></li>
               </ul>
             </li>
@@ -71,6 +72,7 @@ limitations under the License.
                 <li><a href="/contrib/source.html" title="Source">Source</a></li>
                 <li><a href="http://issues.apache.org/activemq/browse/SM" title="JIRA">JIRA</a></li>
                 <li><a href="/contrib/developers.html" title="Developers">Developer Resources</a></li>
+                <li><a href="/community/team.html" title="Users">Team</a></li>
               </ul>
             </li>
           </ul>
