@@ -4,3 +4,65 @@ title: Guidelines for Committers
 --- name:content pipeline:markdown
 
 # Guidelines for Committers
+
+This page serves as a gather spot for all information for committers to Apache ServiceMix. It is requested that all committers comply with the following guidelines.
+
+## Code Style
+
+Before committing anything, please see the [coding standards](coding-standards.html).
+
+These code standards are enforced in most ares of the codebase via the [maven-checkstyle-plugin](http://maven.apache.org/plugins/maven-checkstyle-plugin/) and the [maven-pmd-plugin](http://maven.apache.org/plugins/maven-pmd-plugin/). Just make sure to build your code before committing.
+
+
+## Subversion Client Configuration
+
+Please see the [Subversion client EOL configuration](http://www.apache.org/dev/svn-eol-style.txt).
+
+## Documentation
+
+* All major commits **must** be associated with a JIRA issue.
+    * The commit log should begin with the JIRA issue number. For a good example, see this [Log Message](http://svn.apache.org/viewvc?view=rev&revision=582756).
+    * If there are multiple commits for a JIRA issue, each commit log should begin with the JIRA issue number.
+* All committed code **must** be properly documented.
+    * If you are working on a piece of code that is undocumented or poorly documented, please take the time to document it properly before committing!
+    * This includes Javadoc and regular comments. If you need an example of good documentation, take a peek at the [Spring source code](http://springframework.cvs.sourceforge.net/springframework/spring/src/org/springframework/). Here is the [Spring ``AbstractJmsListeningContainer``](http://springframework.cvs.sourceforge.net/springframework/spring/src/org/springframework/jms/listener/AbstractJmsListeningContainer.java?view=markup).
+
+## Unit Tests
+
+* All major code additions and changes should be accompanied by a unit test.
+
+    This allows all issues to be proven in future builds.</LI>
+* Unit tests should provide as much coverage as possible.
+
+    The goal is to cover 100% of the codebase. This is enforced much easier on ServiceMix 4.0 than the existing ServiceMix 3.0 codebase.</LI>
+
+## Licensing and Copyright
+
+* All new source file submissions **must** include the Apache License in a comment at the head of the file.
+
+    Below is an example for use in Java files. Other file types may need to change the comment style.
+
+        /*
+         * Licensed to the Apache Software Foundation (ASF) under one or more
+         * contributor license agreements.  See the NOTICE file distributed with
+         * this work for additional information regarding copyright ownership.
+         * The ASF licenses this file to You under the Apache License, Version 2.0
+         * (the "License"); you may not use this file except in compliance with
+         * the License.  You may obtain a copy of the License at
+         *
+         *      http://www.apache.org/licenses/LICENSE-2.0
+         *
+         * Unless required by applicable law or agreed to in writing, software
+         * distributed under the License is distributed on an "AS IS" BASIS,
+         * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+         * See the License for the specific language governing permissions and
+         * limitations under the License.
+         */
+
+* All contributions **must** comply with the terms of the [Apache Contributor License Agreement (CLA)](http://www.apache.org/licenses/cla.pdf).
+* Any questions about copyright or patent issues should be raised on the dev mailing list **before** contributing or committing code.
+
+## Miscellaneous
+
+* If you need to experiment with something and you want to commit your code, just create a branch in the Subversion repo.
+* If you are troubleshooting a problem, stop to create a unit test first. Then you'll have something to commit.

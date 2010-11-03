@@ -72,13 +72,26 @@ limitations under the License.
               </ul>
             </li>
             <li>
-              <a href="/contrib/index.html" title="Contributing">Contributing</a>
+              <a href="/community/index.html" title="Community">Community</a>
               <ul>
-                <li><a href="/contrib/becoming-a-committer.html" title="Committing">Become a committer</a></li>
+                <li><a href="/community/mailing-lists.html" title="Mailing Lists">Mailing Lists</a></li>
+                <li><a href="/community/discussion-forums.html" title="Discussion Forums">Forums</a></li>
+                <li><a href="/community/irc.html" title="IRC">IRC</a></li>
+                <li><a href="/community/users.html" title="Users">Users</a></li>
+                <li><a href="/community/team.html" title="Users">Team</a></li>
+                <li><a href="/community/projects.html" title="Users">Related Projects</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="/contrib/index.html" title="Contributing">Contribute</a>
+              <ul>
+                <li><a href="/contrib/becoming-a-committer.html" title="Committing">Become a Committer</a></li>
                 <li><a href="/contrib/committers-guide.html" title="Committing Guide">Committer Guide</a></li>
-                <li><a href="/contrib/source.html" title="Source">Source</a></li>
+                <li><a href="/contrib/source.html" title="Source">Getting the Source</a></li>
+                <li><a href="/contrib/building.html" title="Building">Building ServiceMix</a></li>
+                <li><a href="/contrib/coding-standards.html" title="Coding Standards">Coding Standards</a></li>
                 <li><a href="http://issues.apache.org/activemq/browse/SM" title="JIRA">JIRA</a></li>
-                <li><a href="/contrib/developers.html" title="Developers">Developer Resources</a></li>
+                <li><a href="/contrib/releasing.html" title="Releasing">Release Guide</a></li>
                 <li><a href="/community/team.html" title="Users">Team</a></li>
               </ul>
             </li>

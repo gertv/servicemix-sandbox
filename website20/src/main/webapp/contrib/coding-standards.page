@@ -1,0 +1,215 @@
+---
+<% attributes("title") = "Coding Standards" %>
+title: Codine Standards
+--- name:content pipeline:markdown
+
+This page describes the standards used for Apache ServiceMixcode (java, xml, whatever). Code is read by a human being more often than it is written by a human being, make the code a pleasure to read.
+
+# Indentation
+
+## Java
+
+Follow Sun's coding standard rules which are pretty common in Java:
+
+* [http://java.sun.com/docs/codeconv/](http://java.sun.com/docs/codeconv/)
+* [http://java.sun.com/docs/codeconv/html/CodeConvTOC.doc.html](http://java.sun.com/docs/codeconv/html/CodeConvTOC.doc.html)
+
+In short:
+
+* 4 characters indentation
+* **No tabs** please!
+
+For example:
+<DIV class="code panel" style="border-style: solid;border-width: 1px;"><DIV class="codeContent panelContent">
+<PRE class="code-java">
+<SPAN class="code-keyword">public</SPAN> class Foo {
+    <SPAN class="code-keyword">public</SPAN> void foo(<SPAN class="code-object">boolean</SPAN> a, <SPAN class="code-object">int</SPAN> x, <SPAN class="code-object">int</SPAN> y, <SPAN class="code-object">int</SPAN> z) {
+        <SPAN class="code-keyword">do</SPAN> {
+            <SPAN class="code-keyword">try</SPAN> {
+                <SPAN class="code-keyword">if</SPAN> (x &gt; 0) {
+                    <SPAN class="code-object">int</SPAN> someVariable = a ?  x : y;
+                } <SPAN class="code-keyword">else</SPAN> <SPAN class="code-keyword">if</SPAN> (x &lt; 0) {
+                    <SPAN class="code-object">int</SPAN> someVariable = (y + z);
+                    someVariable = x = x + y;
+                } <SPAN class="code-keyword">else</SPAN> {
+                    <SPAN class="code-keyword">for</SPAN> (<SPAN class="code-object">int</SPAN> i = 0; i &lt; 5; i++) {
+                        doSomething(i);
+                    }
+                }
+
+                <SPAN class="code-keyword">switch</SPAN> (a) {
+                    <SPAN class="code-keyword">case</SPAN> 0:
+                        doCase0();
+                        <SPAN class="code-keyword">break</SPAN>;
+                    <SPAN class="code-keyword">default</SPAN>:
+                        doDefault();
+                }
+            } <SPAN class="code-keyword">catch</SPAN> (Exception e) {
+                processException(e.getMessage(), x + y, z, a);
+            } <SPAN class="code-keyword">finally</SPAN> {
+                processFinally();
+            }
+        } <SPAN class="code-keyword">while</SPAN> (<SPAN class="code-keyword">true</SPAN>);
+
+        <SPAN class="code-keyword">if</SPAN> (2 &lt; 3) {
+            <SPAN class="code-keyword">return</SPAN>;
+        }
+
+        <SPAN class="code-keyword">if</SPAN> (3 &lt; 4) {
+            <SPAN class="code-keyword">return</SPAN>;
+        }
+
+        <SPAN class="code-keyword">do</SPAN> {
+            x++
+        } <SPAN class="code-keyword">while</SPAN> (x &lt; 10000);
+
+        <SPAN class="code-keyword">while</SPAN> (x &lt; 50000) {
+            x++;
+        }
+
+        <SPAN class="code-keyword">for</SPAN> (<SPAN class="code-object">int</SPAN> i = 0; i &lt; 5; i++) {
+            <SPAN class="code-object">System</SPAN>.out.println(i);
+        }
+    }
+
+    <SPAN class="code-keyword">private</SPAN> class InnerClass <SPAN class="code-keyword">implements</SPAN> I1, I2 {
+        <SPAN class="code-keyword">public</SPAN> void bar() <SPAN class="code-keyword">throws</SPAN> E1, E2 {
+        }
+    }
+}
+</PRE>
+</DIV></DIV>
+
+## XML
+
+* Use 4 characters.  This is to allow IDEs such as Eclipse to use a unified formatting convention.
+* **No tabs** please!
+
+# Interfaces
+
+All methods of an interface are `public abstract`, therefore it is not necessary to specify `public abstract` modifiers. Similarly all fields are `public static final`.</P>
+
+However this behavior works best with most tools and IDEs and seems to be common practice so we see no reason to disallow this practice. e.g:
+
+<DIV class="code panel" style="border-style: solid;border-width: 1px;"><DIV class="codeContent panelContent">
+<PRE class="code-java">
+<SPAN class="code-keyword">public</SPAN> <SPAN class="code-keyword">interface</SPAN> MyInterface {
+    <SPAN class="code-keyword">public</SPAN> <SPAN class="code-keyword">static</SPAN> <SPAN class="code-keyword">final</SPAN> <SPAN class="code-object">int</SPAN> MY_INTEGER = 0;
+
+    <SPAN class="code-keyword">public</SPAN> <SPAN class="code-keyword">abstract</SPAN> void doSomething();
+}
+</PRE>
+</DIV></DIV>
+
+This has the added advantage that the interface can be converted into an abstract class (and copy and paste individual definitions) without changing anything.
+
+Preferably add `public`/`static`/`final` to constants, and `public`/`abstract` to methods, but it's not mandatory. However, if it's there, don't take it out.
+
+# Exceptions
+
+* A situation is only exceptional, if the program can not handle it with reasonably effort. Wrong input data should be an expected situation of the regular code, that could be handled gracefully.
+* The intention of exception-handling is to separate real error-handling from the regular part of the code, so don't force the caller to mix it with unnecessary exceptions.
+* Only if your code really has a problem to continue e.g., when a parameter is invalid, feel free to throw an exception!
+* Do **NOT** throw an exception, if you only suppose the caller of your code could have a problem with a special result. Try to return a special result value instead e.g., null, and let the caller decide with a regular if-else-statement. If the caller really has a problem, **HE WILL** throw an exception on his own.
+* But if your code throws an exception, even though it has no real problem and it could continue without an exception and return a special result value, you forestall the decision of the caller, whether the special result is really an error or not.
+* If you throw an exception, where the caller would decide that it is no error in the context of the caller, you force the caller to write an exception handler in his regular part or to abort i.e., you force the caller to mix regular code with exception handling. That is the opposite of the intentention of exception handling.
+* Bad example:
+
+        java.lang.Class.forName(String) throws ClassNotFoundException
+    In most programs/situations it is an error if this method does not find the class, therefore it throws an exception and forestalls the decision of the caller.
+    But maybe there is a program that should check a list of class names, whether the classes are present or not. Such a program is forced to mix its regular code with error handling of an exception, that is no error at all in that context.
+    The method should return a special result value instead: null. Many callers of that method have expected that situation and therefore are not in an unexpected situation/exceptional state. They could decide the situation on their own.
+* Only throw checked exceptions (not derived from `RuntimeException`), if the caller has a chance to handle it.
+* Exceptions that signal programming errors or system failures usually cannot be handled/repaired at runtime -&gt; unchecked exception.
+* If your code really has a problem to continue e.g., when a parameter is invalid, throw an unchecked exception (derived from `RuntimeException`) and do NOT throw a checked exception, because if not even your code can handle the problem, in the very most cases the caller has no chance to handle the problem, too. Instead there maybe somebody somewhere in the highest layers who catches all `RuntimeException`'s, logs them and continues the regular service.
+* Only if it is not possible to return special result values cleanly, use checked exceptions to force the caller to decide the situation. The caller should deescalate the situation by catching and handling one or more checked exceptions, e.g. with special result values(&#63;) or by escalating with an unchecked exception, because the situation is an error, that can not be handled.
+* Checked exceptions are an official part of the interface, therefore do not propagate checked exceptions from one abstraction layer to another, because usually this would break the lower abstraction. E.g. do not propagate SQLException to another layer, because SQLExceptions are an implementation detail, that may change in the future and such changes should not affect the interfaces and their callers.</LI>
+* Never throw `NullPointerException` or `RuntimeException`. Use either `IllegalArgumentException`, or `NullArgumentException` (which is a subclass of `IllegalArgumentException` anyway). If there isn't a suitable subclass available for representing an exception, create your own.
+
+# Package Naming
+
+* Package names are lowercase.
+* Package names should only contain alpha-numberic characters.
+* Package names should be suffixed with the name of the module in which they are defined.
+
+For example, if the module name is *common*, then the base package name should be `org.apache.geronimo.common`.
+
+<div class="note">
+  <h1>Note</h1>
+  <p>This is more of a <EM>guideline</EM> than a <EM>rule</EM>, as some modules simply can not follow this convention, but where applicable they should.</p>
+</div>
+
+# Imports
+
+* Should be fully qualified e.g. `import java.util.Vector` and not `java.util.*`
+* Should be sorted alphabetically, with *java*, then *javax* packages listed first, and then other packages sorted by package name.
+
+# IDE Auto-Formatting
+
+Eclipse users can:
+
+* use **Source -&gt; Organise Imports** to organize imports
+* use **Source -&gt; Format** to format code (please use default Eclipse formatting conventions, which are as above)
+
+IntelliJ users can:
+
+* use **Tools -&gt; Organise Imports** to organize imports
+* use **Tools -&gt; Reformat code** to format code (uses the code style setting in IDE options)
+
+The eclipse formater settings are available [here](coding-standards.data/eclipse-formater.xml).
+
+# JavaDoc Tags
+
+* `@version` should be: `@version $Revision$ $Date$`.
+* `@author` should not be used in source code at all.
+
+# Unit Test Cases
+
+* Use the naming scheme `*Test.java` for unit tests.
+* Do not define `public static Test suite&#40;)` or constructor methods, the build system will automatically do the right thing without them.
+
+# Logging
+
+* Log as much as necessary for someone to figure out what broke.
+* Use `org.apache.commons.logging.Log` rather than raw Log4j.
+* Do not log throwables that you throw - leave it to the caller.
+* Use flags to avoid string concatenation for *debug* and *trace*.
+* Cache flags (especially for *trace*) to avoid excessive `isTraceEnabled()` calls
+
+## Levels
+
+* Use *trace* level for detailed/diagnostic logging
+* Use *debug* level for things an application developer would need to know
+* Use *info* level for things an administrator would need to know
+* Use *warn* level for things indicating an application or transient problem
+* Use *error* level for things indicating a problem with the server itself
+* Use *fatal* level for things that mean this instance is compromised
+
+# Example
+
+<DIV class="code panel" style="border-style: solid;border-width: 1px;"><DIV class="codeContent panelContent">
+<PRE class="code-java">
+<SPAN class="code-keyword">private</SPAN> <SPAN class="code-keyword">static</SPAN> <SPAN class="code-keyword">final</SPAN> Log log = LogFactory.getLog(MyClass.class);
+
+<SPAN class="code-keyword">public</SPAN> void doSomeStuff(Stuff stuff) <SPAN class="code-keyword">throws</SPAN> StuffException {
+    <SPAN class="code-object">boolean</SPAN> logTrace = log.isTraceEnabled();
+    <SPAN class="code-keyword">try</SPAN> {
+        <SPAN class="code-keyword">if</SPAN> (logTrace) {
+            log.trace(<SPAN class="code-quote">&quot;About to <SPAN class="code-keyword">do</SPAN> stuff &quot;</SPAN> + stuff);
+        }
+        stuff.doSomething();
+        <SPAN class="code-keyword">if</SPAN> (logTrace) {
+            log.trace(<SPAN class="code-quote">&quot;Did some stuff &quot;</SPAN>);
+        }
+    } <SPAN class="code-keyword">catch</SPAN> (BadException e) {
+        <SPAN class="code-comment">// don't log - leave it to caller
+</SPAN>        <SPAN class="code-keyword">throw</SPAN> <SPAN class="code-keyword">new</SPAN> StuffException(<SPAN class="code-quote">&quot;Something bad happened&quot;</SPAN>, e);
+    } <SPAN class="code-keyword">catch</SPAN> (IgnorableException e) {
+        <SPAN class="code-comment">// didn't cache <SPAN class="code-keyword">this</SPAN> as we don't expect to come here a lot
+</SPAN>        <SPAN class="code-keyword">if</SPAN> (log.isDebugEnabled()) {
+            log.debug(<SPAN class="code-quote">&quot;Ignoring problem doing stuff &quot;</SPAN>+stuff, e);
+        }
+    }
+}
+</PRE>
+</DIV></DIV>

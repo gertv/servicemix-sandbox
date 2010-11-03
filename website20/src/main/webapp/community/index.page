@@ -1,0 +1,15 @@
+---
+<% attributes("title") = "Community" %>
+title: Community
+--- name:content pipeline:markdown
+
+# The ServiceMix Community
+
+* [Contributing](/contrib/index.html)
+* [Discussion Forums](discussion-forums.html)
+* [IRC](irc.html)
+* [Mailing Lists](mailing-lists.html)
+* [Roadmap](contrib/roadmap.html)
+* [Support](support/index.html)
+* [Team](team.html)
+* [Users](users.html)
