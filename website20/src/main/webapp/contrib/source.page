@@ -24,13 +24,16 @@ A hearty thanks to [Atlassian](http://atlassian.com/) for providing [FishEye](ht
 
 This project's SVN repository can be checked out anonymously using the following command:
 
-    svn co http://svn.apache.org/repos/asf/servicemix/
+{pygmentize:: text}
+svn co http://svn.apache.org/repos/asf/servicemix/
+{pygmentize}
 
 ## Committer Checkout from the ServiceMix SVN Repo
 
 ServiceMix committers can check out using the following command:
-
-    svn co https://svn.apache.org/repos/asf/servicemix/smx3/trunk
+{pygmentize:: text}
+svn co https://svn.apache.org/repos/asf/servicemix/smx3/trunk
+{pygmentize}
 
 <div class="warn">
   <h1>Commiters Only</h1>
@@ -48,9 +51,12 @@ Due to license issues, some extensions to ServiceMix are hosted at the CodeHaus.
 
 This project's SVN repository can be checked out anonymously with the following command:
 
-    svn co http://svn.codehaus.org/servicemix/trunk
-
+{pygmentize:: text}
+svn co http://svn.codehaus.org/servicemix/trunk
+{pygmentize}
 
 If you are a committer, use the following command:
 
-    svn co https://svn.codehaus.org/servicemix/trunk
+{pygmentize:: text}
+svn co https://svn.codehaus.org/servicemix/trunk
+{pygmentize}

@@ -20,65 +20,64 @@ In short:
 * **No tabs** please!
 
 For example:
-<DIV class="code panel" style="border-style: solid;border-width: 1px;"><DIV class="codeContent panelContent">
-<PRE class="code-java">
-<SPAN class="code-keyword">public</SPAN> class Foo {
-    <SPAN class="code-keyword">public</SPAN> void foo(<SPAN class="code-object">boolean</SPAN> a, <SPAN class="code-object">int</SPAN> x, <SPAN class="code-object">int</SPAN> y, <SPAN class="code-object">int</SPAN> z) {
-        <SPAN class="code-keyword">do</SPAN> {
-            <SPAN class="code-keyword">try</SPAN> {
-                <SPAN class="code-keyword">if</SPAN> (x &gt; 0) {
-                    <SPAN class="code-object">int</SPAN> someVariable = a ?  x : y;
-                } <SPAN class="code-keyword">else</SPAN> <SPAN class="code-keyword">if</SPAN> (x &lt; 0) {
-                    <SPAN class="code-object">int</SPAN> someVariable = (y + z);
+
+{pygmentize:: java}
+public class Foo {
+    public void foo(boolean a, int x, int y, int z) {
+        do {
+            try {
+                if (x > 0) {
+                    int someVariable = a ?  x : y;
+                } else if (x < 0) {
+                    int someVariable = (y + z);
                     someVariable = x = x + y;
-                } <SPAN class="code-keyword">else</SPAN> {
-                    <SPAN class="code-keyword">for</SPAN> (<SPAN class="code-object">int</SPAN> i = 0; i &lt; 5; i++) {
+                } else {
+                    for (int i = 0; i &lt; 5; i++) {
                         doSomething(i);
                     }
                 }
 
-                <SPAN class="code-keyword">switch</SPAN> (a) {
-                    <SPAN class="code-keyword">case</SPAN> 0:
+                switch (a) {
+                    case 0:
                         doCase0();
-                        <SPAN class="code-keyword">break</SPAN>;
-                    <SPAN class="code-keyword">default</SPAN>:
+                        break;
+                    default:
                         doDefault();
                 }
-            } <SPAN class="code-keyword">catch</SPAN> (Exception e) {
+            } catch (Exception e) {
                 processException(e.getMessage(), x + y, z, a);
-            } <SPAN class="code-keyword">finally</SPAN> {
+            } finally {
                 processFinally();
             }
-        } <SPAN class="code-keyword">while</SPAN> (<SPAN class="code-keyword">true</SPAN>);
+        } while (true);
 
-        <SPAN class="code-keyword">if</SPAN> (2 &lt; 3) {
-            <SPAN class="code-keyword">return</SPAN>;
+        if (2 < 3) {
+            return;
         }
 
-        <SPAN class="code-keyword">if</SPAN> (3 &lt; 4) {
-            <SPAN class="code-keyword">return</SPAN>;
+        if (3 < 4) {
+            return;
         }
 
-        <SPAN class="code-keyword">do</SPAN> {
+        do {
             x++
-        } <SPAN class="code-keyword">while</SPAN> (x &lt; 10000);
+        } while (x < 10000);
 
-        <SPAN class="code-keyword">while</SPAN> (x &lt; 50000) {
+        while (x < 50000) {
             x++;
         }
 
-        <SPAN class="code-keyword">for</SPAN> (<SPAN class="code-object">int</SPAN> i = 0; i &lt; 5; i++) {
-            <SPAN class="code-object">System</SPAN>.out.println(i);
+        for (int i = 0; i < 5; i++) {
+            System.out.println(i);
         }
     }
 
-    <SPAN class="code-keyword">private</SPAN> class InnerClass <SPAN class="code-keyword">implements</SPAN> I1, I2 {
-        <SPAN class="code-keyword">public</SPAN> void bar() <SPAN class="code-keyword">throws</SPAN> E1, E2 {
+     class InnerClass implements I1, I2 {
+         void bar() throws E1, E2 {
         }
     }
 }
-</PRE>
-</DIV></DIV>
+{pygmentize}
 
 ## XML
 
@@ -91,15 +90,13 @@ All methods of an interface are `public abstract`, therefore it is not necessary
 
 However this behavior works best with most tools and IDEs and seems to be common practice so we see no reason to disallow this practice. e.g:
 
-<DIV class="code panel" style="border-style: solid;border-width: 1px;"><DIV class="codeContent panelContent">
-<PRE class="code-java">
-<SPAN class="code-keyword">public</SPAN> <SPAN class="code-keyword">interface</SPAN> MyInterface {
-    <SPAN class="code-keyword">public</SPAN> <SPAN class="code-keyword">static</SPAN> <SPAN class="code-keyword">final</SPAN> <SPAN class="code-object">int</SPAN> MY_INTEGER = 0;
+{pygmentize:: java}
+public interface MyInterface {
+    public static final int MY_INTEGER = 0;
 
-    <SPAN class="code-keyword">public</SPAN> <SPAN class="code-keyword">abstract</SPAN> void doSomething();
+    public abstract void doSomething();
 }
-</PRE>
-</DIV></DIV>
+{pygmentize}
 
 This has the added advantage that the interface can be converted into an abstract class (and copy and paste individual definitions) without changing anything.
 
@@ -115,7 +112,10 @@ Preferably add `public`/`static`/`final` to constants, and `public`/`abstract` t
 * If you throw an exception, where the caller would decide that it is no error in the context of the caller, you force the caller to write an exception handler in his regular part or to abort i.e., you force the caller to mix regular code with exception handling. That is the opposite of the intentention of exception handling.
 * Bad example:
 
-        java.lang.Class.forName(String) throws ClassNotFoundException
+  {pygmentize:: java}
+  java.lang.Class.forName(String) throws ClassNotFoundException
+  {pygmentize}
+  
     In most programs/situations it is an error if this method does not find the class, therefore it throws an exception and forestalls the decision of the caller.
     But maybe there is a program that should check a list of class names, whether the classes are present or not. Such a program is forced to mix its regular code with error handling of an exception, that is no error at all in that context.
     The method should return a special result value instead: null. Many callers of that method have expected that situation and therefore are not in an unexpected situation/exceptional state. They could decide the situation on their own.
@@ -187,29 +187,27 @@ The eclipse formater settings are available [here](coding-standards.data/eclipse
 
 # Example
 
-<DIV class="code panel" style="border-style: solid;border-width: 1px;"><DIV class="codeContent panelContent">
-<PRE class="code-java">
-<SPAN class="code-keyword">private</SPAN> <SPAN class="code-keyword">static</SPAN> <SPAN class="code-keyword">final</SPAN> Log log = LogFactory.getLog(MyClass.class);
+{pygmentize:: java}
+private static final Log log = LogFactory.getLog(MyClass.class);
 
-<SPAN class="code-keyword">public</SPAN> void doSomeStuff(Stuff stuff) <SPAN class="code-keyword">throws</SPAN> StuffException {
-    <SPAN class="code-object">boolean</SPAN> logTrace = log.isTraceEnabled();
-    <SPAN class="code-keyword">try</SPAN> {
-        <SPAN class="code-keyword">if</SPAN> (logTrace) {
-            log.trace(<SPAN class="code-quote">&quot;About to <SPAN class="code-keyword">do</SPAN> stuff &quot;</SPAN> + stuff);
+public void doSomeStuff(Stuff stuff) throws StuffException {
+    boolean logTrace = log.isTraceEnabled();
+    try {
+        if (logTrace) {
+            log.trace("About to do stuff " + stuff);
         }
         stuff.doSomething();
-        <SPAN class="code-keyword">if</SPAN> (logTrace) {
-            log.trace(<SPAN class="code-quote">&quot;Did some stuff &quot;</SPAN>);
+        if (logTrace) {
+            log.trace("Did some stuff");
         }
-    } <SPAN class="code-keyword">catch</SPAN> (BadException e) {
-        <SPAN class="code-comment">// don't log - leave it to caller
-</SPAN>        <SPAN class="code-keyword">throw</SPAN> <SPAN class="code-keyword">new</SPAN> StuffException(<SPAN class="code-quote">&quot;Something bad happened&quot;</SPAN>, e);
-    } <SPAN class="code-keyword">catch</SPAN> (IgnorableException e) {
-        <SPAN class="code-comment">// didn't cache <SPAN class="code-keyword">this</SPAN> as we don't expect to come here a lot
-</SPAN>        <SPAN class="code-keyword">if</SPAN> (log.isDebugEnabled()) {
-            log.debug(<SPAN class="code-quote">&quot;Ignoring problem doing stuff &quot;</SPAN>+stuff, e);
+    } catch (BadException e) {
+        // don't log - leave it to caller
+        throw new StuffException("Something bad happened", e);
+    } catch (IgnorableException e) {
+        // didn't cache this as we don't expect to come here a lot
+        if (log.isDebugEnabled()) {
+            log.debug("Ignoring problem doing stuff " +stuff, e);
         }
     }
 }
-</PRE>
-</DIV></DIV>
+{pygmentize}

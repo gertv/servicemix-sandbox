@@ -15,29 +15,39 @@ ServiceMix 4.x requires to use Maven 2.2.1 or better.
 * Get the latest code [from SVN](source.html).
 * Build the code with the following command
 
-        mvn -Dmaven.test.skip=true -Pstep1 install
-        mvn -Dmaven.test.skip=true -Pstep2 install
+{pygmentize:: text}
+mvn -Dmaven.test.skip=true -Pstep1 install
+mvn -Dmaven.test.skip=true -Pstep2 install
+{pygmentize}
 
 <div class="tip">
   <h1>Useful Hints</h1>
   <ul>
-	<l1>
+	<li>
       <p>It may happen, that building step1 fails with an error message regarding PMD or checkstyle. In this case you can add a <code>nochecks</code> to the line so it looks like this:</p>
-      <code>mvn -Dmaven.test.skip=true -Pstep1,nochecks install</code>
+
+{pygmentize:: text}
+mvn -Dmaven.test.skip=true -Pstep1,nochecks install
+{pygmentize}
     </li>
 	<li>
       <p>Also, if an out of memory error is encountered during compilation, set the <code>MAVEN_OPTS</code> environment variable to a larger amount of memory. Below is an example:</p>
-      <code>MAVEN_OPTS=-Xmx768m</code>
+
+{pygmentize:: text}
+MAVEN_OPTS=-Xmx768m
+{pygmentize}
     </li>
 	<LI>Some dependencies have POMs that specify repository URLs that are no longer valid. This can cause invalid artifacts to be downloaded to your local repository. You can add the following mirror to your Maven <code>settings.xml</code> file to avoid this problem:
-<PRE class="code-java">
-&lt;mirror&gt;
-  &lt;id&gt;servicemix-repo&lt;/id&gt;
-  &lt;name&gt;Apache ServiceMix Repository&lt;/name&gt;
-  &lt;url&gt;http:<SPAN class="code-comment">//svn.apache.org/repos/asf/servicemix/m2-repo/&lt;/url&gt;
-</SPAN>  &lt;mirrorOf&gt;servicemix-repo,servicemix-m2-repo&lt;/mirrorOf&gt;
-&lt;/mirror&gt;
-</PRE>
+
+{pygmentize:: xml}
+<mirror>
+  <id>servicemix-repo</id>
+  <name>Apache ServiceMix Repository</name>
+  <url>http://svn.apache.org/repos/asf/servicemix/m2-repo/</url>
+  <mirrorOf>servicemix-repo,servicemix-m2-repo</mirrorOf>
+</mirror>
+{pygmentize}
+
 </li>
 </ul>
 </div>
@@ -46,14 +56,16 @@ ServiceMix 4.x requires to use Maven 2.2.1 or better.
   <h1>Please Note</h1>
   <p>There is an <a href="https://issues.apache.org/activemq/browse/SM-1079">issue</a> in building if you use the system property style of declaring the profiles (i.e., <code>-Dprofile=step2</code>) as the XFire Maven plugin thinks <code>step2</code> is a profile name it should use. This is fixed in the ServiceMix trunk (3.3 or greater). To work around this issue, try the following items below:</p>
   <UL>
-	<LI>Use the -Pstep2 style of declaring the profile as noted above</LI>
+	<LI>Use the <code>-Pstep2</code> style of declaring the profile as noted above</LI>
 	<LI>Comment out the <A href="http://fisheye6.atlassian.com/browse/servicemix/smx3/tags/servicemix-3.2.1/platforms/pom.xml?%3Dtrunk#l36" class="external-link" rel="nofollow">Geronimo module in the platform POM</A></LI>
   </UL>
 </div>
 
 Next time you build, you can just run
 
-    mvn -Dmaven.test.skip=true install
+{pygmentize:: text}
+mvn -Dmaven.test.skip=true install
+{pygmentize}
 
 <div class="tip">
   <h1>Building 3.1.1</h1>
@@ -65,11 +77,15 @@ Next time you build, you can just run
   <h1>Building 3.0-M1 and 3.0-M2</h1>
   <p>Note that this only works for versions from 3.0-M3.</p>
   <p>To build previous versions, you need to run:</p>
-  <pre>mvn &#45;N install
+
+{pygmentize:: text}
+mvn -N install
 cd tooling
-mvn install &#45;Dmaven.test.skip=true
+mvn install -Dmaven.test.skip=true
 cd ..
-mvn install &#45;Dmaven.test.skip=true</pre>
+mvn install -Dmaven.test.skip=true
+{pygmentize}
+
 </div>
 
 ## Code Conventions

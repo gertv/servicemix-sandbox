@@ -42,6 +42,7 @@ Please see the [Subversion client EOL configuration](http://www.apache.org/dev/s
 
     Below is an example for use in Java files. Other file types may need to change the comment style.
 
+    {pygmentize:: java}
         /*
          * Licensed to the Apache Software Foundation (ASF) under one or more
          * contributor license agreements.  See the NOTICE file distributed with
@@ -58,6 +59,7 @@ Please see the [Subversion client EOL configuration](http://www.apache.org/dev/s
          * See the License for the specific language governing permissions and
          * limitations under the License.
          */
+    {pygmentize}
 
 * All contributions **must** comply with the terms of the [Apache Contributor License Agreement (CLA)](http://www.apache.org/licenses/cla.pdf).
 * Any questions about copyright or patent issues should be raised on the dev mailing list **before** contributing or committing code.

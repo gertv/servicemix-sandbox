@@ -5,7 +5,7 @@ title: Contributing
 
 # Anyone Can Contribute!
     
-There are many ways you can help make ServiceMix a better piece of software - please dive in and help&#33;
+There are many ways you can help make ServiceMix a better piece of software - please dive in and help!
 
 Surf the documentation - if somethings confusing or not clear, let us know or even edit it yourself. All you need to do is [register for a wiki account](http://cwiki.apache.org/confluence/signup.action) and you can begin contributing your own docs, fixing docs, updating docs, etc.
 
@@ -56,11 +56,15 @@ We gladly accept patches if you can find ways to improve, tune or fix ServiceMix
 
 Most IDEs can create nice patches now very easily. If you're a command line person try the following to create the patch:
 
-    diff -u Main.java.orig Main.java &gt;&gt; patchfile.txt
+{pygmentize:: text}
+diff -u Main.java.orig Main.java >> patchfile.txt
+{pygmentize}
 
 or, if you're working against the code base checked out from the Subversion repository (this is the best way to work), then just use the `svn diff` command in the Subversion client.
 
-    svn diff Main.java &gt;&gt; patchfile.txt
+{pygmentize:: text}
+svn diff Main.java &gt;&gt; patchfile.txt
+{pygmentize}
 
 <div class="note">
   <h1>Make Sure to Include All New Files in Your Patch</h1>
