@@ -164,7 +164,7 @@ div.highlight pre {
   padding: .5em;
 }
 
-tt {
+tt, code {
   font-family: 'Courier', Courier, monospace;
   font-size: 1em;
 }
@@ -308,4 +308,9 @@ a {
 
 a:hover {
   color: #666;
+}
+
+div#content p {
+  margin: 10px 0;
+  padding: 0;
 }
