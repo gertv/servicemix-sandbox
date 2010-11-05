@@ -10,7 +10,6 @@ body {
   }
 
 div#siteHeader {
-  background-color: #76a3cd;
   padding-left: 20px;
   padding-right: 20px;
   clear: both;
@@ -35,13 +34,33 @@ div#siteHeader table, div#siteHeader td {
   vertical-align: middle;
 }
 
+tr.navRow {
+  background-color:  #76a3cd;
+  }
+
+td.searchElem {
+  border-bottom-right-radius: 100px;
+  border-top-right-radius: 100px;
+  -webkit-border-bottom-right-radius: 100px;
+  -webkit-border-top-right-radius: 100px;
+ -moz-border-bottom-right-radius: 100px;
+ -moz-border-top-right-radius: 100px;
+}
+
+td.menuElem {
+  border-bottom-left-radius: 100px;
+  border-top-left-radius: 100px;
+  -webkit-border-bottom-left-radius: 100px;
+  -webkit-border-top-left-radius: 100px;
+ -moz-border-bottom-left-radius: 100px;
+ -moz-border-top-left-radius: 100px;
+}
+
 ul.siteNav {
   list-style-type: none;
   padding:0;
   margin:0;
   position: relative;
-  left:20%;
-  width: 80%;
   }
   
 ul.siteNav li {

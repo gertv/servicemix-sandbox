@@ -54,10 +54,10 @@ limitations under the License.
           </a>
         </td>
       </tr>
-      <tr>
-        <td colspan="2">
+      <tr class="navRow">
+        <td class="menuElem">
           <ul class="siteNav">
-            <li ><a href="/index.html" title="Overview">Overview</a></li>
+            <li><a href="/index.html" title="Overview">Overview</a></li>
             <li><a href="/downloads/index.html" title="Download">Download</a></li>
             <li><a href="/documentation/index.html" title="Documentation">Documentation</a></li>
             <li>
@@ -97,6 +97,7 @@ limitations under the License.
             </li>
           </ul>
         </td>
+        <td class="searchElem">Search Widget</td>
       </tr>
     </table>
   </div>
