@@ -97,7 +97,16 @@ limitations under the License.
             </li>
           </ul>
         </td>
-        <td class="searchElem">Search Widget</td>
+        <td class="searchElem">
+        <FORM action="http://www.google.com/search" method="get">
+        <INPUT name="ie" type="hidden" value="UTF-8"></INPUT>
+        <INPUT name="oe" type="hidden" value="UTF-8"></INPUT>
+        <INPUT maxlength="255" name="q" size="15" type="text" value=""></INPUT>
+        <INPUT name="btnG" type="submit" value="Search"></INPUT>
+        <INPUT name="domains" type="hidden" value="servicemix.apache.org"></INPUT>
+        <INPUT name="sitesearch" type="hidden" value="servicemix.apache.org"></INPUT>
+        </FORM>
+        </td>
       </tr>
     </table>
   </div>
