@@ -83,6 +83,18 @@ span.bignum {
   float:left;
 }
 
-div#box_content {
+div#boxcontent {
   float: right;
+}
+
+div#news h2 {
+  padding-top: 10px;
+  margin: 0;
+  border-bottom: none;
+}
+
+div#news em {
+  font-variant:small-caps;
+  font-weight: 500;
+  color: #383838;
 }
