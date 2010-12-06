@@ -1,6 +1,6 @@
 ---
 <% attributes("title") = "Home" %>
-<% attributes("style") = "/css/home.css" %>
+<% attributes("style") = uri("/css/home.css") %>
 title: Home
 --- name:content pipeline:jade
 
@@ -29,7 +29,7 @@ title: Home
     :markdown
       <span class="bignum">1</span>
       <div class="boxcontent">
-        <h1><a href="/downloads/index.html">Get it<img style="float:right;border:none" src="./images/ddrive.png" /></a></h1>
+        <h1><a href="${uri("/downloads/index.html")}">Get it<img style="float:right;border:none" src="./images/ddrive.png" /></a></h1>
         <ul>
         <li>Download the latest release
         <ul id="downloads" style="list-style-type:none;list-style-image:none;padding-left:15px;">
@@ -37,7 +37,7 @@ title: Home
         <li id="dl_x"><img src="./images/tarsm.png" />&nbsp;<a id="dl_x_a" href="http://www.apache.org/dyn/closer.cgi?path=/servicemix/servicemix-4/4.2.0/apache-servicemix-4.2.0.tar.gz">apache-servicemix-4.2.0.tar.gz</a></li>
         </ul>
         </li>
-        <li>Downloads for <a href="/downloads/index.html">other platforms and versions</a>.</li>
+        <li>Downloads for <a href="${uri("/downloads/index.html")}">other platforms and versions</a>.</li>
         </ul>
       </div>
       <script>
@@ -56,17 +56,17 @@ title: Home
     :markdown
       <span class="bignum">2</span>
       <div class="boxcontent">
-        <h1><a href="/support/index.html">Use it<img style="float:right;border:none" src="./images/globe.png" /></a></h1>
+        <h1><a href="${uri("/support/index.html")}">Use it<img style="float:right;border:none" src="./images/globe.png" /></a></h1>
         <ul>
-        <li>Get started using the <a href="/documentation/quick_start/index.html">Quick Start Guide</a>.</li>
-        <li>Read the full set of <a href="/documentation/index.html">documentation</a>.</li>
-        <li>Find community and commercial <a href="/support/index.html">support resources</a>.</li>
+        <li>Get started using the <a href="${uri("/documentation/quick_start/index.html")}">Quick Start Guide</a>.</li>
+        <li>Read the full set of <a href="${uri("/documentation/index.html")}">documentation</a>.</li>
+        <li>Find community and commercial <a href="${uri("/support/index.html")}">support resources</a>.</li>
       </div>
   #makeit_box
     :markdown
       <span class="bignum">3</span>
       <div class="boxcontent">
-      <h1><a href="/contribute/index.html">Make it<img style="float:right;border:none" src="./images/gear.png" /></a></h1>
+      <h1><a href="${uri("/contribute/index.html")}">Make it<img style="float:right;border:none" src="./images/gear.png" /></a></h1>
       </div>
       
 #news

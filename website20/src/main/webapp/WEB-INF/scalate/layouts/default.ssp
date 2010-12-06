@@ -44,48 +44,48 @@ limitations under the License.
     <table width="100%">
       <tr valign="middle" class="navRow">
         <td align="left" rowspan="2">
-          <a href="/index.html" title="An open source ESB">
-            <img border="0" src="/images/logo.png" />
+          <a href="${uri("/index.html")}" title="An open source ESB">
+            <img border="0" src="${uri("/images/logo.png")}" />
           </a>
         </td>
         <td align="right" class="menuElem">
           <ul class="siteNav">
-            <li><a href="/index.html" title="Overview">Overview</a></li>
-            <li><a href="/downloads/index.html" title="Download">Download</a></li>
-            <li><a href="/documentation/index.html" title="Documentation">Documentation</a></li>
+            <li><a href="${uri("/index.html")}" title="Overview">Overview</a></li>
+            <li><a href="${uri("/downloads/index.html")}" title="Download">Download</a></li>
+            <li><a href="${uri("/documentation/index.html")}" title="Documentation">Documentation</a></li>
             <li>
-              <a href="/support/index.html" title="Support">Support</a>
+              <a href="${uri("/support/index.html")}" title="Support">Support</a>
               <ul>
-                <li><a href="/community/mailing-lists.html" title="Mailing Lists">Mailing Lists</a></li>
-                <li><a href="/community/discussion-forums.html" title="Discussion Forums">Forums</a></li>
-                <li><a href="/community/irc.html" title="IRC">IRC</a></li>
-                <li><a href="/support/faq.html" title="FAQ">FAQ</a></li>
-                <li><a href="/community/users.html" title="Users">Users</a></li>
-                <li><a href="/support/presentations.html" title="Presentations">Presentations</a></li>
+                <li><a href="${uri("/community/mailing-lists.html")}" title="Mailing Lists">Mailing Lists</a></li>
+                <li><a href="${uri("/community/discussion-forums.html")}" title="Discussion Forums">Forums</a></li>
+                <li><a href="${uri("/community/irc.html")}" title="IRC">IRC</a></li>
+                <li><a href="${uri("/support/faq.html")}" title="FAQ">FAQ</a></li>
+                <li><a href="${uri("/community/users.html")}" title="Users">Users</a></li>
+                <li><a href="${uri("/support/presentations.html")}" title="Presentations">Presentations</a></li>
               </ul>
             </li>
             <li>
-              <a href="/community/index.html" title="Community">Community</a>
+              <a href="${uri("/community/index.html")}" title="Community">Community</a>
               <ul>
-                <li><a href="/community/mailing-lists.html" title="Mailing Lists">Mailing Lists</a></li>
-                <li><a href="/community/discussion-forums.html" title="Discussion Forums">Forums</a></li>
-                <li><a href="/community/irc.html" title="IRC">IRC</a></li>
-                <li><a href="/community/users.html" title="Users">Users</a></li>
-                <li><a href="/community/team.html" title="Users">Team</a></li>
-                <li><a href="/community/projects.html" title="Users">Related Projects</a></li>
+                <li><a href="${uri("/community/mailing-lists.html")}" title="Mailing Lists">Mailing Lists</a></li>
+                <li><a href="${uri("/community/discussion-forums.html")}" title="Discussion Forums">Forums</a></li>
+                <li><a href="${uri("/community/irc.html")}" title="IRC">IRC</a></li>
+                <li><a href="${uri("/community/users.html")}" title="Users">Users</a></li>
+                <li><a href="${uri("/community/team.html")}" title="Users">Team</a></li>
+                <li><a href="${uri("/community/projects.html")}" title="Users">Related Projects</a></li>
               </ul>
             </li>
             <li class="last">
-              <a href="/contrib/index.html" title="Contributing">Contribute</a>
+              <a href="${uri("/contrib/index.html")}" title="Contributing">Contribute</a>
               <ul>
-                <li><a href="/contrib/becoming-a-committer.html" title="Committing">Become a Committer</a></li>
-                <li><a href="/contrib/committers-guide.html" title="Committing Guide">Committer Guide</a></li>
-                <li><a href="/contrib/source.html" title="Source">Getting the Source</a></li>
-                <li><a href="/contrib/building.html" title="Building">Building ServiceMix</a></li>
-                <li><a href="/contrib/coding-standards.html" title="Coding Standards">Coding Standards</a></li>
+                <li><a href="${uri("/contrib/becoming-a-committer.html")}" title="Committing">Become a Committer</a></li>
+                <li><a href="${uri("/contrib/committers-guide.html")}" title="Committing Guide">Committer Guide</a></li>
+                <li><a href="${uri("/contrib/source.html")}" title="Source">Getting the Source</a></li>
+                <li><a href="${uri("/contrib/building.html")}" title="Building">Building ServiceMix</a></li>
+                <li><a href="${uri("/contrib/coding-standards.html")}" title="Coding Standards">Coding Standards</a></li>
                 <li><a href="http://issues.apache.org/activemq/browse/SM" title="JIRA">JIRA</a></li>
-                <li><a href="/contrib/releasing.html" title="Releasing">Release Guide</a></li>
-                <li><a href="/community/team.html" title="Users">Team</a></li>
+                <li><a href="${uri("/contrib/releasing.html")}" title="Releasing">Release Guide</a></li>
+                <li><a href="${uri("/community/team.html")}" title="Users">Team</a></li>
               </ul>
             </li>
           </ul>
