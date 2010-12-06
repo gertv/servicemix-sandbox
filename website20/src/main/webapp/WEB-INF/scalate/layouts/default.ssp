@@ -109,7 +109,7 @@ limitations under the License.
     <%= body %>
   </div>
   <div id="siteFooter">
-    <p>Thanks for using Apache ServiceMix!</p>
+    <p>&copy; Copyright 2010 The Apache Software Foundation. All rights reserved.</p>
   </div>
 </body>
 </html>
