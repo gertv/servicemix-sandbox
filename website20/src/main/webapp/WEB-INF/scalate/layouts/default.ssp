@@ -45,14 +45,10 @@ limitations under the License.
       <tr valign="middle">
         <td align="left">
           <a href="/index.html" title="An open source ESB">
-            <img border="0" src="/images/logodesign.png" height="100"/><img border="0" src="/images/new-logo.png" />
+            <img border="0" src="/images/logo.png" />
           </a>
         </td>
-        <td align="right">
-          <a href="http://www.apache.org/" title="The Apache Sofware Foundation">
-            <img  border="0" src="http://activemq.apache.org/images/asf-logo.png">
-          </a>
-        </td>
+        <td align="right" />
       </tr>
       <tr class="navRow">
         <td class="menuElem">
