@@ -42,16 +42,13 @@ limitations under the License.
 <body>
   <div id="siteHeader">
     <table width="100%">
-      <tr valign="middle">
-        <td align="left">
+      <tr valign="middle" class="navRow">
+        <td align="left" rowspan="2">
           <a href="/index.html" title="An open source ESB">
             <img border="0" src="/images/logo.png" />
           </a>
         </td>
-        <td align="right" />
-      </tr>
-      <tr class="navRow">
-        <td class="menuElem">
+        <td align="right" class="menuElem">
           <ul class="siteNav">
             <li><a href="/index.html" title="Overview">Overview</a></li>
             <li><a href="/downloads/index.html" title="Download">Download</a></li>
@@ -78,7 +75,7 @@ limitations under the License.
                 <li><a href="/community/projects.html" title="Users">Related Projects</a></li>
               </ul>
             </li>
-            <li>
+            <li class="last">
               <a href="/contrib/index.html" title="Contributing">Contribute</a>
               <ul>
                 <li><a href="/contrib/becoming-a-committer.html" title="Committing">Become a Committer</a></li>
@@ -93,7 +90,9 @@ limitations under the License.
             </li>
           </ul>
         </td>
-        <td class="searchElem">
+      </tr>
+      <tr class="navRow">
+        <td align="right" class="searchElem">
         <FORM action="http://www.google.com/search" method="get">
         <INPUT name="ie" type="hidden" value="UTF-8"></INPUT>
         <INPUT name="oe" type="hidden" value="UTF-8"></INPUT>

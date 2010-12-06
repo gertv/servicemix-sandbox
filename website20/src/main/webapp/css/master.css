@@ -39,21 +39,9 @@ tr.navRow {
   }
 
 td.searchElem {
-  border-bottom-right-radius: 100px;
-  border-top-right-radius: 100px;
-  -webkit-border-bottom-right-radius: 100px;
-  -webkit-border-top-right-radius: 100px;
- -moz-border-bottom-right-radius: 100px;
- -moz-border-top-right-radius: 100px;
 }
 
 td.menuElem {
-  border-bottom-left-radius: 100px;
-  border-top-left-radius: 100px;
-  -webkit-border-bottom-left-radius: 100px;
-  -webkit-border-top-left-radius: 100px;
- -moz-border-bottom-left-radius: 100px;
- -moz-border-top-left-radius: 100px;
 }
 
 ul.siteNav {
@@ -66,10 +54,15 @@ ul.siteNav {
 ul.siteNav li {
 	display: inline;
 	float: left;
-	padding: 0 20px;
+	padding: 0 5px;
+    border-left:groove;
 	}
 
-ul.siteNav li ul {
+ul.siteNav li.last {
+    border-right:groove;
+	}
+
+    ul.siteNav li ul {
   position:absolute;
   margin-top:-1em;
   margin-left:.5em;
@@ -98,6 +91,8 @@ ul.siteNav li ul li {
   clear: both;
   margin:3px;
   padding:3px;
+  border-left:none;
+  border-right:none;
 }
 
 div#sectHeader {
